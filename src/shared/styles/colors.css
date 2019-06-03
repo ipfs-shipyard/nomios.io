@@ -1,0 +1,17 @@
+/*
+  Note: If you add a color here, please add it to "/stories/base/colors.css" as well
+*/
+
+:root {
+    --color-armadillo: #4b453d;
+    --color-mineral-green: #334a43;
+    --color-tan: #d4b58b;
+    --color-dawn-pink: #f3ece5;
+    --color-ocean-green: #44b880;
+    --color-dune: #2c2823;
+    --color-monza: #d0021b;
+    --color-web-orange: #ffac00;
+    --color-cornflower-blue: #004dd0;
+    --color-black: #000;
+    --color-white: #fff;
+}

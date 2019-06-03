@@ -1,0 +1,6 @@
+@import "../../styles/colors";
+
+.header {
+    background: var(--color-mineral-green);
+    color: var(--color-white);
+}

@@ -5,5 +5,10 @@
  */
 
 module.exports = {
-  /* Your site config here */
-}
+    siteMetadata: {
+        title: 'Nomios',
+    },
+    plugins: [
+        'gatsby-plugin-postcss',
+    ],
+};

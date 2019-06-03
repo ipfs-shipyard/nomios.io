@@ -1,0 +1,8 @@
+.icon {
+    width: 1em;
+    height: 1em; /* Must have an height otherwise it will have an extra space on IE11 */
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 2.4rem;
+    transition: fill 0.2s ease, fill-opacity 0.2s ease;
+}

@@ -1,0 +1,47 @@
+.container {
+    display: inline-flex;
+    font-size: 1rem;
+
+    &.vertical {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        & .svg:first-child {
+            margin-bottom: 1.6rem;
+        }
+    }
+
+    &.horizontal {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        & .svg:first-child {
+            margin-right: 2.6rem;
+        }
+    }
+
+    & .svg {
+        display: inline-block;
+        vertical-align: middle;
+        user-select: none;
+        transition: fill 0.2s ease, fill-opacity 0.2s ease;
+
+        &.symbol {
+            width: 5.2em;
+            height: 8.5em; /* Must have an height otherwise it will have an extra space on IE11 */
+        }
+
+        &.logotype {
+            width: 15.5em;
+            height: 2.9em; /* Must have an height otherwise it will have an extra space on IE11 */
+        }
+
+        & svg {
+            width: inherit;
+            height: inherit;
+            display: block;  /* Remove little margin between the svg and its parent */
+        }
+    }
+}

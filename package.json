@@ -1,30 +1,76 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "nomios-io",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "The nomios.io website",
   "version": "0.1.0",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ipfs-shipyard/nomios.io"
+  },
+  "bugs": {
+    "url": "https://github.com/ipfs-shipyard/nomios.io"
+  },
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "test": "exit 0",
+    "lint": "eslint --ignore-path .gitignore . && stylelint --ignore-path .gitignore \"**/*.css\"",
+    "prerelease": "npm t && npm run lint && npm run build",
+    "release": "standard-version"
   },
   "dependencies": {
+    "cancel.it": "^0.1.1",
+    "classnames": "^2.2.6",
     "gatsby": "^2.7.1",
+    "gatsby-plugin-postcss": "^2.0.7",
+    "normalize.css": "^8.0.1",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "prettier": "^1.17.1"
+    "@commitlint/config-conventional": "^8.0.0",
+    "babel-preset-moxy": "^3.1.0",
+    "commitlint": "^8.0.0",
+    "eslint": "^5.16.0",
+    "eslint-config-moxy": "^7.1.0",
+    "husky": "^2.3.0",
+    "lint-staged": "^8.1.7",
+    "postcss-preset-moxy": "^4.0.1",
+    "raw-loader": "^2.0.0",
+    "standard-version": "^6.0.1",
+    "stylelint": "^10.0.1",
+    "stylelint-config-moxy": "^6.1.0",
+    "svg-css-modules-loader": "^1.6.1",
+    "svgo-loader": "^2.2.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  "standard-version": {
+    "scripts": {
+      "posttag": "git push --follow-tags origin master"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.css": [
+      "stylelint --fix",
+      "git add"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }
