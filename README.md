@@ -13,7 +13,7 @@ The [nomios.io](https://nomios.io) website.
 
 ## Development
 
-Run the project by running:
+Install & run the project with:
 
 ```sh
 npm i && npm start
