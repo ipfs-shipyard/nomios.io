@@ -5,10 +5,10 @@ The [nomios.io](https://nomios.io) website.
 
 ## Base technology
 
-- Gatsby
+- [Gatsby](https://www.gatsbyjs.org/)
 - React
 - CSS modules
-- [PostCSS](https://github.com/postcss/postcss) with [MOXY's preset](https://github.com/moxystudio/postcss-preset-moxy)at outlines are only shown when necessary
+- [PostCSS](https://github.com/postcss/postcss) with [MOXY's preset](https://github.com/moxystudio/postcss-preset-moxy)
 
 
 ## Development
