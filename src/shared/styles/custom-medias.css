@@ -3,6 +3,9 @@
    ========================================================================== */
 /* Use it like so: @media (--layout-small) { ... } */
 
+/* this need to be accordind to the sum of container-width and 2 * edge-spacing-x-left and right */
+@custom-media --layout-lte-container-width (width <= 1920px);
+
 /* Use these if you developing desktop first and want to target lower resolutions */
 
 @custom-media --layout-lte-xsmall (width <= 480px);

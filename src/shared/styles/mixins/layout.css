@@ -1,0 +1,29 @@
+@import "../custom-medias";
+@import "../variables";
+
+@define-mixin layout-main $selector, $container-selector {
+    $selector {
+        flex: 1 0 auto;
+    }
+
+    $container-selector {
+        width: 100%;
+        max-width: var(--layout-container-width);
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    @media (--layout-lte-container-width) {
+        $container-selector {
+            max-width: none;
+            padding-left: var(--layout-edge-spacing-x);
+            padding-right: var(--layout-edge-spacing-x);
+        }
+    }
+
+    @media (--layout-lte-medium) {
+        $container-selector {
+            padding-left: var(--layout-edge-spacing-x);
+        }
+    }
+}
