@@ -1,0 +1,296 @@
+@import "../../styles/colors";
+@import "../../styles/mixins/typography";
+
+:root {
+    --feedback-transition-duration: 0.2s;
+}
+
+.button {
+    position: relative;
+    min-width: 12rem;
+    height: 5rem;
+    overflow: hidden;
+    padding: 0;
+    border: none;
+    background: transparent;
+    transition-property: opacity, box-shadow;
+    transition-duration: var(--feedback-transition-duration);
+    transition-timing-function: ease-out;
+
+    &:enabled {
+        cursor: pointer;
+    }
+
+    &.fullWidth {
+        width: 100%;
+    }
+
+    & .textBlock {
+        position: relative;
+        @mixin typography-body-1 rem;
+        height: 100%;
+        padding: 0 5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: border-color, color, background-color;
+        transition-duration: var(--feedback-transition-duration);
+        transition-timing-function: ease-out;
+
+        & .text {
+            position: relative;
+            z-index: 2;
+        }
+
+        & .progressBar {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+        }
+    }
+
+    &.primary {
+        & .textBlock {
+            background-color: var(--color-white);
+            color: var(--color-mineral-green);
+        }
+
+        &:enabled {
+            &:active .textBlock,
+            &:focus:not(:hover) .textBlock {
+                background-color: var(--color-dune);
+            }
+
+            &:hover:not(:active) .textBlock {
+                background-color: color(var(--color-tan));
+                color: var(--color-white);
+            }
+        }
+
+        &:disabled .textBlock {
+            background-color: color(var(--color-armadillo) alpha(0.2));
+        }
+    }
+
+    &.secondary {
+        & .textBlock {
+            background-color: var(--color-tan);
+            color: var(--color-white);
+
+            & .progressBar {
+                top: -1px;
+                right: -1px;
+                bottom: -1px;
+                left: -1px;
+            }
+        }
+
+        &:enabled {
+            &:active .textBlock,
+            &:focus:not(:hover) .textBlock {
+                background-color: var(--color-dune);
+            }
+
+            &:hover:not(:active) .textBlock {
+                background-color: var(--color-white);
+                color: var(--color-mineral-green);
+            }
+        }
+
+        &:disabled {
+            opacity: 0.3;
+        }
+    }
+
+    &.tertiary {
+        & .textBlock {
+            background-color: var(--color-mineral-green);
+            color: var(--color-white);
+
+            & .progressBar {
+                top: -1px;
+                right: -1px;
+                bottom: -1px;
+                left: -1px;
+            }
+        }
+
+        &:enabled {
+            &:active .textBlock,
+            &:focus:not(:hover) .textBlock {
+                background-color: var(--color-dune);
+            }
+
+            &:hover:not(:active) .textBlock {
+                background-color: color(var(--color-tan));
+                color: var(--color-white);
+            }
+        }
+
+        &:disabled .textBlock {
+            border-color: color(var(--color-white) alpha(0.3));
+            color: color(var(--color-white) alpha(0.5));
+        }
+    }
+
+    &.negative {
+        & .textBlock {
+            background-color: var(--color-white);
+            color: var(--color-armadillo);
+        }
+
+        &:enabled {
+            &:active,
+            &:focus:not(:hover) {
+                box-shadow: 0 0 0 0.3rem color(var(--color-white) alpha(0.3));
+            }
+
+            &:hover:not(:active) .textBlock {
+                background-color: color(var(--color-white) alpha(0.6));
+            }
+        }
+
+        &:disabled .textBlock {
+            background-color: color(var(--color-white) alpha(0.2));
+            color: color(var(--color-armadillo) alpha(0.5));
+        }
+    }
+
+    /* ==========================================================================
+      Text + feedback
+      ========================================================================== */
+
+    & .textBlock {
+        z-index: 1;
+    }
+
+    & .successBlock,
+    & .errorBlock {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        transform: translateY(100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform var(--feedback-transition-duration) ease-out;
+    }
+
+    &.success .successBlock,
+    &.error .errorBlock {
+        transform: translateY(0);
+    }
+
+    /* Primary & Secondary */
+
+    &.primary.progressVisible .textBlock,
+    &.secondary.progressVisible .textBlock {
+        background-color: color(var(--color-armadillo) alpha(0.2));
+        color: var(--color-white);
+    }
+
+    &.secondary {
+        &.loading,
+        &.success,
+        &.error {
+            opacity: 1;
+        }
+
+        &.progressVisible .textBlock {
+            border-color: transparent;
+        }
+    }
+
+    &.primary,
+    &.secondary {
+        & .textBlock .progressBar {
+            background-color: color(var(--color-armadillo) alpha(0.2));
+        }
+
+        & .successBlock {
+            background-color: var(--color-ocean-green);
+
+            & .checkmark svg path {
+                stroke: var(--color-white);
+            }
+        }
+
+        & .errorBlock {
+            background-color: var(--color-monza);
+
+            & .crossmark svg path {
+                stroke: var(--color-white);
+            }
+        }
+    }
+
+    /* Tertiary & Negative */
+
+    &.tertiary,
+    &.negative {
+        &.progressVisible .textBlock {
+            border-color: transparent;
+            background-color: color(var(--color-white) alpha(0.2));
+            color: var(--color-white);
+        }
+
+        & .textBlock .progressBar {
+            background-color: color(var(--color-white) alpha(0.2));
+        }
+
+        & .successBlock {
+            background-color: var(--color-white);
+
+            & .checkmark svg path {
+                stroke: var(--color-ocean-green);
+            }
+        }
+
+        & .errorBlock {
+            background-color: var(--color-white);
+
+            & .crossmark svg path {
+                stroke: var(--color-monza);
+            }
+        }
+    }
+
+    /* ==========================================================================
+      Feedback icons
+      ========================================================================== */
+
+    & .checkmark,
+    & .crossmark {
+        font-size: 2rem;
+        stroke-dasharray: 20;
+        stroke-dashoffset: 20;
+    }
+
+    & .checkmark {
+        transition: stroke-dashoffset 0.2s linear 0.2s;
+    }
+
+    & .crossmark {
+        & svg path:nth-of-type(1) {
+            transition: stroke-dashoffset 0.1s linear 0.3s;
+        }
+
+        & svg path:nth-of-type(2) {
+            transition: stroke-dashoffset 0.1s linear 0.2s;
+        }
+    }
+
+    &.success .checkmark {
+        stroke-dashoffset: 0;
+    }
+
+    &.error .crossmark {
+        stroke-dashoffset: 0;
+    }
+}
