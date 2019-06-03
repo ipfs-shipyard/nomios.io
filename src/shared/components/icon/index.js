@@ -8,6 +8,7 @@ const doneSvg = import(/* webpackChunkName: "svg-sprite" */ '../../media/icons/i
 const playSvg = import(/* webpackChunkName: "svg-sprite" */ '../../media/icons/icon-play.svg');
 const crossmarkSvg = import(/* webpackChunkName: "svg-sprite" */ '../../media/icons/icon-crossmark.svg');
 const checkmarkSvg = import(/* webpackChunkName: "svg-sprite" */ '../../media/icons/icon-checkmark.svg');
+const protocolLabsBrandSvg = import(/* webpackChunkName: "svg-sprite" */ '../../media/icons/icon-protocol-labs-brand.svg');
 
 const GithubIcon = forwardRef((props, ref) => <Icon ref={ ref } { ...props } svg={ githubSvg } />);
 const TodoIcon = forwardRef((props, ref) => <Icon ref={ ref } { ...props } svg={ todoSvg } />);
@@ -16,6 +17,7 @@ const DoneIcon = forwardRef((props, ref) => <Icon ref={ ref } { ...props } svg={
 const PlayIcon = forwardRef((props, ref) => <Icon ref={ ref } { ...props } svg={ playSvg } />);
 const CheckmarkIcon = forwardRef((props, ref) => <Icon ref={ ref } { ...props } svg={ checkmarkSvg } />);
 const CrossmarkIcon = forwardRef((props, ref) => <Icon ref={ ref } { ...props } svg={ crossmarkSvg } />);
+const ProtocolLabsBrandIcon = forwardRef((props, ref) => <Icon ref={ ref } { ...props } svg={ protocolLabsBrandSvg } />);
 
 export {
     GithubIcon,
@@ -25,6 +27,7 @@ export {
     PlayIcon,
     CrossmarkIcon,
     CheckmarkIcon,
+    ProtocolLabsBrandIcon,
 };
 
 export default Icon;
