@@ -65,8 +65,7 @@
             }
 
             &:hover:not(:active) .textBlock {
-                background-color: color(var(--color-tan));
-                color: var(--color-white);
+                opacity: 0.8;
             }
         }
 
@@ -95,8 +94,7 @@
             }
 
             &:hover:not(:active) .textBlock {
-                background-color: var(--color-white);
-                color: var(--color-mineral-green);
+                opacity: 0.8;
             }
         }
 
@@ -136,20 +134,50 @@
         }
     }
 
-    &.negative {
+    &.whiteBorder {
         & .textBlock {
+            border: solid 2px var(--color-tan);
             background-color: var(--color-white);
-            color: var(--color-armadillo);
+            color: var(--color-mineral-green);
+            fill: var(--color-mineral-green);
         }
 
         &:enabled {
-            &:active,
-            &:focus:not(:hover) {
-                box-shadow: 0 0 0 0.3rem color(var(--color-white) alpha(0.3));
+            &:active .textBlock,
+            &:focus:not(:hover) .textBlock {
+                background-color: var(--color-dune);
             }
 
             &:hover:not(:active) .textBlock {
-                background-color: color(var(--color-white) alpha(0.6));
+                background-color: var(--color-tan);
+                color: var(--color-white);
+                fill: var(--color-white);
+            }
+        }
+
+        &:disabled .textBlock {
+            background-color: color(var(--color-white) alpha(0.2));
+            color: color(var(--color-armadillo) alpha(0.5));
+        }
+    }
+
+    &.tanBorder {
+        & .textBlock {
+            border: solid 2px var(--color-mineral-green);
+            background-color: var(--color-tan);
+            color: var(--color-white);
+        }
+
+        &:enabled {
+            &:active .textBlock,
+            &:focus:not(:hover) .textBlock {
+                background-color: var(--color-dune);
+            }
+
+            &:hover:not(:active) .textBlock {
+                border: none;
+                background-color: var(--color-white);
+                color: var(--color-mineral-green);
             }
         }
 

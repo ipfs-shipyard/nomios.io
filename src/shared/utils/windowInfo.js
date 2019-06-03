@@ -24,7 +24,7 @@ export const currentBreakpoint = () => {
     return breakpoint ? breakpoint.breakpoint : 'xlarge';
 };
 
-export const isBelowDesktop = () => document.body.clientWidth <= 1440;
-export const isBelowSmallDesktop = () => document.body.clientWidth <= 1024;
-export const isBelowTablet = () => document.body.clientWidth <= 768;
-export const isBelowMobile = () => document.body.clientWidth <= 480;
+export const isBelowDesktop = () => document.body.clientWidth < 1440;
+export const isBelowSmallDesktop = () => document.body.clientWidth < 1024;
+export const isBelowTablet = () => document.body.clientWidth < 768;
+export const isBelowMobile = () => document.body.clientWidth < 480;
