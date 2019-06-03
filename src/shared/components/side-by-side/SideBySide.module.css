@@ -1,5 +1,12 @@
 @import "../../styles/colors";
+@import "../../styles/custom-medias";
 
 .sideBySide {
-    /* TODO */
+    display: flex;
+}
+
+@media (--layout-lte-small) {
+    .sideBySide {
+        flex-direction: column;
+    }
 }
