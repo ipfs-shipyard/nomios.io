@@ -1,0 +1,12 @@
+.svgWrapper {
+    display: inline-block;
+    vertical-align: middle;
+    fill: currentColor;
+
+    & svg {
+        width: inherit;
+        height: inherit;
+        display: block;  /* Remove little margin between the svg and its parent */
+        user-select: none;
+    }
+}

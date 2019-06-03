@@ -1,0 +1,6 @@
+@import "../../styles/colors";
+
+.footer {
+    background: var(--color-mineral-green);
+    color: var(--color-white);
+}

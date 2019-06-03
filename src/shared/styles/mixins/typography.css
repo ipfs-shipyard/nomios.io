@@ -1,0 +1,66 @@
+/* ==========================================================================
+  Fonts
+  ========================================================================== */
+
+@define-mixin font-sectra $fontWeight: 400 {
+    font-family: "GtSectra", serif;
+    font-weight: $(fontWeight);
+}
+
+@define-mixin font-ibm-plex-mono $fontWeight: 400 {
+    font-family: "IbmPlexMono", monospace;
+    font-weight: $(fontWeight);
+}
+
+/* ==========================================================================
+  All typography variants
+
+  $unit - Either em or rem
+  ========================================================================== */
+
+@define-mixin typography-h1 $unit {
+    @mixin font-sectra;
+    font-size: 8$(unit);
+    line-height: calc(9.00001em / 8);
+    letter-spacing: calc(-0.06em / 8);
+}
+
+@define-mixin typography-h2 $unit {
+    @mixin font-sectra;
+    font-size: 5.2$(unit);
+    line-height: calc(6em / 5.2);
+    letter-spacing: calc(-0.02em / 5.2);
+}
+
+@define-mixin typography-h3 $unit {
+    @mixin font-sectra;
+    font-size: 2.8$(unit);
+    line-height: calc(3.4em / 2.8);
+    letter-spacing: calc(0.02001em / 2.8);
+}
+
+@define-mixin typography-h4 $unit {
+    @mixin font-sectra;
+    font-size: 2.2$(unit);
+    line-height: calc(3.2em / 2.2);
+}
+
+@define-mixin typography-body-1 $unit {
+    @mixin font-ibm-plex-mono;
+    font-size: 1.6$(unit);
+    line-height: calc(2.4em / 1.6);
+}
+
+@define-mixin typography-body-2 $unit {
+    @mixin font-ibm-plex-mono;
+    font-size: 1.2$(unit);
+    line-height: calc(2em / 1.2);
+}
+
+@define-mixin typography-captions $unit {
+    @mixin font-sectra 500;
+    font-size: 1.4$(unit);
+    text-transform: uppercase;
+    line-height: calc(2em / 1.4);
+    letter-spacing: calc(0.09em / 1.4);
+}
