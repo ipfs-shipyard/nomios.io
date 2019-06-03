@@ -1,0 +1,3 @@
+@import "../../styles/mixins/layout";
+
+@mixin layout-main .container, .content;

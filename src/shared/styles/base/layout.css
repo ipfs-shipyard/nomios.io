@@ -12,10 +12,18 @@
    Document
    ========================================================================== */
 
+/*
+   1. Stretch <html> stretch to fill our screen height
+   2. Make children of html (body) occupy at least 100% of the screen
+   3. Viewport is scalable and occupies at least 320px (iPhone SE)
+*/
+
 html {
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
+    min-width: 320px;
+    height: 0; /* 3 */
+    min-height: 100%; /* 1 */
+    display: flex; /* 2 */
+    flex-direction: column; /* 2 */
 }
 
 /* ==========================================================================
