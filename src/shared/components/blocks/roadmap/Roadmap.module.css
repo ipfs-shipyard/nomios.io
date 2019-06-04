@@ -7,14 +7,13 @@
 .roadmap {
     --right-width: 50%;
 
-    background: var(--color-mineral-green);
+    background: var(--color-celtic);
 
     & .title {
-        @mixin typography-h1 rem;
-        padding-top: 150px;
-        color: var(--color-tan);
+        @mixin typography-h2 rem;
 
-        font-size: 120px;
+        padding-top: 150px;
+        color: var(--color-indian-khaki);
     }
 
     & .tableWrapper {
@@ -24,7 +23,7 @@
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-            border-bottom: 1px solid var(--color-roadmap-border);
+            border-bottom: 1px solid color(var(--color-white) a(10%));
             color: var(--color-white);
 
             &.headerRow {
@@ -74,7 +73,6 @@
     .roadmap {
         & .title {
             padding-top: 120px;
-            font-size: 60px;
         }
 
         & .tableWrapper {
@@ -89,7 +87,6 @@
 
         & .title {
             padding-top: 80px;
-            font-size: 48px;
         }
 
         & .tableWrapper {

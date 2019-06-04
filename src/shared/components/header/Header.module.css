@@ -9,13 +9,13 @@
     height: var(--layout-header-height);
     z-index: 3;
     flex: 0;
+    background: var(--color-celtic);
 
     & .headerContent {
         height: inherit;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background: var(--color-mineral-green);
         color: var(--color-white);
 
         & > div {
@@ -65,7 +65,7 @@
             text-align: center;
 
             & i {
-                fill: var(--color-tan);
+                fill: var(--color-indian-khaki);
             }
         }
 

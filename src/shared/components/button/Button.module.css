@@ -76,7 +76,7 @@
 
     &.secondary {
         & .textBlock {
-            background-color: var(--color-tan);
+            background-color: var(--color-indian-khaki);
             color: var(--color-white);
 
             & .progressBar {
@@ -123,7 +123,7 @@
             }
 
             &:hover:not(:active) .textBlock {
-                background-color: color(var(--color-tan));
+                background-color: color(var(--color-indian-khaki));
                 color: var(--color-white);
             }
         }
@@ -136,7 +136,7 @@
 
     &.whiteBorder {
         & .textBlock {
-            border: solid 2px var(--color-tan);
+            border: solid 2px var(--color-indian-khaki);
             background-color: var(--color-white);
             color: var(--color-mineral-green);
             fill: var(--color-mineral-green);
@@ -149,7 +149,7 @@
             }
 
             &:hover:not(:active) .textBlock {
-                background-color: var(--color-tan);
+                background-color: var(--color-indian-khaki);
                 color: var(--color-white);
                 fill: var(--color-white);
             }
@@ -161,10 +161,10 @@
         }
     }
 
-    &.tanBorder {
+    &.indian-khakiBorder {
         & .textBlock {
             border: solid 2px var(--color-mineral-green);
-            background-color: var(--color-tan);
+            background-color: var(--color-indian-khaki);
             color: var(--color-white);
         }
 

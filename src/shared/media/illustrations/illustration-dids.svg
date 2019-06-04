@@ -3,19 +3,19 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 150 150" style="enable-background:new 0 0 150 150;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:none;stroke:#000000;stroke-miterlimit:10;}
+	.st0{fill:none;stroke:#fff;stroke-miterlimit:10;}
 	.st1{fill:#FFFFFF;}
 	.st2{fill-rule:evenodd;clip-rule:evenodd;}
 	.st3{fill:#606060;}
-	.st4{fill:none;stroke:#000000;stroke-width:4;stroke-miterlimit:10;}
+	.st4{fill:none;stroke:#fff;stroke-width:4;stroke-miterlimit:10;}
 	.st5{fill:none;stroke:#606060;stroke-width:4;stroke-miterlimit:10;}
 	.st6{fill:none;stroke:#606060;stroke-miterlimit:10;}
-	.st7{fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:0,2;}
-	.st8{fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:0,3;}
-	.st9{fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:0,4;}
+	.st7{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:0,2;}
+	.st8{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:0,3;}
+	.st9{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:0,4;}
 	
-		.st10{fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:0,3;}
-	.st11{fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0,6.0252;}
+		.st10{fill:none;stroke:#fff;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:0,3;}
+	.st11{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0,6.0252;}
 </style>
 <circle class="st8" cx="15.3" cy="75" r="10.8"/>
 <circle class="st10" cx="133.5" cy="75" r="10.8"/>
