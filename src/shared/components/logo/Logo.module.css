@@ -33,7 +33,6 @@
         &.symbol {
             width: 3.5em;
             height: 6em; /* Must have an height otherwise it will have an extra space on IE11 */
-            cursor: pointer;
 
             @media (--layout-lte-medium) {
                 height: 4em;
@@ -43,7 +42,6 @@
         &.logotype {
             width: 8.5em;
             height: 3.5em; /* Must have an height otherwise it will have an extra space on IE11 */
-            cursor: pointer;
 
             @media (--layout-lte-medium) {
                 width: 6.5em;

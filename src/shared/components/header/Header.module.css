@@ -67,13 +67,6 @@
             & i {
                 fill: var(--color-tan);
             }
-
-            &:focus,
-            &:hover {
-                & i {
-                    opacity: 0.8;
-                }
-            }
         }
 
         & .buttonContainer {
