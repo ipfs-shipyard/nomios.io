@@ -6,7 +6,7 @@ import LayoutContainer from '../../../components/layout-container/LayoutContaine
 
 const Why = ({ className }) => (
     <LayoutContainer>
-        <div className={ classNames(styles.why, className) }>
+        <div id="why" className={ classNames(styles.why, className) }>
             This is the why!
         </div>
     </LayoutContainer>

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import styles from './Concept.module.css';
 
 const Concept = ({ className }) => (
-    <div className={ classNames(styles.concept, className) }>
+    <div id="concept" className={ classNames(styles.concept, className) }>
         This is the concept!
     </div>
 );

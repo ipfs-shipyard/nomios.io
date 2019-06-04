@@ -4,19 +4,20 @@ import classNames from 'classnames';
 import styles from './Header.module.css';
 import Logo from '../logo';
 import Button from '../button';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 const anchorsObject = [
     {
         value: 'Benefits',
-        anchor: '',
+        anchor: 'why',
     },
     {
         value: 'Concept',
-        anchor: '',
+        anchor: 'concept',
     },
     {
         value: 'Roadmap',
-        anchor: '',
+        anchor: 'roadmap',
     },
 ];
 
@@ -24,12 +25,12 @@ const Header = ({ className }) => (
     <header className={ classNames(styles.header, className) } >
         <div className={ (styles.headerContent) }>
             <div className={ styles.anchorsContainer }>
-                {anchorsObject.map((item) => <a href={ `#${item.anchor}` } key={ item.value }> {item.value} </a>)}
+                {anchorsObject.map((item) => <AnchorLink href={ `#${item.anchor}` } key={ item.value }> {item.value} </AnchorLink>)}
             </div>
             <Logo className={ styles.headerLogo } variant={ 'horizontal' } />
             <div className={ styles.buttonContainer } >
                 <Button variant={ 'secondary' }>
-                    <a href="#"> Join us </a>
+                    <AnchorLink href="#subscribe"> Join us </AnchorLink>
                 </Button>
             </div>
         </div>

@@ -60,7 +60,7 @@ const tableContents = {
 };
 
 const Roadmap = ({ className }) => (
-    <div className={ classNames(styles.roadmap, className) }>
+    <div id="roadmap" className={ classNames(styles.roadmap, className) }>
         <div className={ styles.roadmapWrapper }>
             <div className={ styles.title }>
                 Roadmap

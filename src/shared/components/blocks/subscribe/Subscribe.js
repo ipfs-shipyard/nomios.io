@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import styles from './Subscribe.module.css';
 
 const Subscribe = ({ className }) => (
-    <div className={ classNames(styles.subscribe, className) }>
+    <div id="subscribe" className={ classNames(styles.subscribe, className) }>
         This is the subscribe!
     </div>
 );
