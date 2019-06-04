@@ -1,3 +1,5 @@
+@import "../styles/custom-medias";
+
 /* ==========================================================================
    Z-index
    ========================================================================== */
@@ -29,4 +31,14 @@
     /* Spacing around main contents of the website
        ============================================= */
     --layout-edge-spacing-x: 5%;
+
+    /* header
+       ============================================= */
+    --layout-header-height: 120px;
+}
+
+@media(--layout-lte-medium) {
+    :root {
+        --layout-header-height: 80px;
+    }
 }

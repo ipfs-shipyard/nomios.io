@@ -1,6 +1,111 @@
 @import "../../styles/colors";
+@import "../../styles/base/typography.css";
+@import "../../styles/mixins/layout";
+
+@mixin layout-main .header, .headerContent;
 
 .header {
-    background: var(--color-mineral-green);
-    color: var(--color-white);
+    width: 100%;
+    height: var(--layout-header-height);
+    z-index: 3;
+    flex: 0;
+
+    & .headerContent {
+        height: inherit;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: var(--color-mineral-green);
+        color: var(--color-white);
+
+        & > div {
+            flex: 1;
+        }
+
+        & .anchorsContainer {
+            text-align: left;
+
+            & a {
+                @mixin typography-body-1 rem;
+                opacity: 0.8;
+                color: var(--color-dawn-pink);
+                text-decoration: none;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                transition: opacity 0.2s ease;
+
+                @media (--layout-lte-medium) {
+                    font-size: 1.2rem;
+                }
+
+                @media (--layout-lte-small) {
+                    font-size: 0.9rem;
+                }
+            }
+
+            & a:hover,
+            & a:focus {
+                opacity: 1;
+            }
+
+            & a:not(:last-child) {
+                margin-right: 40px;
+
+                @media (--layout-lte-large) {
+                    margin-right: 20px;
+                }
+
+                @media (--layout-lte-small) {
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        & .headerLogo {
+            text-align: center;
+
+            & i {
+                fill: var(--color-tan);
+            }
+
+            &:focus,
+            &:hover {
+                & i {
+                    opacity: 0.8;
+                }
+            }
+        }
+
+        & .buttonContainer {
+            text-align: right;
+
+            & a {
+                color: unset;
+                text-decoration: none;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+
+                @media (--layout-lte-medium) {
+                    font-size: 1.1rem;
+                }
+
+                @media (--layout-lte-small) {
+                    font-size: 0.9rem;
+                }
+            }
+        }
+    }
+}
+
+@media (--layout-gte-large) {
+    .header {
+        position: fixed;
+    }
+}
+
+@media (--layout-lt-small) {
+    .anchorsContainer,
+    .buttonContainer {
+        display: none;
+    }
 }
