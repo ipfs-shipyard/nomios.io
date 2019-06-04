@@ -10,7 +10,7 @@ class LayoutContainer extends Component {
         const { children, className, contentClassName, ...props } = this.props;
 
         return (
-            <section className={ styles.container } { ...props }>
+            <section className={ classNames(className, styles.container) } { ...props }>
                 <div className={ classNames(contentClassName, styles.content) }>
                     { children }
                 </div>

@@ -21,11 +21,10 @@
     align-items: center;
 
     & .title {
-        @mixin typography-h1 rem;
+        @mixin typography-h2 rem;
+
         margin-top: 35%;
         color: var(--color-mineral-green);
-
-        font-size: 4vw;
         text-align: center;
     }
 
@@ -56,8 +55,6 @@
 @media (--layout-lte-medium) {
     .content {
         & .title {
-            @mixin typography-h2 rem;
-
             margin-top: 30%;
         }
 
@@ -83,8 +80,6 @@
 
     .content {
         & .title {
-            @mixin typography-h2 rem;
-
             margin-top: 80px;
         }
 

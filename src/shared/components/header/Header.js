@@ -25,12 +25,12 @@ const Header = ({ className }) => (
     <header className={ classNames(styles.header, className) } >
         <div className={ (styles.headerContent) }>
             <div className={ styles.anchorsContainer }>
-                {anchorsObject.map((item) => <AnchorLink href={ `#${item.anchor}` } key={ item.value }> {item.value} </AnchorLink>)}
+                {anchorsObject.map((item) => <AnchorLink offset={ 100 } href={ `#${item.anchor}` } key={ item.value }> {item.value} </AnchorLink>)}
             </div>
             <Logo className={ styles.headerLogo } variant={ 'horizontal' } />
             <div className={ styles.buttonContainer } >
                 <Button variant={ 'secondary' }>
-                    <AnchorLink href="#subscribe"> Join us </AnchorLink>
+                    <AnchorLink offset={ 100 } href="#subscribe"> Join us </AnchorLink>
                 </Button>
             </div>
         </div>

@@ -1,24 +1,21 @@
 @import "../../../styles/colors";
 @import "../../../styles/custom-medias";
+@import "../../../styles/variables";
 
 .hero {
     position: relative;
     height: 100vh;
-    background: var(--color-mineral-green);
+    background: var(--color-celtic);
 
     & .textWrapper {
         position: relative;
         z-index: 1;
         padding-top: 10%;
-        color: var(--color-tan);
+        color: var(--color-indian-khaki);
         text-align: center;
 
         & h1 {
             line-height: 4.5rem;
-
-            @media(--layout-lt-small) {
-                font-size: 6rem;
-            }
         }
     }
 
@@ -56,5 +53,11 @@
             opacity: 0.5;
             stroke: var(--color-dawn-pink);
         }
+    }
+}
+
+@media (--layout-lte-medium) {
+    .hero {
+        height: calc(100vh - var(--layout-header-height));
     }
 }

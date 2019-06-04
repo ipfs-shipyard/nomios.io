@@ -8,7 +8,7 @@
     flex: 1;
     justify-content: center;
     align-items: center;
-    background: var(--color-tan);
+    background: var(--color-indian-khaki);
 }
 
 .content {
@@ -21,11 +21,9 @@
     align-items: center;
 
     & .title {
-        @mixin typography-h1 rem;
+        @mixin typography-h2 rem;
         margin-top: 35%;
         color: var(--color-mineral-green);
-
-        font-size: 4vw;
         text-align: center;
     }
 
@@ -55,8 +53,6 @@
         margin: 0 32px;
 
         & .title {
-            @mixin typography-h2 rem;
-
             margin-top: 30%;
         }
 
@@ -82,8 +78,6 @@
 
     .content {
         & .title {
-            @mixin typography-h2 rem;
-
             margin-top: 80px;
         }
 

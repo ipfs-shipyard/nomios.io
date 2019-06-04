@@ -1,3 +1,5 @@
+@import "../custom-medias";
+
 /* ==========================================================================
   Fonts
   ========================================================================== */
@@ -20,16 +22,46 @@
 
 @define-mixin typography-h1 $unit {
     @mixin font-sectra;
-    font-size: 8$(unit);
-    line-height: calc(9.00001em / 8);
-    letter-spacing: calc(-0.06em / 8);
+    font-size: 12$(unit);
+    line-height: calc(9.00001em / 12);
+    letter-spacing: calc(-0.06em / 12);
+
+    @media (--layout-lte-large) {
+        font-size: 10$(unit);
+        line-height: calc(9.00001em / 10);
+        letter-spacing: calc(-0.06em / 10);
+    }
+
+    @media (--layout-lte-medium) {
+        font-size: 8$(unit);
+        line-height: calc(9.00001em / 8);
+        letter-spacing: calc(-0.06em / 8);
+    }
+
+    @media (--layout-lte-medium) {
+        font-size: 8$(unit);
+        line-height: calc(9.00001em / 8);
+        letter-spacing: calc(-0.06em / 8);
+    }
+
+    @media (--layout-lt-small) {
+        font-size: 4.8$(unit);
+        line-height: calc(6.20001em / 4.8);
+        letter-spacing: calc(-0.06em / 4.8);
+    }
 }
 
 @define-mixin typography-h2 $unit {
     @mixin font-sectra;
-    font-size: 5.2$(unit);
-    line-height: calc(6em / 5.2);
-    letter-spacing: calc(-0.02em / 5.2);
+    font-size: 8$(unit);
+    line-height: calc(8.6em / 8);
+    letter-spacing: calc(-0.02em / 8);
+
+    @media (--layout-lte-large) {
+        font-size: 6$(unit);
+        line-height: calc(6.60001em / 6);
+        letter-spacing: calc(-0.06em / 6);
+    }
 }
 
 @define-mixin typography-h3 $unit {
