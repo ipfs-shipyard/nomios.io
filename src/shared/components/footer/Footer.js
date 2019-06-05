@@ -10,12 +10,18 @@ const Footer = ({ className }) => (
             <p className={ styles.copyright }>Nomios © 2019 - Sponsored by  <a rel="noopener noreferrer" target="_blank" href="https://protocol.ai/" > <ProtocolLabsBrandIcon className={ styles.plBrand } /></a></p>
             <p className={ styles.copyrightTablet }>© 2019 - Sponsored by  <a rel="noopener noreferrer" target="_blank" href="https://protocol.ai/" > <ProtocolLabsBrandIcon className={ styles.plBrand } /></a></p>
             <Logo className={ styles.logo } />
-            <a className={ styles.githubLink } rel="noopener noreferrer" target="_blank" href="https://github.com/ipfs-shipyard/pm-idm#contributing" >
-                <p>Build a better world. Join our GitHub project <GithubIcon className={ styles.githubLogo } /></p>
-            </a>
-            <a className={ styles.githubLinkTablet } rel="noopener noreferrer" target="_blank" href="https://github.com/ipfs-shipyard/pm-idm#contributing" >
-                <p>Build with us. <GithubIcon className={ styles.githubLogo } /></p>
-            </a>
+            <p className={ styles.githubLink } >
+                Build a better world, join our GitHub project.
+                <a rel="noopener noreferrer" target="_blank" href="https://github.com/ipfs-shipyard/pm-idm#contributing" >
+                    <GithubIcon className={ styles.githubLogo } />
+                </a>
+            </p>
+            <p className={ styles.githubLinkTablet }>
+                Build with us.
+                <a rel="noopener noreferrer" target="_blank" href="https://github.com/ipfs-shipyard/pm-idm#contributing" >
+                    <GithubIcon className={ styles.githubLogo } />
+                </a>
+            </p>
             <p className={ styles.copyrightMobile }>© 2019 - Sponsored by <a rel="noopener noreferrer" target="_blank" href="https://protocol.ai/" ><ProtocolLabsBrandIcon className={ styles.plBrand } /></a>
             </p>
         </div>

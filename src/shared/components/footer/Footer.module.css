@@ -5,11 +5,12 @@
 @mixin layout-main null, .footerWrapper;
 
 .footerWrapper {
-    height: 140px;
+    min-height: 140px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     background: var(--color-white);
-    color: var(--color-mineral-green);
+    color: color(var(--color-celtic) a(60%));
     font-size: 12px;
     letter-spacing: -0.09px;
 
@@ -18,8 +19,20 @@
     & a:active,
     & a:visited,
     & a:focus {
-        color: inherit;
+        color: color(var(--color-celtic) a(50%));
         text-decoration: none;
+        transition: color 0.3s ease-in-out;
+    }
+
+    & a:hover {
+        color: color(var(--color-celtic) a(80%));
+    }
+
+    & .githubLink,
+    & .githubLinkTablet {
+        & i {
+            margin-left: 20px;
+        }
     }
 
     & .githubLinkTablet,
@@ -28,63 +41,45 @@
         display: none;
     }
 
-    & .copyright,
-    & .copyrightMobile,
-    & .copyrightTablet {
-        color: color(var(--color-celtic) a(60%));
-    }
+    & .logo {
+        display: none;
 
-    & .copyright,
-    & .logo,
-    & .githubLink {
-        flex: 1;
-    }
-
-    & .logo i {
-        fill: var(--color-indian-khaki);
-    }
-
-    & .githubLink {
-        text-align: right;
-    }
-
-    & .copyright {
-        text-align: left;
-    }
-
-    & .githubLogo {
-        fill: var(--color-black);
-    }
-
-    & .githubLogo:hover {
-        opacity: 0.5;
+        & i {
+            fill: var(--color-indian-khaki);
+        }
     }
 
     & .plBrand {
         width: 4em;
     }
-
-    & .plBrand:hover {
-        opacity: 0.5;
-    }
 }
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
 
 @media(--layout-lte-medium) {
     .footerWrapper {
+        & a,
+        & a:hover,
+        & a:active,
+        & a:visited,
+        & a:focus {
+            color: color(var(--color-celtic) a(80%));
+        }
+
         & .copyright,
         & .githubLink {
             display: none;
         }
 
-        & .copyrightTablet {
-            display: inline;
-            flex: 1;
+        & .copyrightTablet,
+        & .githubLinkTablet {
+            display: block;
         }
 
-        & .githubLinkTablet {
-            display: inline;
-            flex: 1;
-            text-align: right;
+        & .logo {
+            display: inline-flex;
         }
     }
 }
@@ -92,29 +87,22 @@
 @media(--layout-lte-small) {
     .footerWrapper {
         padding-top: 40px;
-        padding-bottom: 20px;
+        padding-bottom: 30px;
         flex-direction: column;
 
-        & .githubLinkTablet {
-            display: none;
-        }
-
+        & .githubLinkTablet,
         & .copyrightTablet {
             display: none;
         }
 
         & .copyrightMobile {
-            margin: 50px 0 30px 0;
-            display: inline;
-            flex: 1;
-            text-align: left;
+            margin-top: 40px;
+            margin-bottom: 0;
+            display: block;
         }
 
         & .githubLinkMobile {
-            display: inline;
-            flex: 1;
-            text-align: right;
+            display: block;
         }
     }
-
 }

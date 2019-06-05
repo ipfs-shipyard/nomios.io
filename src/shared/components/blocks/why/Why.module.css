@@ -28,16 +28,6 @@
         min-height: 440px;
         padding: 60px 3%;
         flex: 0 0 25%;
-
-        &:hover {
-            & .link {
-                opacity: 1;
-
-                & > i {
-                    transform: translate3d(0, 0, 0);
-                }
-            }
-        }
     }
 
     & .blockTitle {
@@ -80,7 +70,6 @@
         width: 50px;
         height: 50px;
         overflow: hidden;
-        opacity: 0;
         opacity: 1;
         color: var(--color-dawn-pink);
         transition: opacity 0.3s ease-in-out;
@@ -91,7 +80,11 @@
             width: 50px;
             height: 50px;
             transform: translate3d(-30%, 0, 0);
-            transition: transform 0.1s ease-in-out;
+            transition: transform 0.2s ease-in-out;
+
+            &:hover {
+                transform: translate3d(0, 0, 0);
+            }
         }
     }
 }
