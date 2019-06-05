@@ -1,3 +1,36 @@
-.catchphrase {
-    background: palevioletred;
+@import "../../../styles/mixins/layout";
+@import "../../../styles/colors";
+@import "../../../styles/custom-medias";
+@import "../../../styles/mixins/position"
+
+    @mixin layout-main .container, .blackScreen;
+
+.container {
+    height: 90vh;
+    overflow: hidden;
+    background: var(--color-celtic);
+
+    & .blackScreen {
+        position: relative;
+        height: 100%;
+        background-color: black;
+        background-image: url("../../../media/backgrounds/background-pattern.png");
+
+        & .scrollable {
+            @mixin position absolute, 50%, null, null, 60%;
+            transform: translate3d(0, -50%, 0);
+            white-space: nowrap;
+            transition: transform 1s ease-out;
+
+            & h2 {
+                color: var(--color-indian-khaki);
+            }
+        }
+    }
+}
+
+@media (--layout-lt-small) {
+    .layoutContent.layoutContent {
+        padding: 0;
+    }
 }
