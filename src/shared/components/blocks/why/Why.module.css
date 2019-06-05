@@ -3,6 +3,10 @@
 @import "../../../styles/mixins/typography";
 @import "../../../styles/custom-medias";
 
+:root {
+    --slider-transition-duration: 4s; /* This time need to be in coherence with transition duration of js file. `autoplaySpeed` */
+}
+
 .why {
     background: var(--color-celtic);
 }
@@ -14,6 +18,10 @@
     flex-wrap: wrap;
     list-style: none;
     color: var(--color-dawn-pink);
+
+    &.listMobile {
+        display: none;
+    }
 
     & .block {
         position: relative;
@@ -40,6 +48,7 @@
         align-items: center;
         background: var(--color-white);
         color: var(--color-celtic);
+        text-align: center;
     }
 
     & .block1,
@@ -72,6 +81,7 @@
         height: 50px;
         overflow: hidden;
         opacity: 0;
+        opacity: 1;
         color: var(--color-dawn-pink);
         transition: opacity 0.3s ease-in-out;
 
@@ -80,11 +90,15 @@
 
             width: 50px;
             height: 50px;
-            transform: translate3d(-100%, 0, 0);
-            transition: transform 0.3s ease-in-out;
+            transform: translate3d(-30%, 0, 0);
+            transition: transform 0.1s ease-in-out;
         }
     }
 }
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
 
 @media (width <= 1300px) {
     .list {
@@ -146,7 +160,7 @@
 @media (width <= 600px) {
     .list {
         & .block {
-            min-height: 375px;
+            min-height: 385px;
             padding: 30px 20px 40px;
             flex-basis: 100%;
         }
@@ -157,6 +171,172 @@
 
         & .block4 {
             background: none;
+        }
+
+        &.listDesktop {
+            display: none;
+        }
+
+        &.listMobile {
+            display: block;
+        }
+
+        & .blockTitleMobile {
+            background: var(--color-white);
+        }
+    }
+}
+
+@media (width < 375px) {
+    .list {
+        & .block {
+            min-height: 450px;
+        }
+    }
+}
+
+/* ==========================================================================
+   carousel styles
+   ========================================================================== */
+
+:global(.slick-slider) {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    user-select: none;
+    -webkit-touch-callout: none;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+:global(.slick-list) {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+:global(.slick-list:focus) {
+    outline: none;
+}
+
+:global(.slick-list.dragging) {
+    cursor: pointer;
+    cursor: hand;
+}
+
+:global(.slick-slider .slick-track),
+:global(.slick-slider .slick-list) {
+    transform: translate3d(0, 0, 0);
+}
+
+:global(.slick-track) {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+:global(.slick-track::before),
+:global(.slick-track::after) {
+    content: "";
+    display: table;
+}
+
+:global(.slick-track::after) {
+    clear: both;
+}
+
+:global(.slick-loading .slick-track) {
+    visibility: hidden;
+}
+
+:global(.slick-slide) {
+    height: 100%;
+    min-height: 1px;
+    display: none;
+    float: left;
+}
+
+:global([dir="rtl"] .slick-slide) {
+    float: right;
+}
+
+:global(.slick-slide img) {
+    display: block;
+}
+
+:global(.slick-slide.slick-loading img) {
+    display: none;
+}
+
+:global(.slick-slide.dragging img) {
+    pointer-events: none;
+}
+
+:global(.slick-initialized .slick-slide) {
+    display: block;
+}
+
+:global(.slick-loading .slick-slide) {
+    visibility: hidden;
+}
+
+:global(.slick-vertical .slick-slide) {
+    height: auto;
+    display: block;
+    border: 1px solid transparent;
+}
+
+:global(.slick-arrow.slick-hidden) {
+    display: none;
+}
+
+:global(.slick-dots) {
+    @mixin position absolute, null, 5%, 20px, 5%;
+    margin: 0;
+    padding: 0;
+    display: flex !important;
+    list-style: none;
+
+    & li {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex: 1 1 auto;
+
+        &::after {
+            @mixin position absolute, null, 2px, 0, 0;
+
+            content: "";
+            height: 1px;
+            background: color(var(--color-white) a(80%));
+        }
+    }
+
+    & button {
+        width: 100%;
+        height: 100%;
+        height: 5px;
+        z-index: 1;
+        padding: 0;
+        transform: translate3d(-101%, 0, 0);
+        border: 0;
+        opacity: 0;
+        background: var(--color-indian-khaki);
+        font-size: 0;
+        transition: opacity 0.3s ease-in-out, transform 0s ease-in-out 0.3s;
+        appearance: none;
+    }
+
+    & :global(.slick-active) {
+        & button {
+            transform: translate3d(-2px, 0, 0);
+            opacity: 1;
+            transition: transform var(--slider-transition-duration) ease-in-out;
         }
     }
 }
