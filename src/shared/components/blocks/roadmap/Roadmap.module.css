@@ -33,7 +33,7 @@
             & .tableLabel {
                 @mixin typography-body-1 rem;
 
-                margin: 20px 0;
+                margin: 20px 20px 20px 0;
                 display: flex;
                 flex: 1;
             }

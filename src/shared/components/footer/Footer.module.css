@@ -12,98 +12,109 @@
     color: var(--color-mineral-green);
     font-size: 12px;
     letter-spacing: -0.09px;
-}
 
-.githubLinkTablet,
-.copyrightTablet,
-.copyrightMobile {
-    display: none;
-}
+    & a,
+    & a:hover,
+    & a:active,
+    & a:visited,
+    & a:focus {
+        color: inherit;
+        text-decoration: none;
+    }
 
-.copyright,
-.logo,
-.githubLink {
-    flex: 1;
-}
-
-.logo i {
-    fill: var(--color-indian-khaki);
-}
-
-.githubLink {
-    text-align: right;
-}
-
-.copyright {
-    text-align: left;
-}
-
-.githubLogo {
-    fill: var(--color-black);
-}
-
-.githubLogo:hover {
-    opacity: 0.5;
-}
-
-.plBrand {
-    width: 4em !important;
-}
-
-.plBrand:hover {
-    opacity: 0.5;
-}
-
-a,
-a:hover,
-a:active,
-a:visited,
-a:focus {
-    color: inherit;
-    text-decoration: none;
-}
-
-@media(--layout-lte-medium) {
-    .copyright,
-    .githubLink {
+    & .githubLinkTablet,
+    & .copyrightTablet,
+    & .copyrightMobile {
         display: none;
     }
 
-    .copyrightTablet {
-        display: inline;
+    & .copyright,
+    & .copyrightMobile,
+    & .copyrightTablet {
+        color: color(var(--color-celtic) a(60%));
+    }
+
+    & .copyright,
+    & .logo,
+    & .githubLink {
         flex: 1;
     }
 
-    .githubLinkTablet {
-        display: inline;
-        flex: 1;
+    & .logo i {
+        fill: var(--color-indian-khaki);
+    }
+
+    & .githubLink {
         text-align: right;
+    }
+
+    & .copyright {
+        text-align: left;
+    }
+
+    & .githubLogo {
+        fill: var(--color-black);
+    }
+
+    & .githubLogo:hover {
+        opacity: 0.5;
+    }
+
+    & .plBrand {
+        width: 4em;
+    }
+
+    & .plBrand:hover {
+        opacity: 0.5;
+    }
+}
+
+@media(--layout-lte-medium) {
+    .footerWrapper {
+        & .copyright,
+        & .githubLink {
+            display: none;
+        }
+
+        & .copyrightTablet {
+            display: inline;
+            flex: 1;
+        }
+
+        & .githubLinkTablet {
+            display: inline;
+            flex: 1;
+            text-align: right;
+        }
     }
 }
 
 @media(--layout-lte-small) {
     .footerWrapper {
+        padding-top: 40px;
+        padding-bottom: 20px;
         flex-direction: column;
+
+        & .githubLinkTablet {
+            display: none;
+        }
+
+        & .copyrightTablet {
+            display: none;
+        }
+
+        & .copyrightMobile {
+            margin: 50px 0 30px 0;
+            display: inline;
+            flex: 1;
+            text-align: left;
+        }
+
+        & .githubLinkMobile {
+            display: inline;
+            flex: 1;
+            text-align: right;
+        }
     }
 
-    .githubLinkTablet {
-        display: none;
-    }
-
-    .copyrightTablet {
-        display: none;
-    }
-
-    .copyrightMobile {
-        margin: 50px 0 30px 0;
-        display: inline;
-        flex: 1;
-        text-align: left;
-    }
-
-    .githubLinkMobile {
-        display: inline;
-        flex: 1;
-        text-align: right;
-    }
 }

@@ -3,7 +3,7 @@
 @import "../../../styles/mixins/typography";
 
 .checkGithub {
-    height: 50vw;
+    min-height: 50vw;
     display: flex;
     flex: 1;
     justify-content: center;
@@ -38,7 +38,7 @@
     }
 
     & .buttonBox {
-        margin-top: 50px;
+        margin: 50px 0;
 
         & .cta {
             & .buttonText {

@@ -12,36 +12,32 @@ export const blocks = [
         icon: yourIdentity,
         title: 'Your identity, under control',
         description: 'Edit your personal data in a single place.',
-        link: 'http://www.google.com',
     },
     {
         icon: privacy,
         title: 'Privacy First',
         description: 'Control how much you disclose to others, or even go fully anonymous.',
-        link: 'http://www.google.com',
     },
     {
         icon: decentralisedSso,
         title: 'Decentralised Sign-On',
         description: 'Typical single sign on solutions rely on centralised services like Facebook or Twitter. What happens when they go away?',
-        link: 'http://www.google.com',
     },
     {
         icon: dids,
         title: 'Decentralized Identifiers',
         description: 'Embracing decentralized identifiers (DIDs) from different public ledgers such as Ethereum, Bitcoin, amongst others.',
-        link: 'http://www.google.com',
+        link: 'https://w3c-ccg.github.io/did-spec/',
     },
     {
         icon: verifiableCredentials,
         title: 'Verifiable Credentials',
         description: 'Receive statements from others and present them as proof when requested.',
-        link: 'http://www.google.com',
+        link: 'https://www.w3.org/TR/verifiable-claims-data-model/',
     },
     {
         icon: signedOperations,
         title: 'Signed operations/data',
         description: 'What you do online is currently owned by centralised services. Who’s to say that data wasn’t tampered with?',
-        link: 'http://www.google.com',
     },
 ];

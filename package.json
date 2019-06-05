@@ -31,7 +31,9 @@
     "proper-on-transition-end": "^0.3.0",
     "react": "^16.8.6",
     "react-anchor-link-smooth-scroll": "^1.0.12",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-slick": "^0.24.0",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^8.0.0",
