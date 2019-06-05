@@ -8,9 +8,7 @@ import styles from './Hero.module.css';
 const Hero = ({ className }) => (
     <div className={ classNames(styles.hero, className) }>
         <div className={ styles.textWrapper } >
-            <h1>Open.</h1>
-            <h1>Decentralised.</h1>
-            <h1>Standard.</h1>
+            <h1>Open.<br />Decentralised.<br />Standard.</h1>
         </div>
         <Svg className={ styles.svgWrapper } svg={ lowpolySvg } />
 
