@@ -1,3 +1,161 @@
+@import "../../../styles/colors";
+@import "../../../styles/custom-medias";
+@import "../../../styles/mixins/typography";
+@import "../../../styles/mixins/position"
+
+    @mixin layout-main .subscribe, .subscribeWrapper;
+
 .subscribe {
-    background: rosybrown;
+    height: 100vh;
+    background-color: var(--color-celtic);
+}
+
+.subscribeWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.joinUs {
+    position: relative;
+    flex: 1;
+    text-align: center;
+}
+
+.firstText {
+    @mixin typography-h1 rem;
+
+    color: var(--color-tan);
+}
+
+.secondText {
+    @mixin typography-body-1 rem;
+
+    width: 408px;
+    margin: 70px auto 0 auto;
+    color: var(--color-dawn-pink);
+    font-size: 18px;
+}
+
+.image {
+    height: 100%;
+    flex: 1;
+    color: var(--color-tan);
+}
+
+.form {
+    position: absolute;
+    left: 50%;
+    margin-top: 40px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+}
+
+.input {
+    @mixin typography-body-1 rem;
+
+    width: 270px;
+    height: 60px;
+    padding-left: 20px;
+    border: 2px solid var(--color-tan);
+    background: var(--color-celtic);
+    color: var(--color-white);
+}
+
+.submit {
+    width: 180px;
+    height: 60px;
+}
+
+.inputSuccess {
+    border: 2px solid #2d473a;
+}
+
+.success {
+    padding-right: 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    background: none !important;
+}
+
+.inputFail {
+    border: 2px solid var(--color-white);
+    border-right: none;
+}
+
+.inputCrossWrapper {
+    position: relative;
+}
+
+.cross {
+    position: absolute;
+    top: 22px;
+    right: 15px;
+    width: 14px;
+    height: 14px;
+
+    & svg path {
+        stroke: var(--color-white);
+    }
+}
+
+@media(--layout-lte-medium) {
+    .firstText {
+        @mixin typography-h2 rem;
+
+        color: var(--color-tan);
+    }
+}
+
+@media(--layout-lte-small) {
+    .subscribe {
+        height: 467px;
+        align-items: stretch;
+    }
+
+    .joinUs {
+        margin-top: 80px;
+    }
+
+    .image {
+        display: none;
+    }
+
+    .firstText {
+        color: var(--color-tan);
+        font-size: 48px;
+    }
+
+    .secondText {
+        margin-top: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .form {
+        display: inline;
+        flex-direction: unset;
+    }
+
+    .input {
+        width: 280px;
+        height: 50px;
+        margin-bottom: 10px;
+        padding-left: 20px;
+    }
+
+    .submit {
+        width: 280px;
+        height: 50px;
+    }
+
+    .inputSuccess {
+        border: 2px solid var(--color-tan);
+    }
+
+    .inputFail {
+        border: 2px solid var(--color-tan);
+    }
 }

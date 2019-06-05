@@ -23,7 +23,7 @@ class Button extends Component {
     }
 
     render() {
-        const { variant, feedback: _, fullWidth, disabled, className, children, ...rest } = this.props;
+        const { variant, feedback: _, fullWidth, disabled, className, children, successClassName, errorClassName, ...rest } = this.props;
         const { feedback, progressbarAnimationEnded, feedbackIconAnimationEnded } = this.state;
         const hasFeedback = feedback !== 'none';
 
@@ -48,10 +48,10 @@ class Button extends Component {
                         onEnd={ this.handleProgressBarEnd } />
                 </div>
 
-                <span className={ styles.successBlock }>
+                <span className={ classNames(styles.successBlock, successClassName) }>
                     <CheckmarkIcon className={ styles.checkmark } onTransitionEnd={ this.handleSuccessIconTransitionEnd } />
                 </span>
-                <span className={ styles.errorBlock }>
+                <span className={ classNames(styles.errorBlock, errorClassName) }>
                     <CrossmarkIcon className={ styles.crossmark } onTransitionEnd={ this.handleErrorIconTransitionEnd } />
                 </span>
             </button>
@@ -100,6 +100,8 @@ Button.propTypes = {
     feedback: PropTypes.oneOf(['none', 'loading', 'success', 'error']),
     children: PropTypes.node,
     className: PropTypes.string,
+    successClassName: PropTypes.string,
+    errorClassName: PropTypes.string,
 };
 
 Button.defaultProps = {

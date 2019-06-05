@@ -49,7 +49,10 @@
     "stylelint": "^10.0.1",
     "stylelint-config-moxy": "^6.1.0",
     "svg-css-modules-loader": "^1.6.1",
-    "svgo-loader": "^2.2.0"
+    "svgo-loader": "^2.2.0",
+    "react-lottie": "^1.2.3",
+    "react-final-form": "^6.0.1",
+    "final-form": "^4.13.1"
   },
   "husky": {
     "hooks": {
