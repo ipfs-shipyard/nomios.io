@@ -45,6 +45,48 @@
     }
 }
 
+@media(--layout-gte-large) {
+    .content {
+        &:hover {
+            & .description,
+            & .title,
+            & .buttonBox {
+                transition-duration: 0.4s;
+            }
+
+            & .description {
+                opacity: 1;
+            }
+
+            & .title {
+                transform: translateY(-20%);
+            }
+
+            & .buttonBox {
+                transform: translateY(40px);
+            }
+        }
+
+        & .title {
+            @mixin typography-h2 rem;
+            margin-top: 35%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        & .description {
+            @mixin typography-body-1 rem;
+
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        & .buttonBox {
+            margin: 20px 0;
+            transition: transform 0.5s ease-in-out;
+        }
+    }
+}
+
 @media (--layout-lte-medium) {
     .content {
         position: relative;
@@ -62,6 +104,7 @@
 
         & .buttonBox {
             width: 90%;
+            margin: 50px 0;
 
             & .cta {
                 width: 100%;
@@ -87,7 +130,6 @@
 
         & .buttonBox {
             width: 100%;
-            margin-bottom: 80px;
 
             & .cta {
                 width: 100%;

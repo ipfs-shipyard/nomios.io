@@ -33,7 +33,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        transition: border-color, color, background-color;
+        transition-property: border-color, color, background-color, opacity;
         transition-duration: var(--feedback-transition-duration);
         transition-timing-function: ease-out;
 
