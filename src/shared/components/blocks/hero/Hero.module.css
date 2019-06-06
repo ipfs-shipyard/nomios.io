@@ -13,10 +13,6 @@
         padding-top: 10%;
         color: var(--color-indian-khaki);
         text-align: center;
-
-        & h1 {
-            line-height: 4.5rem;
-        }
     }
 
     & .vision {

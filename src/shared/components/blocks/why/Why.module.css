@@ -153,7 +153,7 @@
 @media (width <= 600px) {
     .list {
         & .block {
-            min-height: 385px;
+            min-height: 450px;
             padding: 30px 20px 40px;
             flex-basis: 100%;
         }
@@ -176,14 +176,6 @@
 
         & .blockTitleMobile {
             background: var(--color-white);
-        }
-    }
-}
-
-@media (width < 375px) {
-    .list {
-        & .block {
-            min-height: 450px;
         }
     }
 }

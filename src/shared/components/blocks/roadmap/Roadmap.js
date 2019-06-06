@@ -7,16 +7,16 @@ import { DoneIcon, DoingIcon, TodoIcon } from '../../icon';
 const tableContents = {
     header: [
         {
-            name: 'To do',
-            icon: TodoIcon,
+            name: 'Done',
+            icon: DoneIcon,
         },
         {
             name: 'Doing',
             icon: DoingIcon,
         },
         {
-            name: 'Done',
-            icon: DoneIcon,
+            name: 'To do',
+            icon: TodoIcon,
         },
     ],
     rows: [
@@ -67,6 +67,9 @@ const Roadmap = ({ className }) => (
             </div>
             <div className={ styles.tableWrapper }>
                 <div className={ classNames(styles.tableRow, styles.headerRow) }>
+                    <div className={ classNames(styles.tableLabel, styles.labelMobile) }>
+                        Building phase
+                    </div>
                     <div className={ styles.tableHeader }>
                         {
                             tableContents.header.map((el) => {
@@ -74,7 +77,8 @@ const Roadmap = ({ className }) => (
 
                                 return (
                                     <div className={ styles.tableLabel } key={ el.name }>
-                                        <ElementIcon className={ styles.tableHeaderIcon } /> <div className={ styles.headerName }>{ el.name }</div>
+                                        <ElementIcon className={ styles.tableHeaderIcon } />
+                                        <div className={ styles.headerName }>{ el.name }</div>
                                     </div>
                                 );
                             })
