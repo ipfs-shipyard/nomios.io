@@ -9,7 +9,6 @@ const VideoModal = ({ showing, src, onClick }) => (
         <iframe
             ref={ setRef }
             className={ classNames(showing ? styles.video : styles.hidden) }
-            width="560" height="315"
             src={ `${src}?enablejsapi=1` }
             frameBorder="0"
             allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
