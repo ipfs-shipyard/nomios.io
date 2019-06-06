@@ -4,8 +4,6 @@ import classNames from 'classnames';
 import styles from './Catchphrase.module.css';
 import LayoutContainer from '../../../components/layout-container/LayoutContainer';
 
-import { debounce } from 'lodash';
-
 class Catchphrase extends Component {
     constructor(props) {
         super(props);
@@ -21,7 +19,7 @@ class Catchphrase extends Component {
     }
 
     componentDidMount() {
-        window.addEventListener('scroll', debounce(this.handleScroll.bind(this), 10));
+        window.addEventListener('scroll', this.handleScroll.bind(this));
     }
 
     componentWillUnmount() {
