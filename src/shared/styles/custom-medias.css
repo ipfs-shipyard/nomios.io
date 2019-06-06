@@ -31,7 +31,7 @@
 /* Use these to target a specific range */
 
 @custom-media --layout-xsmall (width <= 480px);
-@custom-media --layout-small (width > 480) AND width <= 768px);
+@custom-media --layout-small (width > 480) AND (width <= 768px);
 @custom-media --layout-medium (width > 768px) AND (width <= 1024px);
 @custom-media --layout-large (width > 1024px) AND (width <= 1440px);
 @custom-media --layout-xlarge (width > 1440px) AND (width <= 1920px);

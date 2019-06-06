@@ -52,11 +52,11 @@
                 margin-right: 40px;
 
                 @media (--layout-lte-large) {
-                    margin-right: 20px;
+                    margin-right: 12px;
                 }
 
-                @media (--layout-lte-small) {
-                    margin-right: 10px;
+                @media (--layout-lte-medium) {
+                    margin-right: 4px;
                 }
             }
         }
