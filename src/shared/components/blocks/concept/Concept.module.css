@@ -1,3 +1,96 @@
+@import "../../../styles/colors";
+@import "../../../styles/base/typography.css";
+@import "../../../styles/mixins/layout.css";
+
 .concept {
+    display: flex;
     background: white;
+}
+
+.halfWidth {
+    width: 50%;
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+.leftSide {
+    flex: 1;
+    background-color: var(--color-white);
+
+    & .content {
+        margin: 30% 18%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--color-celtic);
+        text-align: center;
+
+        & .title {
+            @mixin typography-h2 rem;
+        }
+
+        & .description {
+            height: 50px;
+            margin-top: 20px;
+        }
+
+        & .buttonBox {
+            margin-top: 65px;
+        }
+    }
+}
+
+.rightSide {
+    flex: 1;
+    background-color: var(--color-mineral-green);
+
+    & .videoBox {
+        width: 58%;
+        padding: 45px;
+        transform: translateX(calc(-45px - 3.7%));
+        border: solid 1px var(--color-tan);
+        border-radius: 28px;
+    }
+}
+
+.videoTriggerContainer {
+    display: flex;
+    align-items: center;
+}
+
+@media(--layout-lte-medium) {
+    .concept {
+        flex-direction: column;
+    }
+
+    .leftSide {
+        height: 725px;
+        flex: unset;
+
+        & .content {
+            margin: 120px 23%;
+        }
+
+        & .buttonBox {
+            margin-top: 40px;
+        }
+    }
+
+    .rightSide {
+        height: 375px;
+        flex: unset;
+
+        & .videoBox {
+            width: 88%;
+            margin-left: 0;
+            transform: translateY(calc(-50% + 4px));
+        }
+    }
+
+    .videoTriggerContainer {
+        justify-content: center;
+        align-items: flex-start;
+    }
 }
