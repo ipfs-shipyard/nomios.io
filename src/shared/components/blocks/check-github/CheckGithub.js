@@ -4,7 +4,6 @@ import classNames from 'classnames';
 import styles from './CheckGithub.module.css';
 import Button from '../../button';
 import { GithubIcon } from '../../icon';
-import { isBelowSmallDesktop } from '../../../utils/windowInfo';
 
 class CheckGithub extends Component {
     state = {
@@ -18,11 +17,12 @@ class CheckGithub extends Component {
 
     render() {
         const { className } = this.props;
+        const { width } = this.state;
 
         return (
             <div className={ classNames(styles.checkGithub, className) }>
                 <div className={ styles.content }>
-                    <div className={ styles.title }>{ isBelowSmallDesktop() ? 'Open Source' : 'We\'re fully open source.' }</div>
+                    <div className={ styles.title }>{ width < '1680' ? 'Open Source' : 'We\'re fully open source.' }</div>
                     <div className={ styles.description }>Are you a developer?</div>
                     <a className={ styles.buttonBox } href="https://github.com/ipfs-shipyard/pm-idm" target="_blank" rel="noopener noreferrer">
                         <Button className={ styles.cta } variant="secondary" >
