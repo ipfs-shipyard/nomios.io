@@ -22,6 +22,7 @@
     "release": "standard-version"
   },
   "dependencies": {
+    "@researchgate/react-intersection-observer": "^1.0.1",
     "cancel.it": "^0.1.1",
     "classnames": "^2.2.6",
     "gatsby": "^2.7.1",
