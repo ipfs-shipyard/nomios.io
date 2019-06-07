@@ -295,7 +295,7 @@
 
     & .checkmark,
     & .crossmark {
-        font-size: 2rem;
+        font-size: 1.5rem;
         stroke-dasharray: 20;
         stroke-dashoffset: 20;
     }
