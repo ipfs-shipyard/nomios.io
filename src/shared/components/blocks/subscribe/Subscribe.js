@@ -27,7 +27,7 @@ class Subscribe extends Component {
         };
 
         return (
-            <LayoutContainer className={ classNames(styles.subscribe, className) }>
+            <LayoutContainer id="subscribe" className={ classNames(styles.subscribe, className) }>
                 <div className={ styles.subscribeWrapper }>
                     <div className={ styles.joinUs }>
                         <div className={ styles.firstText }>
