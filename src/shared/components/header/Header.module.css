@@ -10,6 +10,7 @@
     z-index: 3;
     flex: 0;
     background: var(--color-celtic);
+    transition: height 0.4s ease-in-out;
 
     & .headerContent {
         height: inherit;
@@ -62,6 +63,9 @@
         }
 
         & .headerLogo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
 
             & i {

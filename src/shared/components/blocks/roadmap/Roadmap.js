@@ -93,8 +93,8 @@ const Roadmap = ({ className }) => (
                                     { el.name }
                                 </div>
                                 <div className={ styles.bodyStatus }>
-                                    { el.status.map((stat) => (
-                                        <div className={ classNames(styles.tableLabel, styles.bodyLabel) } key={ el.name }>
+                                    { el.status.map((stat, index) => (
+                                        <div className={ classNames(styles.tableLabel, styles.bodyLabel) } key={ index }>
                                             { stat ?
                                                 <div className={ styles.dot }>&#9679;</div> :
                                                 <div className={ styles.dot }>&#9675;</div>

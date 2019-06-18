@@ -21,16 +21,16 @@ const anchorsObject = [
     },
 ];
 
-const Header = ({ className }) => (
+const Header = ({ className, resize }) => (
     <header className={ classNames(styles.header, className) } >
         <div className={ (styles.headerContent) }>
             <div className={ styles.anchorsContainer }>
-                {anchorsObject.map((item) => <AnchorLink offset={ 100 } href={ `#${item.anchor}` } key={ item.value }> {item.value} </AnchorLink>)}
+                {anchorsObject.map((item) => <AnchorLink offset={ 80 } href={ `#${item.anchor}` } key={ item.value }> {item.value} </AnchorLink>)}
             </div>
-            <Logo className={ styles.headerLogo } variant={ 'horizontal' } />
+            <Logo className={ styles.headerLogo } variant={ !resize ? 'horizontal' : 'symbol' } />
             <div className={ styles.buttonContainer } >
                 <Button variant={ 'secondary' }>
-                    <AnchorLink offset={ 100 } href="#subscribe"> Join us </AnchorLink>
+                    <AnchorLink offset={ 80 } href="#subscribe"> Join us </AnchorLink>
                 </Button>
             </div>
         </div>
@@ -38,6 +38,7 @@ const Header = ({ className }) => (
 );
 
 Header.propTypes = {
+    resize: PropTypes.bool,
     className: PropTypes.string,
 };
 
