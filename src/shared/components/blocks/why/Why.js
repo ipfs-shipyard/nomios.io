@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import LayoutContainer from '../../../components/layout-container/LayoutContainer';
@@ -20,22 +20,34 @@ const settings = {
     arrows: false,
 };
 
-const Why = ({ className }) => (
-    <LayoutContainer id="why" className={ classNames(styles.why, className) } contentClassName={ styles.whyContent }>
-        <div className={ classNames(styles.list, styles.listDesktop) }>
-            <div className={ styles.blockTitle }><h2>{ title }</h2></div>
-            { blocks.map((block, index) => <Block key={ index } order={ index } { ...block } />) }
-        </div>
-        <div className={ classNames(styles.list, styles.listMobile) }>
-            <LayoutContainer className={ styles.blockTitleMobile }>
-                <div className={ styles.blockTitle }><h2>{ title }</h2></div>
+class Why extends Component {
+    slider = React.createRef();
+
+    render() {
+        const { className } = this.props;
+
+        return (
+            <LayoutContainer id="why" className={ classNames(styles.why, className) } contentClassName={ styles.whyContent }>
+                <div className={ classNames(styles.list, styles.listDesktop) }>
+                    <div className={ styles.blockTitle }><h2>{ title }</h2></div>
+                    { blocks.map((block, index) => <Block key={ index } order={ index } { ...block } />) }
+                </div>
+                <div className={ classNames(styles.list, styles.listMobile) }>
+                    <LayoutContainer className={ styles.blockTitleMobile }>
+                        <div className={ styles.blockTitle }><h2>{ title }</h2></div>
+                    </LayoutContainer>
+                    <Slider { ...settings } onSwipe={ this.handleSwipe } ref={ this.slider }>
+                        { blocks.map((block, index) => <Block key={ index } order={ index } { ...block } />) }
+                    </Slider>
+                </div>
             </LayoutContainer>
-            <Slider { ...settings }>
-                { blocks.map((block, index) => <Block key={ index } order={ index } { ...block } />) }
-            </Slider>
-        </div>
-    </LayoutContainer>
-);
+        );
+    }
+
+    handleSwipe = () => {
+        this.slider.current.slickPause();
+    };
+}
 
 const Block = ({ icon, title, description, link, order }) => (
     <div className={ classNames(styles.block, styles[`block${order + 1}`]) }>
