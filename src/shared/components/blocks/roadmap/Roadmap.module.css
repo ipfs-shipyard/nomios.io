@@ -46,6 +46,7 @@
                 width: var(--right-width);
                 display: flex;
                 justify-content: space-between;
+                align-items: center;
 
                 & .bodyLabel {
                     margin-left: calc(12px + 14px);
