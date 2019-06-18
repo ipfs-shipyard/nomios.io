@@ -23,7 +23,7 @@
     & .title {
         @mixin typography-h2 rem;
         margin-top: 35%;
-        color: var(--color-mineral-green);
+        color: var(--color-celtic);
         text-align: center;
     }
 
@@ -32,7 +32,7 @@
 
         height: 50px;
         margin-top: 50px;
-        color: var(--color-mineral-green);
+        color: var(--color-celtic);
         text-align: center;
     }
 
