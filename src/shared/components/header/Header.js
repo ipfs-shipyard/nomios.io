@@ -31,7 +31,7 @@ const Header = ({ className, resize }) => (
             <div className={ styles.buttonContainer } >
                 <AnchorLink offset={ 79 } href="#subscribe">
                     <Button variant={ 'secondary' }>
-                    Join us
+                    JOIN US
                     </Button>
                 </AnchorLink>
             </div>

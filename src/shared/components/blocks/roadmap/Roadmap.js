@@ -77,8 +77,8 @@ const Roadmap = ({ className }) => (
 
                                 return (
                                     <div className={ styles.tableLabel } key={ el.name }>
-                                        <ElementIcon className={ styles.tableHeaderIcon } />
                                         <div className={ styles.headerName }>{ el.name }</div>
+                                        <ElementIcon className={ styles.tableHeaderIcon } />
                                     </div>
                                 );
                             })

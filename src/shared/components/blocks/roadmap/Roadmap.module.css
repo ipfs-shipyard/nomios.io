@@ -33,6 +33,10 @@
                 display: flex;
                 flex: 1;
 
+                &.rightSide:first-child {
+                    margin-right: 0;
+                }
+
                 &:last-child {
                     margin-right: 0;
                 }
@@ -47,10 +51,6 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-
-                & .bodyLabel {
-                    margin-left: calc(12px + 14px);
-                }
 
                 & .dot {
                     font-size: 1.3em;
@@ -68,7 +68,7 @@
 
             & .tableHeaderIcon {
                 width: 12px;
-                margin-right: 14px;
+                margin-left: 14px;
             }
         }
     }
@@ -122,7 +122,7 @@
 
             & .tableHeader {
                 & .tableHeaderIcon {
-                    margin-right: 0;
+                    margin-left: 0;
                 }
             }
         }
