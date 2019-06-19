@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Svg from '../../svg';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 import lowpolySvg from '../../../media/illustrations/illustration-lowpoly-face.svg';
 import styles from './Hero.module.css';
 
@@ -12,10 +13,16 @@ const Hero = ({ className }) => (
         </div>
         <Svg className={ styles.svgWrapper } svg={ lowpolySvg } />
 
-        <label className={ styles.vision } >
-        Vision
-            <span className={ styles.scrollHint } />
-        </label>
+        <AnchorLink offset={ 79 } href="#why">
+            <div className={ styles.visionBox }>
+                <span className={ styles.vision } >
+                        Vision
+                    <svg height="50px" className={ styles.scrollHint }>
+                        <path strokeWidth="2px" d="M0,50v-50" />
+                    </svg>
+                </span>
+            </div>
+        </AnchorLink>
     </div>
 );
 

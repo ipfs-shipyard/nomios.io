@@ -1,5 +1,6 @@
 @import "../../../styles/colors";
 @import "../../../styles/custom-medias";
+@import "../../../styles/base/typography.css";
 @import "../../../styles/variables";
 
 .hero {
@@ -15,25 +16,52 @@
         text-align: center;
     }
 
-    & .vision {
+    & .visionBox {
         position: absolute;
-        bottom: 70px;
+        bottom: 0;
         left: 50%;
+        width: 65px;
+        height: 94px;
         transform: translate(-50%, 0);
-        color: var(--color-dawn-pink);
-        font-size: 12px;
-        text-transform: uppercase;
-        letter-spacing: 3px;
+        cursor: pointer;
 
-        & span {
+        & .vision {
             position: absolute;
-            top: 100%;
+            bottom: 70px;
             left: 50%;
-            width: 1px;
-            height: 50px;
-            margin-top: 20px;
             transform: translate(-50%, 0);
-            background: white;
+            color: var(--color-dawn-pink);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+
+            & a {
+                color: var(--color-dawn-pink);
+                text-decoration: none;
+                text-transform: uppercase;
+                transition: opacity 0.2s ease;
+
+                @media (--layout-lte-medium) {
+                    font-size: 1.2rem;
+                }
+
+                @media (--layout-lte-small) {
+                    font-size: 0.9rem;
+                }
+            }
+
+            & .scrollHint {
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                width: 2px;
+                height: 50px;
+                margin-top: 20px;
+                transform: translate(-50%, 0);
+                animation: animateVisionEnter 2s cubic-bezier(1, 0, 0, 1) 0s infinite, animateVisionExit 2s cubic-bezier(1, 0, 0, 1) 0s infinite;
+                stroke: white;
+                stroke-dasharray: 50 50;
+            }
         }
     }
 
@@ -49,6 +77,26 @@
             opacity: 0.5;
             stroke: var(--color-dawn-pink);
         }
+    }
+}
+
+@keyframes animateVisionEnter {
+    0% {
+        stroke-dashoffset: 0;
+    }
+
+    50% {
+        stroke-dashoffset: 50;
+    }
+}
+
+@keyframes animateVisionExit {
+    50% {
+        stroke-dashoffset: 50;
+    }
+
+    100% {
+        stroke-dashoffset: 100;
     }
 }
 
