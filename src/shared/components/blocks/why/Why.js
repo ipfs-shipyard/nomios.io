@@ -23,8 +23,13 @@ const settings = {
 class Why extends Component {
     slider = React.createRef();
 
+    state = {
+        stopTimer: false,
+    };
+
     render() {
         const { className } = this.props;
+        const { stopTimer } = this.state;
 
         return (
             <LayoutContainer id="why" className={ classNames(styles.why, className) } contentClassName={ styles.whyContent }>
@@ -32,7 +37,7 @@ class Why extends Component {
                     <div className={ styles.blockTitle }><h2>{ title }</h2></div>
                     { blocks.map((block, index) => <Block key={ index } order={ index } { ...block } />) }
                 </div>
-                <div className={ classNames(styles.list, styles.listMobile) }>
+                <div className={ classNames(styles.list, styles.listMobile, stopTimer && styles.timerStopped) }>
                     <LayoutContainer className={ styles.blockTitleMobile }>
                         <div className={ styles.blockTitle }><h2>{ title }</h2></div>
                     </LayoutContainer>
@@ -45,7 +50,10 @@ class Why extends Component {
     }
 
     handleSwipe = () => {
+        const { stopTimer } = this.state;
+
         this.slider.current.slickPause();
+        !stopTimer && this.setState({ stopTimer: true });
     };
 }
 

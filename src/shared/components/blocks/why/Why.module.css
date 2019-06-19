@@ -325,3 +325,8 @@
         }
     }
 }
+
+.timerStopped :global(.slick-dots) :global(.slick-active) button {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out, transform 0s ease-in-out;
+}
