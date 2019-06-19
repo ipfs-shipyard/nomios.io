@@ -55,15 +55,12 @@
             }
 
             & .description {
+                transform: translateY(-50%);
                 opacity: 1;
             }
 
             & .title {
                 transform: translateY(-20%);
-            }
-
-            & .buttonBox {
-                transform: translateY(40px);
             }
         }
 
@@ -76,13 +73,13 @@
         & .description {
             @mixin typography-body-1 rem;
 
+            transform: translateY(0);
             opacity: 0;
-            transition: opacity 0.5s ease-in-out;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
         }
 
         & .buttonBox {
             margin: 20px 0;
-            transition: transform 0.5s ease-in-out;
         }
     }
 }

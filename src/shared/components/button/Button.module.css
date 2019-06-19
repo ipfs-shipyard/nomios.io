@@ -33,6 +33,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        letter-spacing: 1.5px;
         transition-property: border-color, color, background-color, opacity;
         transition-duration: var(--feedback-transition-duration);
         transition-timing-function: ease-out;
