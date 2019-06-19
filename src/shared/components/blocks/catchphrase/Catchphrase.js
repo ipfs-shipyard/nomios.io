@@ -1,29 +1,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { throttle } from 'lodash';
 import styles from './Catchphrase.module.css';
 import LayoutContainer from '../../../components/layout-container/LayoutContainer';
 
 class Catchphrase extends Component {
-    constructor(props) {
-        super(props);
+    isGoingDown = undefined;
+    maxLeftTransform = -100;
+    maxRightTransform = 0;
+    translateSteps = 1.2;
 
-        this.isGoingDown = undefined;
-        this.maxLeftTransform = -100;
-        this.maxRightTransform = 0;
-        this.translateSteps = 1.2;
-
-        this.state = {
-            translateValue: 0,
-        };
-    }
+    state = {
+        translateValue: 0,
+    };
 
     componentDidMount() {
-        window.addEventListener('scroll', this.handleScroll.bind(this));
+        window.addEventListener('scroll', this.handleScroll);
     }
 
     componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll.bind(this));
+        window.removeEventListener('scroll', this.handleScroll);
     }
 
     render() {
@@ -51,7 +48,8 @@ class Catchphrase extends Component {
         );
     }
 
-    handleScroll() {
+    // Throttle handle scroll function to improve performance
+    handleScroll = throttle(() => {
         const { translateValue } = this.state;
 
         const windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
@@ -84,7 +82,7 @@ class Catchphrase extends Component {
                     Math.min(this.maxRightTransform, translateValue + this.translateSteps),
             });
         }
-    }
+    }, 10);
 }
 
 Catchphrase.propTypes = {

@@ -25,7 +25,7 @@ const Header = ({ className, resize }) => (
     <header className={ classNames(styles.header, className) } >
         <div className={ (styles.headerContent) }>
             <div className={ styles.anchorsContainer }>
-                {anchorsObject.map((item) => <AnchorLink offset={ 80 } href={ `#${item.anchor}` } key={ item.value }> {item.value} </AnchorLink>)}
+                {anchorsObject.map((item) => <AnchorLink offset={ 79 } href={ `#${item.anchor}` } key={ item.value }> {item.value} </AnchorLink>)}
             </div>
             <Logo className={ styles.headerLogo } variant={ !resize ? 'horizontal' : 'symbol' } />
             <div className={ styles.buttonContainer } >
