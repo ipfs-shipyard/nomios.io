@@ -16,7 +16,7 @@ const settings = {
     slidesToShow: 1,
     slidesToScroll: 1,
     pauseOnFocus: true,
-    pauseOnHover: true,
+    pauseOnHover: false,
     arrows: false,
 };
 
@@ -25,11 +25,16 @@ class Why extends Component {
 
     state = {
         stopTimer: false,
+        initSliderAnimation: false,
     };
+
+    componentDidMount() {
+        this.setState({ initSliderAnimation: true });
+    }
 
     render() {
         const { className } = this.props;
-        const { stopTimer } = this.state;
+        const { stopTimer, initSliderAnimation } = this.state;
 
         return (
             <LayoutContainer id="why" className={ classNames(styles.why, className) } contentClassName={ styles.whyContent }>
@@ -37,7 +42,7 @@ class Why extends Component {
                     <div className={ styles.blockTitle }><h2>{ title }</h2></div>
                     { blocks.map((block, index) => <Block key={ index } order={ index } { ...block } />) }
                 </div>
-                <div className={ classNames(styles.list, styles.listMobile, stopTimer && styles.timerStopped) }>
+                <div className={ classNames(styles.list, styles.listMobile, stopTimer && styles.timerStopped, initSliderAnimation && styles.startDotsAnimation) }>
                     <LayoutContainer className={ styles.blockTitleMobile }>
                         <div className={ styles.blockTitle }><h2>{ title }</h2></div>
                     </LayoutContainer>

@@ -317,15 +317,22 @@
         appearance: none;
     }
 
-    & :global(.slick-active) {
+    /* & :global(.slick-active) {
         & button {
             transform: translate3d(-2px, 0, 0);
             opacity: 1;
             transition: transform var(--slider-transition-duration) ease-in-out;
         }
-    }
+    } */
 }
 
+.startDotsAnimation :global(.slick-active) button {
+    transform: translate3d(-2px, 0, 0);
+    opacity: 1;
+    transition: transform var(--slider-transition-duration) ease-in-out;
+}
+
+/* After stopping the timer, only animate opacity when changing slide */
 .timerStopped :global(.slick-dots) :global(.slick-active) button {
     opacity: 1;
     transition: opacity 0.3s ease-in-out, transform 0s ease-in-out;
