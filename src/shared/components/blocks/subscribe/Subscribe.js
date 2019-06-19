@@ -18,7 +18,7 @@ class Subscribe extends Component {
         const { className } = this.props;
 
         const defaultOptions = {
-            loop: true,
+            loop: false,
             autoplay: true,
             animationData: animationData.default,
             rendererSettings: {
@@ -44,7 +44,8 @@ class Subscribe extends Component {
                     <div className={ styles.image }>
                         <Lottie options={ defaultOptions }
                             height={ '100%' }
-                            width={ 260 } />
+                            width={ 260 }
+                            isClickToPauseDisabled />
                     </div>
                 </div>
             </LayoutContainer>
