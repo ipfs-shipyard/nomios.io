@@ -29,9 +29,11 @@ const Header = ({ className, resize }) => (
             </div>
             <Logo className={ styles.headerLogo } variant={ !resize ? 'horizontal' : 'symbol' } />
             <div className={ styles.buttonContainer } >
-                <Button variant={ 'secondary' }>
-                    <AnchorLink offset={ 79 } href="#subscribe"> Join us </AnchorLink>
-                </Button>
+                <AnchorLink offset={ 79 } href="#subscribe">
+                    <Button variant={ 'secondary' }>
+                    Join us
+                    </Button>
+                </AnchorLink>
             </div>
         </div>
     </header>

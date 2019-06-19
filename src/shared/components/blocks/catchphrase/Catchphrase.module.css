@@ -18,9 +18,9 @@
 
         & .scrollable {
             @mixin position absolute, 50%, null, null, 60%;
+            will-change: transform;
             transform: translate3d(0, -50%, 0);
             white-space: nowrap;
-            transition: transform 1s linear;
 
             & h2 {
                 color: var(--color-indian-khaki);
