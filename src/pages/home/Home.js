@@ -55,10 +55,8 @@ class Home extends Component {
         const whyBoundingRect = whyEl.getBoundingClientRect();
 
         if (whyBoundingRect.top < 120) {
-            !resizeHeader && console.log('resize', whyBoundingRect);
             !resizeHeader && this.setState({ resizeHeader: true });
         } else {
-            resizeHeader && console.log('resize', whyBoundingRect);
             resizeHeader && this.setState({ resizeHeader: false });
         }
     };
