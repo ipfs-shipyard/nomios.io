@@ -136,7 +136,7 @@
 
     .form {
         width: 100%;
-        min-width: none;
+        min-width: auto;
         max-width: none;
         margin-top: 80px;
         display: inline;
