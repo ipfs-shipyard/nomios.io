@@ -76,7 +76,7 @@
 }
 
 .inputSuccess {
-    border: 2px solid #2d473a;
+    border: 2px solid color(var(--color-celtic) whiteness(10%)); /* Celtic and white blend. Avoids noticeable border */
 }
 
 .success {

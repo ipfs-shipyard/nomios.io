@@ -4,7 +4,7 @@
 
 .concept {
     display: flex;
-    background: white;
+    background: var(--color-white);
 }
 
 .halfWidth {
@@ -47,6 +47,7 @@
     background-color: var(--color-celtic);
 
     & .videoBox {
+        position: relative;
         width: 58%;
         padding: 45px;
         transform: translateX(calc(-45px - 3.7%));
@@ -92,5 +93,37 @@
     .videoTriggerContainer {
         justify-content: center;
         align-items: flex-start;
+    }
+}
+
+@media(--layout-lte-small) {
+    .leftSide {
+        height: 550px;
+
+        & .content {
+            margin: 100px 5%;
+
+            & .description {
+                height: auto;
+            }
+
+            & .buttonBox {
+                width: 100%;
+                margin-top: 50px;
+
+                & button {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .rightSide {
+        & .videoBox {
+            width: 88%;
+            padding: 20px;
+            transform: translateY(-50%);
+            border-radius: 12px;
+        }
     }
 }
