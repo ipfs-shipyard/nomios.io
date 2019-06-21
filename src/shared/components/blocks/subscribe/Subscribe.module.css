@@ -49,6 +49,9 @@
 }
 
 .form {
+    width: 62%;
+    min-width: 410px;
+    max-width: 540px;
     margin-top: 40px;
     display: flex;
     flex-direction: row;
@@ -57,9 +60,9 @@
 .input {
     @mixin typography-body-1 rem;
 
-    width: 270px;
     height: 60px;
     padding-left: 20px;
+    flex-grow: 1;
     border: 2px solid var(--color-indian-khaki);
     border-right: none;
     background: var(--color-celtic);
@@ -67,6 +70,7 @@
 }
 
 .submit {
+    width: 190px;
     height: 60px;
 }
 
@@ -132,6 +136,8 @@
 
     .form {
         width: 100%;
+        min-width: none;
+        max-width: none;
         margin-top: 80px;
         display: inline;
         flex-direction: unset;
@@ -142,6 +148,7 @@
         height: 50px;
         margin-bottom: 10px;
         padding-left: 20px;
+        flex-grow: 0;
         border-right: 2px solid var(--color-indian-khaki);
     }
 

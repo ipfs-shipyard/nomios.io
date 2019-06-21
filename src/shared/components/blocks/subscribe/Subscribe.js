@@ -65,15 +65,13 @@ class Subscribe extends Component {
 
         return (
             <form className={ styles.form } onSubmit={ handleSubmit }>
-                <div className={ styles.inputCrossWrapper }>
-                    <Field
-                        component="input"
-                        className={ classNames(styles.input, { [styles.inputSuccess]: hasSubmitted && submitSucceeded, [styles.inputFail]: hasSubmitted && submitFailed }) }
-                        type="email"
-                        name="email"
-                        placeholder="Enter Your Email" />
-                    { hasSubmitted && submitFailed && !dirtySinceLastSubmit && <CrossmarkIcon className={ styles.cross } /> }
-                </div>
+                <Field
+                    component="input"
+                    className={ classNames(styles.input, { [styles.inputSuccess]: hasSubmitted && submitSucceeded, [styles.inputFail]: hasSubmitted && submitFailed }) }
+                    type="email"
+                    name="email"
+                    placeholder="Enter Your Email" />
+                { hasSubmitted && submitFailed && !dirtySinceLastSubmit && <CrossmarkIcon className={ styles.cross } /> }
                 { !hasSubmitted && <Button className={ styles.submit } type="submit" variant="secondary">
                     JOIN NOW
                 </Button> }
