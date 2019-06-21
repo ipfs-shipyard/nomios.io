@@ -91,17 +91,18 @@
 }
 
 @media (--layout-lte-medium) {
-    .content {
-        & .title {
-            margin-top: 30%;
-        }
+    .checkGithub {
+        height: 60vh;
+    }
 
+    .content {
         & .description {
             margin-top: 30px;
         }
 
         & .buttonBox {
             width: 90%;
+            margin-bottom: 0;
 
             & .cta {
                 width: 100%;
@@ -117,10 +118,6 @@
     }
 
     .content {
-        & .title {
-            margin-top: 80px;
-        }
-
         & .description {
             margin-top: 30px;
         }
