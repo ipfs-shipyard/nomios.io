@@ -111,7 +111,7 @@
 
 @media (--layout-lte-small) {
     .checkWorkshop {
-        height: auto;
+        height: 70vh;
         flex: initial;
     }
 

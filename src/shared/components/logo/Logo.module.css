@@ -55,3 +55,9 @@
         }
     }
 }
+
+@media (--layout-lte-medium) {
+    .container {
+        font-size: 1.3rem;
+    }
+}

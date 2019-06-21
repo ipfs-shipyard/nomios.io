@@ -72,6 +72,7 @@
 .submit {
     width: 190px;
     height: 60px;
+    flex: 0 0 auto;
 }
 
 .inputSuccess {

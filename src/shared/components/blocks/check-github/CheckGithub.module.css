@@ -113,7 +113,7 @@
 
 @media (--layout-lte-small) {
     .checkGithub {
-        height: auto;
+        height: 70vh;
         flex: initial;
     }
 
@@ -124,7 +124,6 @@
 
         & .buttonBox {
             width: 100%;
-            margin-bottom: 80px;
 
             & .cta {
                 width: 100%;
