@@ -6,7 +6,7 @@
     @mixin layout-main .subscribe, .subscribeWrapper;
 
 .subscribe {
-    height: 100vh;
+    height: calc(100vh - 80px);
     background-color: var(--color-celtic);
 }
 
@@ -19,14 +19,17 @@
 
 .joinUs {
     position: relative;
+    display: flex;
     flex: 1;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
 }
 
 .firstText {
     @mixin typography-h1 rem;
 
-    color: var(--color-tan);
+    color: var(--color-indian-khaki);
 }
 
 .secondText {
@@ -41,14 +44,11 @@
 .image {
     height: 100%;
     flex: 1;
-    color: var(--color-tan);
+    color: var(--color-indian-khaki);
 }
 
 .form {
-    position: absolute;
-    left: 50%;
     margin-top: 40px;
-    transform: translateX(-50%);
     display: flex;
     flex-direction: row;
 }
@@ -60,12 +60,12 @@
     height: 60px;
     padding-left: 20px;
     border: 2px solid var(--color-indian-khaki);
+    border-right: none;
     background: var(--color-celtic);
     color: var(--color-white);
 }
 
 .submit {
-    width: 180px;
     height: 60px;
 }
 
@@ -106,7 +106,7 @@
     .firstText {
         @mixin typography-h2 rem;
 
-        color: var(--color-tan);
+        color: var(--color-indian-khaki);
     }
 }
 
@@ -125,7 +125,7 @@
     }
 
     .firstText {
-        color: var(--color-tan);
+        color: var(--color-indian-khaki);
         font-size: 48px;
     }
 
@@ -153,10 +153,10 @@
     }
 
     .inputSuccess {
-        border: 2px solid var(--color-tan);
+        border: 2px solid var(--color-indian-khaki);
     }
 
     .inputFail {
-        border: 2px solid var(--color-tan);
+        border: 2px solid var(--color-indian-khaki);
     }
 }

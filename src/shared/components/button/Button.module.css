@@ -56,7 +56,7 @@
     &.primary {
         & .textBlock {
             background-color: var(--color-white);
-            color: var(--color-mineral-green);
+            color: var(--color-celtic);
         }
 
         &:enabled {
@@ -106,7 +106,7 @@
 
     &.tertiary {
         & .textBlock {
-            background-color: var(--color-mineral-green);
+            background-color: var(--color-celtic);
             color: var(--color-white);
 
             & .progressBar {
@@ -139,8 +139,8 @@
         & .textBlock {
             border: solid 2px var(--color-indian-khaki);
             background-color: var(--color-white);
-            color: var(--color-mineral-green);
-            fill: var(--color-mineral-green);
+            color: var(--color-celtic);
+            fill: var(--color-celtic);
         }
 
         &:enabled {
@@ -164,7 +164,7 @@
 
     &.indian-khakiBorder {
         & .textBlock {
-            border: solid 2px var(--color-mineral-green);
+            border: solid 2px var(--color-celtic);
             background-color: var(--color-indian-khaki);
             color: var(--color-white);
         }
@@ -178,7 +178,7 @@
             &:hover:not(:active) .textBlock {
                 border: none;
                 background-color: var(--color-white);
-                color: var(--color-mineral-green);
+                color: var(--color-celtic);
             }
         }
 

@@ -44,13 +44,13 @@
 
 .rightSide {
     flex: 1;
-    background-color: var(--color-mineral-green);
+    background-color: var(--color-celtic);
 
     & .videoBox {
         width: 58%;
         padding: 45px;
         transform: translateX(calc(-45px - 3.7%));
-        border: solid 1px var(--color-tan);
+        border: solid 1px var(--color-indian-khaki);
         border-radius: 28px;
     }
 }
