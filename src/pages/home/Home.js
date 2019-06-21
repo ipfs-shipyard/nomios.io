@@ -52,6 +52,11 @@ class Home extends Component {
     handleScroll = () => {
         const { resizeHeader } = this.state;
         const whyEl = document.getElementById('why');
+
+        if (!whyEl) {
+            return;
+        }
+
         const whyBoundingRect = whyEl.getBoundingClientRect();
 
         if (whyBoundingRect.top < 120) {

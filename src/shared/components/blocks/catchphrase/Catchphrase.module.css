@@ -13,8 +13,11 @@
     & .blackScreen {
         position: relative;
         height: 100%;
+        z-index: 2;
         background-color: black;
         background-image: url("../../../media/backgrounds/background-pattern.png");
+        background-position: center center;
+        background-size: cover;
 
         & .scrollable {
             @mixin position absolute, 50%, null, null, 60%;

@@ -28,7 +28,7 @@ class Subscribe extends Component {
             autoplay: false,
             animationData: animationData.default,
             rendererSettings: {
-                preserveAspectRatio: 'xMidYMid slice',
+                preserveAspectRatio: 'xMidYMid meet',
             },
         };
 
@@ -50,7 +50,6 @@ class Subscribe extends Component {
                         </div>
                         <div className={ styles.image }>
                             <Lottie options={ defaultOptions }
-                                height={ '100%' }
                                 width={ 260 }
                                 isPaused={ !hasIntersected }
                                 isClickToPauseDisabled />

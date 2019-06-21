@@ -100,6 +100,12 @@
     }
 }
 
+@media (--layout-lt-medium) {
+    .anchorsContainer {
+        visibility: hidden;
+    }
+}
+
 @media (--layout-lt-small) {
     .anchorsContainer,
     .buttonContainer {

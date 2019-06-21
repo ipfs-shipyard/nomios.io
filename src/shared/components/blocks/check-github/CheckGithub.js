@@ -26,7 +26,7 @@ class CheckGithub extends Component {
                     <div className={ styles.description }>Are you a developer?</div>
                     <a className={ styles.buttonBox } href="https://github.com/ipfs-shipyard/pm-idm" target="_blank" rel="noopener noreferrer">
                         <Button className={ styles.cta } variant="secondary" >
-                            <div className={ styles.buttonText }>CHECK OUR GITHUB <GithubIcon className={ styles.logo } /></div>
+                            <div className={ styles.buttonText }>CHECK GITHUB <GithubIcon className={ styles.logo } /></div>
                         </Button>
                     </a>
                 </div>

@@ -132,6 +132,10 @@
 
             & .cta {
                 width: 100%;
+
+                & > div {
+                    padding: 0 3rem;
+                }
             }
         }
     }
