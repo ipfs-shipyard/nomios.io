@@ -50,7 +50,6 @@
                 width: var(--right-width);
                 display: flex;
                 justify-content: space-between;
-                align-items: center;
 
                 & .dot {
                     font-size: 1.3em;
@@ -104,7 +103,7 @@
                     flex: initial;
 
                     &.rightSide {
-                        max-width: calc(100% - var(--right-width));
+                        max-width: calc(100% - var(--right-width) - 5%);
                     }
 
                     &.labelMobile {
