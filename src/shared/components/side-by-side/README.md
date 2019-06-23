@@ -9,7 +9,7 @@ import SideBySide from 'path/to/shared/components/side-by-side';
 
 <SideBySide
     left={ <SomeComponent /> }
-    right={ <SomeOtherComponent /> } /> 
+    right={ <SomeOtherComponent /> } />
 ```
 
 Note that the elements specified on the `left` and `right` **must** accept a `className` property.
