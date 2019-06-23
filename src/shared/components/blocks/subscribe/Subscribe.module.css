@@ -34,11 +34,11 @@
 .secondText {
     @mixin typography-body-1 rem;
 
-    max-width: 408px;
-    margin-top: 70px;
+    max-width: 40.8rem;
+    margin-top: 7rem;
     margin-bottom: 0;
     color: var(--color-dawn-pink);
-    font-size: 18px;
+    font-size: 1.8rem;
 }
 
 .image {
@@ -50,9 +50,9 @@
 
 .form {
     width: 62%;
-    min-width: 410px;
-    max-width: 540px;
-    margin-top: 40px;
+    min-width: 41rem;
+    max-width: 54rem;
+    margin-top: 4rem;
     display: flex;
     flex-direction: row;
 }
@@ -60,27 +60,27 @@
 .input {
     @mixin typography-body-1 rem;
 
-    height: 60px;
-    padding-left: 20px;
+    height: 6rem;
+    padding-left: 2rem;
     flex-grow: 1;
-    border: 2px solid var(--color-indian-khaki);
+    border: 0.2rem solid var(--color-indian-khaki);
     border-right: none;
     background: var(--color-celtic);
     color: var(--color-white);
 }
 
 .submit {
-    width: 190px;
-    height: 60px;
+    width: 19rem;
+    height: 6rem;
     flex: 0 0 auto;
 }
 
 .inputSuccess {
-    border: 2px solid color(var(--color-celtic) whiteness(10%)); /* Celtic and white blend. Avoids noticeable border */
+    border: 0.2rem solid color(var(--color-celtic) whiteness(10%)); /* Celtic and white blend. Avoids noticeable border */
 }
 
 .success {
-    padding-right: 20px !important;
+    padding-right: 2rem !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: flex-end !important;
@@ -88,7 +88,7 @@
 }
 
 .inputFail {
-    border: 2px solid var(--color-white);
+    border: 0.2rem solid var(--color-white);
     border-right: none;
 }
 
@@ -98,10 +98,10 @@
 
 .cross {
     position: absolute;
-    top: 22px;
-    right: 15px;
-    width: 14px;
-    height: 14px;
+    top: 2.2rem;
+    right: 1.5rem;
+    width: 1.4rem;
+    height: 1.4rem;
 
     & svg path {
         stroke: var(--color-white);
@@ -120,7 +120,7 @@
 
 @media(--layout-lte-small) {
     .subscribe {
-        padding: 80px 0;
+        padding: 8rem 0;
     }
 
     .image {
@@ -132,37 +132,37 @@
     }
 
     .secondText {
-        margin-top: 20px;
+        margin-top: 2rem;
     }
 
     .form {
         width: 100%;
         min-width: auto;
         max-width: none;
-        margin-top: 80px;
+        margin-top: 8rem;
         display: inline;
         flex-direction: unset;
     }
 
     .input {
         width: 100%;
-        height: 50px;
-        margin-bottom: 10px;
-        padding-left: 20px;
+        height: 5rem;
+        margin-bottom: 1rem;
+        padding-left: 2rem;
         flex-grow: 0;
-        border-right: 2px solid var(--color-indian-khaki);
+        border-right: 0.2rem solid var(--color-indian-khaki);
     }
 
     .submit {
         width: 100%;
-        height: 50px;
+        height: 5rem;
     }
 
     .inputSuccess {
-        border: 2px solid var(--color-indian-khaki);
+        border: 0.2rem solid var(--color-indian-khaki);
     }
 
     .inputFail {
-        border: 2px solid var(--color-indian-khaki);
+        border: 0.2rem solid var(--color-indian-khaki);
     }
 }

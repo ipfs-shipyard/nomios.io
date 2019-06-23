@@ -19,7 +19,7 @@
 */
 
 html {
-    min-width: 320px;
+    min-width: 32rem;
     height: 0; /* 3 */
     min-height: 100%; /* 1 */
     display: flex; /* 2 */

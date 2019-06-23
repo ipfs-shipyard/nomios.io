@@ -25,13 +25,13 @@
 
     & .block {
         position: relative;
-        min-height: 440px;
-        padding: 60px 3%;
+        min-height: 44rem;
+        padding: 6rem 3%;
         flex: 0 0 25%;
     }
 
     & .blockTitle {
-        min-height: 440px;
+        min-height: 44rem;
         display: flex;
         flex: 0 0 50%;
         justify-content: center;
@@ -48,16 +48,16 @@
     }
 
     & .illustration {
-        width: 140px;
-        height: 140px;
-        margin-bottom: 40px;
+        width: 14rem;
+        height: 14rem;
+        margin-bottom: 4rem;
         display: block;
     }
 
     & .title {
-        margin-bottom: 10px;
-        font-size: 20px;
-        line-height: 32px;
+        margin-bottom: 1rem;
+        font-size: 2rem;
+        line-height: 3.2rem;
     }
 
     & .description {
@@ -65,10 +65,10 @@
     }
 
     & .link {
-        @mixin position absolute, 20px, 20px, null, null;
+        @mixin position absolute, 2rem, 2rem, null, null;
 
-        width: 50px;
-        height: 50px;
+        width: 5rem;
+        height: 5rem;
         overflow: hidden;
         opacity: 1;
         color: var(--color-dawn-pink);
@@ -77,8 +77,8 @@
         & > i {
             @mixin position absolute, 0, 0, 0, 0;
 
-            width: 50px;
-            height: 50px;
+            width: 5rem;
+            height: 5rem;
             transform: translate3d(-30%, 0, 0);
             transition: transform 0.2s ease-in-out;
 
@@ -93,15 +93,15 @@
    Responsive
    ========================================================================== */
 
-@media (width <= 1300px) {
+@media (width <= 81.25em) {  /* 1300px * 0.625 */
     .list {
         & .block {
-            min-height: 370px;
+            min-height: 37rem;
             flex-basis: calc(100% / 3);
         }
 
         & .blockTitle {
-            min-height: 310px;
+            min-height: 31rem;
             flex-basis: 100%;
         }
 
@@ -133,10 +133,10 @@
     }
 }
 
-@media (--layout-lt-small) {
+@media (--layout-lte-small) {
     .list {
         & .block {
-            min-height: 370px;
+            min-height: 37rem;
             flex-basis: 50%;
         }
 
@@ -150,11 +150,11 @@
     }
 }
 
-@media (width <= 600px) {
+@media (width <= 37.5em) {  /* 600px * 0.625 */
     .list {
         & .block {
-            min-height: 450px;
-            padding: 30px 20px 40px;
+            min-height: 45rem;
+            padding: 3rem 2rem 4rem;
             flex-basis: 100%;
         }
 
@@ -241,7 +241,7 @@
 
 :global(.slick-slide) {
     height: 100%;
-    min-height: 1px;
+    min-height: 0.1rem;
     display: none;
     float: left;
 }
@@ -273,7 +273,7 @@
 :global(.slick-vertical .slick-slide) {
     height: auto;
     display: block;
-    border: 1px solid transparent;
+    border: 0.1rem solid transparent;
 }
 
 :global(.slick-arrow.slick-hidden) {
@@ -281,7 +281,7 @@
 }
 
 :global(.slick-dots) {
-    @mixin position absolute, null, 5%, 20px, 5%;
+    @mixin position absolute, null, 5%, 2rem, 5%;
     margin: 0;
     padding: 0;
     display: flex !important;
@@ -294,10 +294,10 @@
         flex: 1 1 auto;
 
         &::after {
-            @mixin position absolute, null, 2px, 0, 0;
+            @mixin position absolute, null, 0.2rem, 0, 0;
 
             content: "";
-            height: 1px;
+            height: 0.1rem;
             background: color(var(--color-white) a(80%));
         }
     }
@@ -305,7 +305,7 @@
     & button {
         width: 100%;
         height: 100%;
-        height: 5px;
+        height: 0.5rem;
         z-index: 1;
         padding: 0;
         transform: translate3d(-101%, 0, 0);
@@ -316,18 +316,10 @@
         transition: opacity 0.3s ease-in-out, transform 0s ease-in-out 0.3s;
         appearance: none;
     }
-
-    /* & :global(.slick-active) {
-        & button {
-            transform: translate3d(-2px, 0, 0);
-            opacity: 1;
-            transition: transform var(--slider-transition-duration) ease-in-out;
-        }
-    } */
 }
 
 .startDotsAnimation :global(.slick-active) button {
-    transform: translate3d(-2px, 0, 0);
+    transform: translate3d(-0.2rem, 0, 0);
     opacity: 1;
     transition: transform var(--slider-transition-duration) ease-in-out;
 }

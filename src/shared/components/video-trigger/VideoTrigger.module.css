@@ -26,8 +26,8 @@
 .videoControl {
     @mixin position absolute, 0, 0, 0, 0;
 
-    width: 60px;
-    height: 60px;
+    width: 6rem;
+    height: 6rem;
     z-index: 2;
     margin: auto;
     background-color: transparent;
@@ -38,11 +38,11 @@
     & > i {
         @mixin position absolute, 0, 0, 0, 0;
 
-        width: 60px;
-        height: 60px;
+        width: 6rem;
+        height: 6rem;
     }
 }
 
 .videoContainer:hover > .videoControl {
-    box-shadow: inset 0 0 0 30px var(--color-indian-khaki);
+    box-shadow: inset 0 0 0 3rem var(--color-indian-khaki);
 }

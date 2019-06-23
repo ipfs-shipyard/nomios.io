@@ -32,7 +32,7 @@
     }
 }
 
-@media (--layout-lt-small) {
+@media (--layout-lte-small) {
     .layoutContent.layoutContent {
         padding: 0;
     }

@@ -33,8 +33,8 @@
     right: 0;
     bottom: 0;
     left: 0;
-    width: 560px;
-    height: 315px;
+    width: 5.6rem;
+    height: 3.15rem;
     margin: auto;
 }
 
@@ -42,9 +42,9 @@
     display: none;
 }
 
-@media(width <= 600px) {
+@media (width <= 37.5rem) {  /* 600px * 0.625 */
     .video {
-        width: 300px;
-        height: 168.75px;
+        width: 30rem;
+        height: 16.875rem;
     }
 }

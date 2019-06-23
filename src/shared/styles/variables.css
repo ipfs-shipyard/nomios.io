@@ -26,7 +26,7 @@
 :root {
     /* App maximum width
     ============================================= */
-    --layout-container-width: 1760px;
+    --layout-container-width: 176rem;
 
     /* Spacing around main contents of the website
        ============================================= */
@@ -34,7 +34,7 @@
 
     /* header
        ============================================= */
-    --layout-header-height: 120px;
+    --layout-header-height: 12rem;
 }
 
 @media(--layout-lte-medium) {

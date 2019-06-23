@@ -21,20 +21,20 @@
         position: absolute;
         bottom: 0;
         left: 50%;
-        width: 65px;
-        height: 94px;
+        width: 6.5rem;
+        height: 9.4rem;
         transform: translate(-50%, 0);
         cursor: pointer;
 
         & .vision {
             position: absolute;
-            bottom: 70px;
+            bottom: 7rem;
             left: 50%;
             transform: translate(-50%, 0);
             color: var(--color-dawn-pink);
-            font-size: 12px;
+            font-size: 1.2rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 0.3rem;
 
             & a {
                 color: var(--color-dawn-pink);
@@ -55,9 +55,9 @@
                 position: absolute;
                 top: 100%;
                 left: 50%;
-                width: 2px;
-                height: 50px;
-                margin-top: 20px;
+                width: 0.2rem;
+                height: 5rem;
+                margin-top: 2rem;
                 transform: translate(-50%, 0);
                 animation: animateVisionEnter 2s cubic-bezier(1, 0, 0, 1) 0s infinite, animateVisionExit 2s cubic-bezier(1, 0, 0, 1) 0s infinite;
                 stroke: white;

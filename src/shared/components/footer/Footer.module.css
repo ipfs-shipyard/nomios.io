@@ -5,14 +5,14 @@
 @mixin layout-main null, .footerWrapper;
 
 .footerWrapper {
-    min-height: 140px;
+    min-height: 14rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: var(--color-white);
     color: color(var(--color-celtic) a(60%));
-    font-size: 12px;
-    letter-spacing: -0.09px;
+    font-size: 1.2rem;
+    letter-spacing: -0.009rem;
 
     & a,
     & a:hover,
@@ -31,7 +31,7 @@
     & .githubLink,
     & .githubLinkTablet {
         & i {
-            margin-left: 20px;
+            margin-left: 2rem;
         }
     }
 
@@ -51,7 +51,7 @@
 
     & .plBrand {
         width: 4em;
-        margin-left: 5px;
+        margin-left: 0.5rem;
         font-size: 2.5rem;
     }
 }
@@ -88,8 +88,8 @@
 
 @media(--layout-lte-small) {
     .footerWrapper {
-        padding-top: 40px;
-        padding-bottom: 30px;
+        padding-top: 4rem;
+        padding-bottom: 3rem;
         flex-direction: column;
 
         & .githubLinkTablet,
@@ -98,7 +98,7 @@
         }
 
         & .copyrightMobile {
-            margin-top: 40px;
+            margin-top: 4rem;
             margin-bottom: 0;
             display: block;
         }
