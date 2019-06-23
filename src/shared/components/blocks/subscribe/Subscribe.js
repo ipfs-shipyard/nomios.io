@@ -83,7 +83,7 @@ class Subscribe extends Component {
                         variant="secondary"
                         errorClassName={ submitFailed ? styles.error : undefined }
                         successClassName={ submitSucceeded ? styles.success : undefined }>
-                        JOIN NOW
+                        Join now
                     </Button>
                 }
             </form>

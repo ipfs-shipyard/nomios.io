@@ -43,7 +43,7 @@ class Concept extends Component {
                         </div>
                         <a className={ styles.buttonBox } href="https://github.com/ipfs-shipyard/pm-idm/blob/master/docs/idm-concept.md" target="_blank" rel="noopener noreferrer">
                             <Button variant="secondary">
-                                LEARN MORE
+                                Learn more
                             </Button>
                         </a>
                     </div>
