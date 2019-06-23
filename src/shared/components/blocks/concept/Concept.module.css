@@ -32,12 +32,11 @@
         }
 
         & .description {
-            height: 50px;
-            margin-top: 20px;
+            margin-top: 2rem;
         }
 
         & .buttonBox {
-            margin-top: 65px;
+            margin-top: 6.5rem;
         }
     }
 }
@@ -48,11 +47,11 @@
 
     & .videoBox {
         position: relative;
-        width: 58%;
-        padding: 45px;
-        transform: translateX(calc(-45px - 3.7%));
-        border: solid 1px var(--color-indian-khaki);
-        border-radius: 28px;
+        width: 85%;
+        padding: 4.5rem;
+        transform: translateX(calc(-4.5rem - 3.6%));
+        border: solid 0.1rem var(--color-indian-khaki);
+        border-radius: 2.8rem;
     }
 }
 
@@ -67,26 +66,25 @@
     }
 
     .leftSide {
-        height: 725px;
+        height: 72.5rem;
         flex: unset;
 
         & .content {
-            margin: 120px 23%;
+            margin: 12rem 23%;
         }
 
         & .buttonBox {
-            margin-top: 40px;
+            margin-top: 4rem;
         }
     }
 
     .rightSide {
-        height: 375px;
+        height: 37.5rem;
         flex: unset;
 
         & .videoBox {
-            width: 88%;
             margin-left: 0;
-            transform: translateY(calc(-50% + 4px));
+            transform: translateY(-50%);
         }
     }
 
@@ -98,18 +96,14 @@
 
 @media(--layout-lte-small) {
     .leftSide {
-        height: 550px;
+        height: 55rem;
 
         & .content {
-            margin: 100px 5%;
-
-            & .description {
-                height: auto;
-            }
+            margin: 10rem 5%;
 
             & .buttonBox {
                 width: 100%;
-                margin-top: 50px;
+                margin-top: 5rem;
 
                 & button {
                     width: 100%;
@@ -120,10 +114,9 @@
 
     .rightSide {
         & .videoBox {
-            width: 88%;
-            padding: 20px;
+            padding: 2rem;
             transform: translateY(-50%);
-            border-radius: 12px;
+            border-radius: 1.2rem;
         }
     }
 }
