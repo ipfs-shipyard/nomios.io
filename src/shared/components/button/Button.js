@@ -94,7 +94,7 @@ class Button extends Component {
 }
 
 Button.propTypes = {
-    variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'whiteBorder', 'tanBorder']),
+    variant: PropTypes.oneOf(['primary', 'secondary']),
     disabled: PropTypes.bool,
     fullWidth: PropTypes.bool,
     feedback: PropTypes.oneOf(['none', 'loading', 'success', 'error']),

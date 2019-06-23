@@ -63,7 +63,7 @@
         &:enabled {
             &:active .textBlock,
             &:focus:not(:hover) .textBlock {
-                background-color: var(--color-dune);
+                opacity: 0.8;
             }
 
             &:hover:not(:active) .textBlock {
@@ -92,7 +92,7 @@
         &:enabled {
             &:active .textBlock,
             &:focus:not(:hover) .textBlock {
-                background-color: var(--color-dune);
+                opacity: 0.8;
             }
 
             &:hover:not(:active) .textBlock {
@@ -102,90 +102,6 @@
 
         &:disabled {
             opacity: 0.3;
-        }
-    }
-
-    &.tertiary {
-        & .textBlock {
-            background-color: var(--color-celtic);
-            color: var(--color-white);
-
-            & .progressBar {
-                top: -0.1rem;
-                right: -0.1rem;
-                bottom: -0.1rem;
-                left: -0.1rem;
-            }
-        }
-
-        &:enabled {
-            &:active .textBlock,
-            &:focus:not(:hover) .textBlock {
-                background-color: var(--color-dune);
-            }
-
-            &:hover:not(:active) .textBlock {
-                background-color: color(var(--color-indian-khaki));
-                color: var(--color-white);
-            }
-        }
-
-        &:disabled .textBlock {
-            border-color: color(var(--color-white) alpha(0.3));
-            color: color(var(--color-white) alpha(0.5));
-        }
-    }
-
-    &.whiteBorder {
-        & .textBlock {
-            border: solid 0.2rem var(--color-indian-khaki);
-            background-color: var(--color-white);
-            color: var(--color-celtic);
-            fill: var(--color-celtic);
-        }
-
-        &:enabled {
-            &:active .textBlock,
-            &:focus:not(:hover) .textBlock {
-                background-color: var(--color-dune);
-            }
-
-            &:hover:not(:active) .textBlock {
-                background-color: var(--color-indian-khaki);
-                color: var(--color-white);
-                fill: var(--color-white);
-            }
-        }
-
-        &:disabled .textBlock {
-            background-color: color(var(--color-white) alpha(0.2));
-            color: color(var(--color-armadillo) alpha(0.5));
-        }
-    }
-
-    &.indian-khakiBorder {
-        & .textBlock {
-            border: solid 0.2rem var(--color-celtic);
-            background-color: var(--color-indian-khaki);
-            color: var(--color-white);
-        }
-
-        &:enabled {
-            &:active .textBlock,
-            &:focus:not(:hover) .textBlock {
-                background-color: var(--color-dune);
-            }
-
-            &:hover:not(:active) .textBlock {
-                border: none;
-                background-color: var(--color-white);
-                color: var(--color-celtic);
-            }
-        }
-
-        &:disabled .textBlock {
-            background-color: color(var(--color-white) alpha(0.2));
-            color: color(var(--color-armadillo) alpha(0.5));
         }
     }
 
@@ -256,37 +172,6 @@
 
             & .crossmark svg path {
                 stroke: var(--color-white);
-            }
-        }
-    }
-
-    /* Tertiary & Negative */
-
-    &.tertiary,
-    &.negative {
-        &.progressVisible .textBlock {
-            border-color: transparent;
-            background-color: color(var(--color-white) alpha(0.2));
-            color: var(--color-white);
-        }
-
-        & .textBlock .progressBar {
-            background-color: color(var(--color-white) alpha(0.2));
-        }
-
-        & .successBlock {
-            background-color: var(--color-white);
-
-            & .checkmark svg path {
-                stroke: var(--color-ocean-green);
-            }
-        }
-
-        & .errorBlock {
-            background-color: var(--color-white);
-
-            & .crossmark svg path {
-                stroke: var(--color-monza);
             }
         }
     }

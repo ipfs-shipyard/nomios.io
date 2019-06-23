@@ -49,12 +49,12 @@
             & a:not(:last-child) {
                 margin-right: 4rem;
 
-                @media (--layout-lte-large) {
-                    margin-right: 1.2rem;
+                @media (width <= 75em) {  /* 1200px * 0.625 */
+                    margin-right: 3rem;
                 }
 
-                @media (--layout-lte-medium) {
-                    margin-right: 0.4rem;
+                @media (width <= 68.75em) {  /* 1100 * 0.625 */
+                    margin-right: 2.5rem;
                 }
             }
         }
