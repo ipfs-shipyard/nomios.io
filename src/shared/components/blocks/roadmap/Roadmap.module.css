@@ -5,50 +5,47 @@
 @mixin layout-main .roadmap, .roadmapWrapper;
 
 .roadmap {
-    --right-width: 50%;
+    --right-width: 45%;
 
     background: var(--color-celtic);
 
     & .title {
         @mixin typography-h2 rem;
 
-        padding-top: 150px;
+        padding-top: 15rem;
         color: var(--color-indian-khaki);
     }
 
     & .tableWrapper {
-        padding-bottom: 200px;
+        padding-bottom: 20rem;
 
         & .tableRow {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-            border-bottom: 1px solid color(var(--color-white) a(10%));
+            border-bottom: 0.1rem solid color(var(--color-white) a(10%));
             color: color(var(--color-dawn-pink) a(70%));
 
-            & .tableLabel {
+            & .tableCell {
                 @mixin typography-body-1 rem;
 
-                margin: 20px 20px 20px 0;
+                margin: 2rem 2rem 2rem 0;
                 display: flex;
                 flex: 1;
-
-                &.rightSide:first-child {
-                    margin-right: 0;
-                }
 
                 &:last-child {
                     margin-right: 0;
                 }
 
-                &.labelMobile {
+                &.headerItemLabel {
                     display: none;
                 }
             }
 
-            & .bodyStatus {
+            & .itemStatus {
                 width: var(--right-width);
                 display: flex;
+                flex: 0 0 auto;
                 justify-content: space-between;
 
                 & .dot {
@@ -66,8 +63,8 @@
             color: var(--color-white);
 
             & .tableHeaderIcon {
-                width: 12px;
-                margin-left: 14px;
+                width: 1.2rem;
+                margin-left: 1.4rem;
             }
         }
     }
@@ -75,13 +72,15 @@
 
 @media (--layout-lte-medium) {
     .roadmap {
+        --right-width: 40%;
+
         & .title {
-            padding-top: 120px;
-            padding-bottom: 20px;
+            padding-top: 12rem;
+            padding-bottom: 2rem;
         }
 
         & .tableWrapper {
-            padding-bottom: 150px;
+            padding-bottom: 15rem;
         }
     }
 }
@@ -91,28 +90,28 @@
         --right-width: 25%;
 
         & .title {
-            padding-top: 80px;
-            padding-bottom: 35px;
+            padding-top: 8rem;
+            padding-bottom: 3.5rem;
         }
 
         & .tableWrapper {
-            padding-bottom: 100px;
+            padding-bottom: 10rem;
 
             & .tableRow {
-                & .tableLabel {
+                & .tableCell {
                     flex: initial;
 
-                    &.rightSide {
-                        max-width: calc(100% - var(--right-width) - 5%);
+                    &.itemLabel {
+                        max-width: calc(100% - var(--right-width));
                     }
 
-                    &.labelMobile {
+                    &.headerItemLabel {
                         display: block;
                         color: var(--color-dawn-pink);
                     }
                 }
 
-                & .bodyStatus {
+                & .itemStatus {
                     & .bodyLabel {
                         margin-left: 0;
                     }

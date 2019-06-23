@@ -67,7 +67,7 @@ const Roadmap = ({ className }) => (
             </div>
             <div className={ styles.tableWrapper }>
                 <div className={ classNames(styles.tableRow, styles.headerRow) }>
-                    <div className={ classNames(styles.tableLabel, styles.labelMobile) }>
+                    <div className={ classNames(styles.tableCell, styles.headerItemLabel) }>
                         Building phase
                     </div>
                     <div className={ styles.tableHeader }>
@@ -76,7 +76,7 @@ const Roadmap = ({ className }) => (
                                 const ElementIcon = el.icon;
 
                                 return (
-                                    <div className={ styles.tableLabel } key={ el.name }>
+                                    <div className={ styles.tableCell } key={ el.name }>
                                         <div className={ styles.headerName }>{ el.name }</div>
                                         <ElementIcon className={ styles.tableHeaderIcon } />
                                     </div>
@@ -89,12 +89,12 @@ const Roadmap = ({ className }) => (
                     {
                         tableContents.rows.map((el) => (
                             <div className={ styles.tableRow } key={ el.name }>
-                                <div className={ classNames(styles.tableLabel, styles.rightSide) }>
+                                <div className={ classNames(styles.tableCell, styles.itemLabel) }>
                                     { el.name }
                                 </div>
-                                <div className={ styles.bodyStatus }>
+                                <div className={ styles.itemStatus }>
                                     { el.status.map((stat, index) => (
-                                        <div className={ classNames(styles.tableLabel, styles.bodyLabel) } key={ index }>
+                                        <div className={ classNames(styles.tableCell, styles.bodyLabel) } key={ index }>
                                             { stat ?
                                                 <div className={ styles.dot }>&#9679;</div> :
                                                 <div className={ styles.dot }>&#9675;</div>
