@@ -12,7 +12,7 @@ const VideoModal = ({ showing, src, onClick }) => (
             src={ `${src}?enablejsapi=1` }
             frameBorder="0"
             allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-            allowFullscreen />
+            allowFullScreen />
     </div>
 );
 
