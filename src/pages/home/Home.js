@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Header from '../../shared/components/header';
+import Observer from '@researchgate/react-intersection-observer';
+import Header, { HEADER_HEIGHT } from '../../shared/components/header';
 import Footer from '../../shared/components/footer';
 import Catchphrase from '../../shared/components/blocks/catchphrase';
 import CheckGithub from '../../shared/components/blocks/check-github';
@@ -14,26 +15,23 @@ import styles from './Home.module.css';
 
 class Home extends Component {
     state = {
-        resizeHeader: false,
+        smallHeader: false,
     };
 
-    componentDidMount() {
-        window.addEventListener('scroll', this.handleScroll);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
-    }
-
     render() {
-        const { resizeHeader } = this.state;
+        const { smallHeader } = this.state;
 
         return (
             <div className={ styles.home }>
-                <Header resize={ resizeHeader } className={ resizeHeader && styles.smallHeader } />
+                <Header small={ smallHeader } />
 
                 <main className={ styles.main }>
-                    <Hero />
+                    <Observer
+                        rootMargin={ `-${HEADER_HEIGHT}px 0px 0px 0px` }
+                        onChange={ this.handleHeroIntersection } >
+                        <Hero />
+                    </Observer>
+
                     <Why />
                     <Concept />
                     <Catchphrase />
@@ -49,21 +47,8 @@ class Home extends Component {
         );
     }
 
-    handleScroll = () => {
-        const { resizeHeader } = this.state;
-        const whyEl = document.getElementById('why');
-
-        if (!whyEl) {
-            return;
-        }
-
-        const whyBoundingRect = whyEl.getBoundingClientRect();
-
-        if (whyBoundingRect.top < 120) {
-            !resizeHeader && this.setState({ resizeHeader: true });
-        } else {
-            resizeHeader && this.setState({ resizeHeader: false });
-        }
+    handleHeroIntersection = ({ isIntersecting }) => {
+        this.setState({ smallHeader: !isIntersecting });
     };
 }
 

@@ -1,56 +1,51 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
+import { throttle } from 'lodash';
 import styles from './Header.module.css';
 import Logo from '../logo';
 import Button from '../button';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
 
-const anchorsObject = [
-    {
-        value: 'Benefits',
-        anchor: 'why',
-    },
-    {
-        value: 'Concept',
-        anchor: 'concept',
-    },
-    {
-        value: 'Roadmap',
-        anchor: 'roadmap',
-    },
-];
-
-const HEADER_OFFSET = 80;
+export const HEADER_HEIGHT = 120;
+export const HEADER_HEIGHT_SMALL = 80;
+export const HEADER_FIXED_BREAKPOINT = 1024;
 
 class Header extends Component {
     state = {
-        offset: window.innerWidth <= 1024 ? 0 : HEADER_OFFSET,
+        anchorOffset: 0,
     };
 
     componentDidMount() {
-        window.addEventListener('resize', this.updateWindowDimensions);
+        this.handleResize();
+        window.addEventListener('resize', this.handleResize, { passive: true });
     }
 
     componentWillUnmount() {
-        window.removeEventListener('resize', this.updateWindowDimensions);
+        window.removeEventListener('resize', this.handleResize, { passive: true });
     }
 
     render() {
-        const { offset } = this.state;
+        const { small, className } = this.props;
+        const { anchorOffset } = this.state;
 
         return (
-            <header className={ classNames(styles.header, this.props.className) } >
+            <header className={ classNames(styles.header, small && styles.small, className) } >
                 <div className={ (styles.headerContent) }>
                     <div className={ styles.anchorsContainer }>
-                        {anchorsObject.map((item) => <AnchorLink offset={ 79 } href={ `#${item.anchor}` } key={ item.value }> {item.value} </AnchorLink>)}
+                        <AnchorLink href="#why" offset={ anchorOffset }>Benefits</AnchorLink>
+                        <AnchorLink href="#concept" offset={ anchorOffset }>Concept</AnchorLink>
+                        <AnchorLink href="#roadmap" offset={ anchorOffset - 2 } >Roadmap</AnchorLink>
                     </div>
-                    <Logo className={ styles.headerLogo } variant={ !this.props.resize ? 'horizontal' : 'symbol' } />
+
+                    <div className={ styles.logoContainer }>
+                        <Logo className={ styles.symbol } variant="symbol" />
+                        <Logo className={ styles.logotype } variant="logotype" />
+                    </div>
+
                     <div className={ styles.buttonContainer } >
-                        <AnchorLink offset={ offset } href="#subscribe">
-                            <Button variant={ 'secondary' }>
-                    JOIN US
-                            </Button>
+                        <AnchorLink href="#subscribe" offset={ anchorOffset } >
+                            <Button variant="secondary">Join us</Button>
                         </AnchorLink>
                     </div>
                 </div>
@@ -58,16 +53,15 @@ class Header extends Component {
         );
     }
 
-    updateWindowDimensions = () => {
-        const { offset } = this.state;
-
-        offset === HEADER_OFFSET && window.innerWidth <= 1024 && this.setState({ offset: 0 });
-        offset === 0 && window.innerWidth > 1024 && this.setState({ offset: HEADER_OFFSET });
-    };
+    handleResize = throttle(() => {
+        this.setState({
+            anchorOffset: window.innerWidth <= HEADER_FIXED_BREAKPOINT ? 0 : HEADER_HEIGHT_SMALL,
+        });
+    }, 250);
 }
 
 Header.propTypes = {
-    resize: PropTypes.bool,
+    small: PropTypes.bool,
     className: PropTypes.string,
 };
 
