@@ -3,10 +3,20 @@
 
 .sideBySide {
     display: flex;
+
+    & .left,
+    & .right {
+        flex: 0 0 50%;
+    }
 }
 
 @media (--layout-lte-small) {
     .sideBySide {
         flex-direction: column;
+
+        & .left,
+        & .right {
+            flex-basis: 100%;
+        }
     }
 }
