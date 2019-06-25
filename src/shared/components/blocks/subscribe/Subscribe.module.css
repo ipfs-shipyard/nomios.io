@@ -139,7 +139,7 @@
     }
 }
 
-@media (--layout-lte-medium) {
+@media (--layout-lt-medium) {
     .subscribe .leftSide {
         flex-basis: 65%;
     }

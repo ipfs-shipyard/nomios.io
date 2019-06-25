@@ -15,6 +15,13 @@
 @custom-media --layout-lte-large (width <= 90em); /* 1440px * 0.625 */
 @custom-media --layout-lte-xlarge (width <= 120em); /* 1920px * 0.625 */
 
+@custom-media --layout-lt-xxsmall (width < 23.125em); /* 370px * 0.625 */
+@custom-media --layout-lt-xsmall (width < 30em); /* 480px * 0.625 */
+@custom-media --layout-lt-small (width < 48em); /* 768px * 0.625 */
+@custom-media --layout-lt-medium (width < 64em); /* 1024px * 0.625 */
+@custom-media --layout-lt-large (width < 90em); /* 1440px * 0.625 */
+@custom-media --layout-lt-xlarge (width < 120em); /* 1920px * 0.625 */
+
 /* Use these if you are developing mobile first and want to target higher resolutions */
 
 @custom-media --layout-gt-xxsmall (width > 23.125em); /* 370px * 0.625 */
@@ -23,6 +30,13 @@
 @custom-media --layout-gt-medium (width > 64em); /* 1024px * 0.625 */
 @custom-media --layout-gt-large (width > 90em); /* 1440px * 0.625 */
 @custom-media --layout-gt-xlarge (width > 120em); /* 1920px * 0.625 */
+
+@custom-media --layout-gte-xxsmall (width >= 23.125em); /* 370px * 0.625 */
+@custom-media --layout-gte-xsmall (width >= 30em); /* 480px * 0.625 */
+@custom-media --layout-gte-small (width >= 48em); /* 768px * 0.625 */
+@custom-media --layout-gte-medium (width >= 64em); /* 1024px * 0.625 */
+@custom-media --layout-gte-large (width >= 90em); /* 1440px * 0.625 */
+@custom-media --layout-gte-xlarge (width >= 120em); /* 1920px * 0.625 */
 
 /* Use these to target a specific range */
 
