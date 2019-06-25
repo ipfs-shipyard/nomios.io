@@ -4,7 +4,7 @@
 @import "../../../styles/mixins/typography";
 
 .roadmap {
-    --right-width: 45%;
+    --right-width: 50%;
 
     padding-top: var(--layout-block-padding-y);
     padding-bottom: var(--layout-block-padding-y);
@@ -15,7 +15,7 @@
         color: var(--color-indian-khaki);
     }
 
-    & .tableWrapper {
+    & .table {
         & .tableRow {
             display: flex;
             flex-direction: row;
@@ -25,53 +25,58 @@
 
             & .tableCell {
                 @mixin typography-body-1 rem;
-
-                margin: 2rem 2rem 2rem 0;
+                padding: 2rem 0;
                 display: flex;
-                flex: 1;
+                align-items: center;
 
                 &:last-child {
                     margin-right: 0;
                 }
-
-                &.headerItemLabel {
-                    display: none;
-                }
             }
 
             & .itemStatus {
-                width: var(--right-width);
                 display: flex;
-                flex: 0 0 auto;
+                flex: 0 0 var(--right-width);
                 justify-content: space-between;
 
-                & .dot {
-                    font-size: 1.3em;
+                & .tableCell {
+                    flex: 1 1 calc(100% / 3);
                 }
+            }
+
+            & .itemName {
+                padding-right: 2rem;
+                flex: 1 1 calc(100% - var(--right-width));
             }
         }
 
         & .tableHeader {
-            position: relative;
-            width: var(--right-width);
-            margin-left: auto;
-            display: flex;
-            justify-content: space-between;
-            opacity: 0.8;
-            color: var(--color-dawn-pink);
-
-            & .tableHeaderIcon {
-                width: 1.2rem;
-                margin-left: 1.4rem;
+            & .itemName {
+                visibility: hidden;
+                opacity: 0.5;
             }
+
+            & .itemStatus {
+                opacity: 0.7;
+
+                & .statusName {
+                    margin-right: 1.4rem;
+                }
+
+                & .statusIcon {
+                    width: 1.2rem;
+                }
+            }
+        }
+
+        & .tableBody .itemStatus .tableCell {
+            font-size: 1.3em;
         }
     }
 }
 
 @media (--layout-lte-medium) {
     .roadmap {
-        --right-width: 40%;
-
         & .title {
             margin-bottom: 2rem;
         }
@@ -80,43 +85,32 @@
 
 @media (--layout-lte-small) {
     .roadmap {
-        --right-width: 25%;
+        --right-width: 27%;
 
         & .title {
             margin-bottom: 3.5rem;
         }
 
-        & .tableWrapper {
+        & .table {
             & .tableRow {
-                & .tableCell {
-                    flex: initial;
-
-                    &.itemLabel {
-                        max-width: calc(100% - var(--right-width));
-                    }
-
-                    &.headerItemLabel {
-                        display: block;
-                        color: var(--color-dawn-pink);
-                    }
+                & .itemStatus .tableCell {
+                    justify-content: flex-end;
                 }
 
-                & .itemStatus {
-                    & .bodyLabel {
-                        margin-left: 0;
-                    }
+                & .itemName {
+                    padding-right: 0;
                 }
             }
 
             & .tableHeader {
-                & .tableHeaderIcon {
-                    margin-left: 0;
+                & .itemName {
+                    visibility: visible;
+                }
+
+                & .itemStatus .statusName {
+                    display: none;
                 }
             }
         }
-    }
-
-    .headerName {
-        display: none;
     }
 }

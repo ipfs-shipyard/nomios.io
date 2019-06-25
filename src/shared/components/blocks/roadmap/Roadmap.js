@@ -12,45 +12,36 @@ class Roadmap extends PureComponent {
         return (
             <LayoutContainer id="roadmap" className={ classNames(styles.roadmap, className) }>
                 <div className={ styles.title }>Roadmap</div>
-                <div className={ styles.tableWrapper }>
-                    <div className={ classNames(styles.tableRow, styles.headerRow) }>
-                        <div className={ classNames(styles.tableCell, styles.headerItemLabel) }>Building phase</div>
-                        <div className={ styles.tableHeader }>
-                            {
-                                status.map((el) => {
-                                    const ElementIcon = el.icon;
+                <div className={ styles.table }>
+                    <div className={ classNames(styles.tableRow, styles.tableHeader) }>
+                        <div className={ classNames(styles.tableCell, styles.itemName) }>Building phase</div>
+                        <div className={ styles.itemStatus }>
+                            { status.map((el) => {
+                                const ElementIcon = el.icon;
 
-                                    return (
-                                        <div className={ styles.tableCell } key={ el.name }>
-                                            <div className={ styles.headerName }>{ el.name }</div>
-                                            <ElementIcon className={ styles.tableHeaderIcon } />
-                                        </div>
-                                    );
-                                })
-                            }
+                                return (
+                                    <div className={ styles.tableCell } key={ el.name }>
+                                        <span className={ styles.statusName }>{ el.name }</span>
+                                        <ElementIcon className={ styles.statusIcon } />
+                                    </div>
+                                );
+                            }) }
                         </div>
                     </div>
-                    <div className={ styles.tableBody }>
-                        {
-                            rows.map((el) => (
-                                <div className={ styles.tableRow } key={ el.name }>
-                                    <div className={ classNames(styles.tableCell, styles.itemLabel) }>
-                                        { el.name }
+                    { rows.map((el) => (
+                        <div className={ styles.tableRow } key={ el.name }>
+                            <div className={ classNames(styles.tableCell, styles.itemName) }>
+                                { el.name }
+                            </div>
+                            <div className={ styles.itemStatus }>
+                                { el.status.map((stat, index) => (
+                                    <div className={ styles.tableCell } key={ index }>
+                                        { stat ? '●' : '○' }
                                     </div>
-                                    <div className={ styles.itemStatus }>
-                                        { el.status.map((stat, index) => (
-                                            <div className={ classNames(styles.tableCell, styles.bodyLabel) } key={ index }>
-                                                { stat ?
-                                                    <div className={ styles.dot }>&#9679;</div> :
-                                                    <div className={ styles.dot }>&#9675;</div>
-                                                }
-                                            </div>
-                                        )) }
-                                    </div>
-                                </div>
-                            ))
-                        }
-                    </div>
+                                )) }
+                            </div>
+                        </div>
+                    )) }
                 </div>
             </LayoutContainer>
         );
