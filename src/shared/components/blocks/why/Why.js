@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import LayoutContainer from '../../../components/layout-container/LayoutContainer';
 import { title, blocks } from './data';
+import { LayoutContainer } from '../../layout';
 import { ArrowRightIcon } from '../../icon';
-import styles from './Why.module.css';
 import Slider from 'react-slick';
+import styles from './Why.module.css';
 
-const settings = {
+const SLIDER_SETTINGS = {
     dots: true,
     infinite: true,
     speed: 500,
@@ -19,48 +19,6 @@ const settings = {
     pauseOnHover: false,
     arrows: false,
 };
-
-class Why extends Component {
-    slider = React.createRef();
-
-    state = {
-        stopTimer: false,
-        initSliderAnimation: false,
-    };
-
-    componentDidMount() {
-        this.setState({ initSliderAnimation: true });
-    }
-
-    render() {
-        const { className } = this.props;
-        const { stopTimer, initSliderAnimation } = this.state;
-
-        return (
-            <LayoutContainer id="why" className={ classNames(styles.why, className) } contentClassName={ styles.whyContent }>
-                <div className={ classNames(styles.list, styles.listDesktop) }>
-                    <div className={ styles.blockTitle }><h2>{ title }</h2></div>
-                    { blocks.map((block, index) => <Block key={ index } order={ index } { ...block } />) }
-                </div>
-                <div className={ classNames(styles.list, styles.listMobile, stopTimer && styles.timerStopped, initSliderAnimation && styles.startDotsAnimation) }>
-                    <LayoutContainer className={ styles.blockTitleMobile }>
-                        <div className={ styles.blockTitle }><h2>{ title }</h2></div>
-                    </LayoutContainer>
-                    <Slider { ...settings } onSwipe={ this.handleSwipe } ref={ this.slider }>
-                        { blocks.map((block, index) => <Block key={ index } order={ index } { ...block } />) }
-                    </Slider>
-                </div>
-            </LayoutContainer>
-        );
-    }
-
-    handleSwipe = () => {
-        const { stopTimer } = this.state;
-
-        this.slider.current.slickPause();
-        !stopTimer && this.setState({ stopTimer: true });
-    };
-}
 
 const Block = ({ icon, title, description, link, order }) => (
     <div className={ classNames(styles.block, styles[`block${order + 1}`]) }>
@@ -83,6 +41,49 @@ Block.propTypes = {
     link: PropTypes.string,
     order: PropTypes.number,
 };
+
+class Why extends PureComponent {
+    slider = React.createRef();
+
+    state = {
+        stopTimer: false,
+        initSliderAnimation: false,
+    };
+
+    componentDidMount() {
+        this.setState({ initSliderAnimation: true });
+    }
+
+    render() {
+        const { className } = this.props;
+        const { stopTimer, initSliderAnimation } = this.state;
+
+        return (
+            <LayoutContainer
+                id="why"
+                className={ classNames(styles.why, className) }
+                contentClassName={ styles.whyContent }>
+                <div className={ classNames(styles.list, styles.listDesktop) }>
+                    <div className={ styles.blockTitle }><h2>{ title }</h2></div>
+                    { blocks.map((block, index) => <Block key={ index } order={ index } { ...block } />) }
+                </div>
+                <div className={ classNames(styles.list, styles.listMobile, stopTimer && styles.timerStopped, initSliderAnimation && styles.startDotsAnimation) }>
+                    <div className={ styles.blockTitleMobile }>
+                        <div className={ styles.blockTitle }><h2>{ title }</h2></div>
+                    </div>
+                    <Slider { ...SLIDER_SETTINGS } onSwipe={ this.handleSwipe } ref={ this.slider }>
+                        { blocks.map((block, index) => <Block key={ index } order={ index } { ...block } />) }
+                    </Slider>
+                </div>
+            </LayoutContainer>
+        );
+    }
+
+    handleSwipe = () => {
+        this.slider.current.slickPause();
+        this.setState({ stopTimer: true });
+    };
+}
 
 Why.propTypes = {
     className: PropTypes.string,

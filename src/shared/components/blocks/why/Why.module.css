@@ -1,6 +1,7 @@
 @import "../../../styles/colors";
 @import "../../../styles/mixins/position";
 @import "../../../styles/mixins/typography";
+@import "../../../styles/mixins/layout";
 @import "../../../styles/custom-medias";
 
 :root {
@@ -12,8 +13,6 @@
 }
 
 .list {
-    margin: 0;
-    padding: 0;
     display: flex;
     flex-wrap: wrap;
     list-style: none;
@@ -123,6 +122,10 @@
     }
 
     .list {
+        & .blockTitle {
+            padding: 0 var(--layout-edge-spacing-x);
+        }
+
         & .link {
             opacity: 1;
 
@@ -154,7 +157,7 @@
     .list {
         & .block {
             min-height: 45rem;
-            padding: 3rem 2rem 4rem;
+            padding: var(--layout-edge-spacing-x) var(--layout-edge-spacing-x) calc(var(--layout-edge-spacing-x) + 1rem);
             flex-basis: 100%;
         }
 
@@ -181,7 +184,7 @@
 }
 
 /* ==========================================================================
-   carousel styles
+   Carousel styles
    ========================================================================== */
 
 :global(.slick-slider) {
@@ -281,6 +284,11 @@
 }
 
 :global(.slick-dots) {
+    position: absolute;
+    right: var(--layout-edge-spacing-x);
+    bottom: 2rem;
+    left: var(--layout-edge-spacing-x);
+
     @mixin position absolute, null, 5%, 2rem, 5%;
     margin: 0;
     padding: 0;
@@ -313,7 +321,7 @@
         opacity: 0;
         background: var(--color-indian-khaki);
         font-size: 0;
-        transition: opacity 0.3s ease-in-out, transform 0s ease-in-out 0.3s;
+        transition: opacity 0.3s ease-in-out, transform 0s linear 0.3s;
         appearance: none;
     }
 }
@@ -321,11 +329,11 @@
 .startDotsAnimation :global(.slick-active) button {
     transform: translate3d(-0.2rem, 0, 0);
     opacity: 1;
-    transition: transform var(--slider-transition-duration) ease-in-out;
+    transition: transform var(--slider-transition-duration) linear;
 }
 
 /* After stopping the timer, only animate opacity when changing slide */
 .timerStopped :global(.slick-dots) :global(.slick-active) button {
     opacity: 1;
-    transition: opacity 0.3s ease-in-out, transform 0s ease-in-out;
+    transition: opacity 0.3s ease-in-out, transform 0s linear;
 }

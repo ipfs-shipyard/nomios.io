@@ -33,19 +33,11 @@
         &.symbol {
             width: 3.5em;
             height: 6em; /* Must have an height otherwise it will have an extra space on IE11 */
-
-            @media (--layout-lte-medium) {
-                height: 4em;
-            }
         }
 
         &.logotype {
             width: 8.5em;
             height: 3.5em; /* Must have an height otherwise it will have an extra space on IE11 */
-
-            @media (--layout-lte-medium) {
-                width: 6.5em;
-            }
         }
 
         & svg {
@@ -53,11 +45,5 @@
             height: inherit;
             display: block;  /* Remove little margin between the svg and its parent */
         }
-    }
-}
-
-@media (--layout-lte-medium) {
-    .container {
-        font-size: 1.3rem;
     }
 }

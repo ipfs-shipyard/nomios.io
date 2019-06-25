@@ -1,49 +1,63 @@
 @import "../../../styles/colors";
+@import "../../../styles/variables";
 @import "../../../styles/custom-medias";
 @import "../../../styles/mixins/typography";
 
 .checkGithub {
-    min-height: 80vh;
-    padding: 3.2rem;
+    background: var(--color-white);
+}
+
+.checkGithubContent {
+    padding-top: var(--layout-block-padding-y);
+    padding-bottom: var(--layout-block-padding-y);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: var(--color-white);
 
-    & .title {
-        @mixin typography-h2 rem;
+    & .wrapper {
+        width: 100%;
+        max-width: 45rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
-        color: var(--color-celtic);
-        text-align: center;
-    }
+        & .title {
+            @mixin typography-h2 rem;
 
-    & .description {
-        @mixin typography-body-1 rem;
+            color: var(--color-celtic);
+            text-align: center;
+        }
 
-        height: 5rem;
-        margin-top: 5rem;
-        color: var(--color-celtic);
-        text-align: center;
-    }
+        & .description {
+            @mixin typography-body-1 rem;
 
-    & .buttonBox {
-        margin: 5rem 0;
+            height: 5rem;
+            margin-top: 5rem;
+            color: var(--color-celtic);
+            text-align: center;
+        }
 
-        & .cta {
-            & .buttonText {
-                display: flex;
+        & .buttonBox {
+            margin-top: 5rem;
 
-                & .logo {
-                    margin-left: 2.5rem;
+            & .cta {
+                & .buttonText {
+                    display: flex;
+
+                    & .logo {
+                        margin-left: 2.5rem;
+                    }
                 }
             }
         }
     }
+
 }
 
-@media(--layout-gt-large) {
-    .checkGithub {
+@media(--layout-gt-medium) {
+    .checkGithubContent .wrapper {
         & .title {
             will-change: transform;
             transform: translateY(20%);
@@ -58,29 +72,26 @@
         }
 
         & .buttonBox {
-            margin: 2rem 0;
+            margin-top: 2rem;
+        }
+    }
+
+    .checkGithubContent:hover .wrapper {
+        & .description {
+            transform: translateY(0);
+            opacity: 1;
         }
 
-        &:hover {
-            & .description {
-                transform: translateY(0);
-                opacity: 1;
-            }
-
-            & .title {
-                transform: translateY(0);
-            }
+        & .title {
+            transform: translateY(0);
         }
     }
 }
 
 @media (--layout-lte-medium) {
-    .checkGithub {
-        min-height: 60vh;
-
+    .checkGithubContent .wrapper {
         & .buttonBox {
-            min-width: 85%;
-            margin-bottom: 0;
+            min-width: 100%;
 
             & .cta {
                 width: 100%;
@@ -90,21 +101,13 @@
 }
 
 @media (--layout-lte-small) {
-    .checkGithub {
+    .checkGithubContent .wrapper {
         & .description {
             margin-top: 3rem;
         }
 
-        & .buttonBox {
-            min-width: 100%;
-
-            & .cta {
-                width: 100%;
-
-                & > div {
-                    padding: 0 3rem;
-                }
-            }
+        & .buttonBox .cta > div {
+            padding: 0 3rem;
         }
     }
 }

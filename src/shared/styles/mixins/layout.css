@@ -1,7 +1,7 @@
 @import "../custom-medias";
 @import "../variables";
 
-@define-mixin layout-main $selector, $container-selector {
+@define-mixin layout-normal $selector, $container-selector {
     $selector {
         flex: 1 0 auto;
     }
@@ -16,14 +16,51 @@
     @media (--layout-lte-container-width) {
         $container-selector {
             max-width: none;
-            padding-left: var(--layout-edge-spacing-x);
-            padding-right: var(--layout-edge-spacing-x);
+            padding: 0 var(--layout-edge-spacing-x);
+        }
+    }
+}
+
+@define-mixin layout-split-left $selector, $container-selector {
+    $container-selector {
+        width: 100%;
+        max-width: calc(var(--layout-container-width) / 2);
+        height: 100%;
+        margin: 0 0 0 auto;
+    }
+
+    @media (--layout-lte-container-width) {
+        $container-selector {
+            max-width: none;
+            padding: 0 calc(var(--layout-edge-spacing-x) * 2);
         }
     }
 
-    @media (--layout-lte-medium) {
+    @media(--layout-lte-medium) {
         $container-selector {
-            padding-left: var(--layout-edge-spacing-x);
+            padding: 0 var(--layout-edge-spacing-x);
+        }
+    }
+}
+
+@define-mixin layout-split-right $selector, $container-selector {
+    $container-selector {
+        width: 100%;
+        max-width: calc(var(--layout-container-width) / 2);
+        height: 100%;
+        margin: 0 auto 0 0;
+    }
+
+    @media (--layout-lte-container-width) {
+        $container-selector {
+            max-width: none;
+            padding: 0 calc(var(--layout-edge-spacing-x) * 2);
+        }
+    }
+
+    @media(--layout-lte-medium) {
+        $container-selector {
+            padding: 0 var(--layout-edge-spacing-x);
         }
     }
 }

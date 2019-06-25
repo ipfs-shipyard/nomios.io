@@ -2,9 +2,10 @@
 @import "../../styles/custom-medias";
 @import "../../styles/mixins/layout";
 
-@mixin layout-main null, .footerWrapper;
+@mixin layout-normal null, .footer;
 
-.footerWrapper {
+.footer {
+    position: relative;
     min-height: 14rem;
     display: flex;
     justify-content: space-between;
@@ -43,6 +44,7 @@
 
     & .logo {
         display: none;
+        font-size: 0.8667rem;
 
         & i {
             fill: var(--color-indian-khaki);
@@ -61,7 +63,7 @@
    ========================================================================== */
 
 @media(--layout-lte-medium) {
-    .footerWrapper {
+    .footer {
         & a,
         & a:hover,
         & a:active,
@@ -87,7 +89,7 @@
 }
 
 @media(--layout-lte-small) {
-    .footerWrapper {
+    .footer {
         padding-top: 4rem;
         padding-bottom: 3rem;
         flex-direction: column;

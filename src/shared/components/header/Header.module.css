@@ -1,13 +1,13 @@
 @import "../../styles/colors";
-@import "../../styles/base/typography.css";
+@import "../../styles/mixins/typography";
 @import "../../styles/mixins/layout";
 
-@mixin layout-main .header, .headerContent;
+@mixin layout-normal .header, .headerContent;
 
 .header {
+    position: relative;
     width: 100%;
     height: var(--layout-header-height);
-    z-index: 3;
     flex: 0;
     background: var(--color-celtic);
     transition: height 0.4s ease-in-out;
@@ -95,11 +95,11 @@
     }
 }
 
-@media (--layout-gt-large) {
+@media (--layout-gt-medium) {
     .header {
         position: fixed;
 
-        & .logoContainer {
+        & .headerContent .logoContainer {
             & .symbol {
                 will-change: transform;
                 transition: transform 0.4s ease;
@@ -114,7 +114,7 @@
         &.small {
             height: 8rem;
 
-            & .logoContainer {
+            & .headerContent .logoContainer {
                 & .symbol {
                     transform: translateX(calc(1.5rem + 8rem / 2)) scale(0.85);
                 }
@@ -128,14 +128,31 @@
 }
 
 @media (--layout-lte-medium) {
-    .anchorsContainer {
-        visibility: hidden;
+    .header .headerContent {
+        & .anchorsContainer {
+            visibility: hidden;
+        }
+
+        & .logoContainer {
+            pointer-events: none;
+
+            & .logotype,
+            & .symbol {
+                font-size: 0.8667rem;
+            }
+        }
     }
 }
 
 @media (--layout-lte-small) {
-    .anchorsContainer,
-    .buttonContainer {
-        display: none;
+    .header .headerContent {
+        & .anchorsContainer,
+        & .buttonContainer {
+            display: none;
+        }
+
+        & .logoContainer {
+            padding: 0;
+        }
     }
 }

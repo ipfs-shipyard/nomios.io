@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { throttle } from 'lodash';
 import styles from './Catchphrase.module.css';
-import LayoutContainer from '../../../components/layout-container/LayoutContainer';
 
 class Catchphrase extends Component {
     isGoingDown = undefined;
@@ -36,15 +35,15 @@ class Catchphrase extends Component {
         };
 
         return (
-            <LayoutContainer
-                contentClassName={ styles.layoutContent }
-                className={ classNames(styles.container, className) } >
-                <div id="catchphraseContainer" className={ styles.blackScreen }>
-                    <div className={ applyClassNames } style={ applyStyles } >
-                        <h2> An interoperable world. Open, but under your control.</h2>
+            <div id="catchphraseContainer" className={ classNames(styles.catchphrase, className) }>
+                <div className={ styles.catchphraseWrapper }>
+                    <div className={ styles.blackScreen }>
+                        <div className={ applyClassNames } style={ applyStyles } >
+                            <h2> An interoperable world. Open, but under your control.</h2>
+                        </div>
                     </div>
                 </div>
-            </LayoutContainer>
+            </div>
         );
     }
 
