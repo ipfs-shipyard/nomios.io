@@ -5,6 +5,7 @@
  */
 
 module.exports = {
+    pathPrefix: '/nomios.io',
     siteMetadata: {
         title: 'Nomios',
     },
