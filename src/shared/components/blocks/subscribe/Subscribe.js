@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import addToMailchimp from 'gatsby-plugin-mailchimp';
 import Lottie from 'react-lottie';
 import { Form, Field } from 'react-final-form';
 import createFocusDecorator from 'final-form-focus';
@@ -139,10 +140,16 @@ class Subscribe extends PureComponent {
     };
 
     handleSubmit = async (values, { reset }) => {
+        let res;
+
         try {
-            await new Promise((resolve) => setTimeout(resolve, 2000));
+            res = await addToMailchimp(values.email);
         } finally {
             this.resetSubmitTimeout = setTimeout(reset, 2500);
+        }
+
+        if (res.result === 'error') {
+            throw new Error(res.msg);
         }
     };
 }

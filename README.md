@@ -57,9 +57,17 @@ Runs the project tests.
 $ npm run release
 ```
 
-Releases the package. Runs tests, lints and builds the project beforehand. If successful, you may publish the release to npm by running `$ npm publish`.
+Releases the package. Runs tests, lints and builds the project beforehand. If successful, it runs `npm run deploy` to deploy the website on GitHub pages.
 
 This command uses [`standard-version`](https://github.com/conventional-changelog/standard-version) underneath. The version is automatically inferred from the [conventional commits](https://conventionalcommits.org/).
+
+### deploy
+
+```sh
+$ npm run deploy
+```
+
+Deploy the website to the `gh-pages` branch, updating `https://nomios.io`. Note that it might take a few minutes to update the website due to caching.
 
 
 ## Contributing

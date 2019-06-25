@@ -21,7 +21,8 @@
     "predeploy": "npm run build",
     "lint": "eslint --ignore-path .gitignore . && stylelint --ignore-path .gitignore \"**/*.css\"",
     "prerelease": "npm t && npm run lint && npm run build",
-    "release": "standard-version"
+    "release": "standard-version",
+    "postrelease": "npm run deploy"
   },
   "dependencies": {
     "@researchgate/react-intersection-observer": "^1.0.1",
@@ -29,6 +30,7 @@
     "classnames": "^2.2.6",
     "final-form-focus": "^1.1.2",
     "gatsby": "^2.7.1",
+    "gatsby-plugin-mailchimp": "^5.1.0",
     "gatsby-plugin-postcss": "^2.0.7",
     "keyboard-only-outlines": "^1.0.3",
     "lodash": "^4.17.11",
