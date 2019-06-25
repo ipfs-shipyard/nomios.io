@@ -68,24 +68,20 @@
     & .link {
         @mixin position absolute, 2rem, 2rem, null, null;
 
-        width: 5rem;
-        height: 5rem;
+        width: 3rem;
+        height: 3rem;
         overflow: hidden;
-        opacity: 1;
         color: var(--color-dawn-pink);
-        transition: opacity 0.3s ease-in-out;
+        transition: color 0.3s ease-in-out;
 
         & > i {
             @mixin position absolute, 0, 0, 0, 0;
 
-            width: 5rem;
-            height: 5rem;
-            transform: translate3d(-30%, 0, 0);
-            transition: transform 0.2s ease-in-out;
+            font-size: 3rem;
+        }
 
-            &:hover {
-                transform: translate3d(0, 0, 0);
-            }
+        &:hover {
+            color: var(--color-indian-khaki);
         }
     }
 }

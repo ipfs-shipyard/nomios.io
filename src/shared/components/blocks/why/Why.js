@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { title, blocks } from './data';
 import { LayoutContainer } from '../../layout';
-import { ArrowRightIcon } from '../../icon';
+import { ExternalLinkIcon } from '../../icon';
 import Slider from 'react-slick';
 import styles from './Why.module.css';
 
@@ -28,7 +28,7 @@ const Block = ({ icon, title, description, link, order }) => (
         {
             link &&
             <a href={ link } rel="noopener noreferrer" target="_blank" className={ styles.link }>
-                <ArrowRightIcon />
+                <ExternalLinkIcon />
             </a>
         }
     </div>
