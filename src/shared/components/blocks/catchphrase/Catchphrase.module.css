@@ -20,7 +20,7 @@
         background-size: cover;
 
         & .scrollable {
-            @mixin position absolute, 50%, null, null, 60%;
+            @mixin position absolute, 50%, null, null, 25%;
             will-change: transform;
             transform: translate3d(0, -50%, 0);
             white-space: nowrap;

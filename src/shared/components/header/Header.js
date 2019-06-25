@@ -17,8 +17,10 @@ class Header extends Component {
     };
 
     componentDidMount() {
-        this.handleResize();
-        window.addEventListener('resize', this.handleResize, { passive: true });
+        if (typeof window !== 'undefined') {
+            this.handleResize();
+            window.addEventListener('resize', this.handleResize, { passive: true });
+        }
     }
 
     componentWillUnmount() {

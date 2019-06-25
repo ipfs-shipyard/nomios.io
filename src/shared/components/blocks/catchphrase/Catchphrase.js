@@ -6,16 +6,18 @@ import styles from './Catchphrase.module.css';
 
 class Catchphrase extends Component {
     isGoingDown = undefined;
-    maxLeftTransform = -100;
+    maxLeftTransform = -50;
     maxRightTransform = 0;
-    translateSteps = 1.2;
+    translateSteps = 0.5;
 
     state = {
         translateValue: 0,
     };
 
     componentDidMount() {
-        window.addEventListener('scroll', this.handleScroll);
+        if (typeof window !== 'undefined') {
+            window.addEventListener('scroll', this.handleScroll);
+        }
     }
 
     componentWillUnmount() {
