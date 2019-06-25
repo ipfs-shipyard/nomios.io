@@ -1,168 +1,216 @@
 @import "../../../styles/colors";
-@import "../../../styles/custom-medias";
+@import "../../../styles/variables";
 @import "../../../styles/mixins/typography";
-@import "../../../styles/mixins/position"
-
-    @mixin layout-main .subscribe, .subscribeWrapper;
+@import "../../../styles/custom-medias";
 
 .subscribe {
+    position: relative;
+    z-index: 5; /* Allow animation to be above the previous block */
     background-color: var(--color-celtic);
 }
 
-.subscribeWrapper {
-    height: 100%;
+.leftSide {
     display: flex;
+    flex-direction: column;
+}
+
+.leftSideContent {
+    position: relative;
+    max-height: 80rem;
+    padding-top: var(--layout-block-padding-y);
+    padding-bottom: var(--layout-block-padding-y);
+    display: flex;
+    flex: 1 1 100vh;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    & .wrapper {
+        width: 100%;
+        max-width: 45rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        & .firstText {
+            @mixin typography-h1 rem;
+            color: var(--color-indian-khaki);
+            text-align: center;
+        }
+
+        & .secondText {
+            @mixin typography-body-1 rem;
+            width: 95%;
+            margin-top: 7rem;
+            margin-bottom: 0;
+            color: var(--color-dawn-pink);
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        & .form {
+            width: 100%;
+            margin-top: 4rem;
+            display: flex;
+
+            & .inputWrapper {
+                position: relative;
+                flex: 1 1 auto;
+
+                & .input {
+                    @mixin typography-body-1 rem;
+                    will-change: border-color, color;
+                    width: 100%;
+                    height: 5.8rem;
+                    padding: 0 2rem;
+                    border: 0.2rem solid var(--color-indian-khaki);
+                    background: var(--color-celtic);
+                    color: var(--color-white);
+                    transition: border-color 0.3s ease, color 0.3s ease;
+
+                    &::placeholder {
+                        opacity: 0.3;
+                        color: var(--color-white);
+                    }
+
+                    &[disabled] {
+                        color: color(var(--color-white) alpha(0.4));
+                    }
+                }
+
+                & .crossmark {
+                    position: absolute;
+                    top: 50%;
+                    right: 2rem;
+                    transform: translateY(-50%);
+                    font-size: 1.5rem;
+                    stroke: var(--color-white);
+                    stroke-dasharray: 20;
+                    stroke-dashoffset: 20;
+
+                    & svg path:nth-of-type(1) {
+                        transition: stroke-dashoffset 0.1s linear 0.3s;
+                    }
+
+                    & svg path:nth-of-type(2) {
+                        transition: stroke-dashoffset 0.1s linear 0.2s;
+                    }
+                }
+
+                &.invalid {
+                    & .input {
+                        border-color: var(--color-white);
+                    }
+
+                    & .crossmark {
+                        stroke-dashoffset: 0;
+                    }
+                }
+            }
+
+            & .submit {
+                height: 5.8rem;
+                flex: 0 0 auto;
+            }
+        }
+    }
 }
 
-.joinUs {
+.subscribe .rightSide {
+    flex-shrink: 1;
+}
+
+.rightSideContent {
     position: relative;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.firstText {
-    @mixin typography-h1 rem;
-
     color: var(--color-indian-khaki);
-}
 
-.secondText {
-    @mixin typography-body-1 rem;
+    & > * {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: auto !important;
+        transform: translate(-50%, -75%);
 
-    max-width: 40.8rem;
-    margin-top: 7rem;
-    margin-bottom: 0;
-    color: var(--color-dawn-pink);
-    font-size: 1.8rem;
-}
+    }
 
-.image {
-    height: 100%;
-    transform: translateY(-25%);
-    flex: 1;
-    color: var(--color-indian-khaki);
-}
-
-.form {
-    width: 62%;
-    min-width: 41rem;
-    max-width: 54rem;
-    margin-top: 4rem;
-    display: flex;
-    flex-direction: row;
-}
-
-.input {
-    @mixin typography-body-1 rem;
-
-    height: 6rem;
-    padding-left: 2rem;
-    flex-grow: 1;
-    border: 0.2rem solid var(--color-indian-khaki);
-    border-right: none;
-    background: var(--color-celtic);
-    color: var(--color-white);
-}
-
-.submit {
-    width: 19rem;
-    height: 6rem;
-    flex: 0 0 auto;
-}
-
-.inputSuccess {
-    border: 0.2rem solid color(var(--color-celtic) whiteness(10%)); /* Celtic and white blend. Avoids noticeable border */
-}
-
-.success {
-    padding-right: 2rem !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-end !important;
-    background: none !important;
-}
-
-.inputFail {
-    border: 0.2rem solid var(--color-white);
-    border-right: none;
-}
-
-.inputCrossWrapper {
-    position: relative;
-}
-
-.cross {
-    position: absolute;
-    top: 2.2rem;
-    right: 1.5rem;
-    width: 1.4rem;
-    height: 1.4rem;
-
-    & svg path {
-        stroke: var(--color-white);
+    & svg {
+        display: block;
     }
 }
 
-@media(--layout-lte-medium) {
-    .firstText {
-        color: var(--color-indian-khaki);
+@media (--layout-lte-medium) {
+    .subscribe .leftSide {
+        flex-basis: 65%;
     }
 
-    .secondText {
-        max-width: none;
+    .subscribe .rightSide {
+        flex-basis: 35%;
+
+        & .rightSideContent > * {
+            width: 22rem !important;
+        }
     }
 }
 
-@media(--layout-lte-small) {
-    .subscribe {
-        padding: 8rem 0;
+@media (--layout-gt-small) {
+    .leftSideContent .wrapper .form {
+        & .submit {
+            will-change: border-color;
+            border: 0.2rem solid var(--color-indian-khaki);
+            transition: border-color 0.3s ease;
+        }
+
+        & .inputWrapper .input {
+            border-right: 0;
+        }
+
+        & .submit {
+            border-left: 0;
+        }
+
+        &.hasFeedback .inputWrapper .input,
+        &.hasFeedback .submit {
+            border-color: color(var(--color-white) alpha(0.1));
+        }
+    }
+}
+
+@media (--layout-lte-small) {
+    .leftSideContent {
+        flex-basis: auto;
+
+        & .wrapper {
+            & .firstText {
+                color: var(--color-indian-khaki);
+            }
+
+            & .secondText {
+                margin-top: 2rem;
+            }
+
+            & .form {
+                margin-top: 8rem;
+                flex-direction: column;
+
+                & .inputWrapper {
+                    margin-bottom: 1rem;
+
+                    & .input {
+                        width: 100%;
+                        height: 5rem;
+                    }
+                }
+
+                & .submit {
+                    width: 100%;
+                    height: 5rem;
+                }
+            }
+        }
     }
 
-    .image {
+    .rightSideContent {
         display: none;
-    }
-
-    .firstText {
-        color: var(--color-indian-khaki);
-    }
-
-    .secondText {
-        margin-top: 2rem;
-    }
-
-    .form {
-        width: 100%;
-        min-width: auto;
-        max-width: none;
-        margin-top: 8rem;
-        display: inline;
-        flex-direction: unset;
-    }
-
-    .input {
-        width: 100%;
-        height: 5rem;
-        margin-bottom: 1rem;
-        padding-left: 2rem;
-        flex-grow: 0;
-        border-right: 0.2rem solid var(--color-indian-khaki);
-    }
-
-    .submit {
-        width: 100%;
-        height: 5rem;
-    }
-
-    .inputSuccess {
-        border: 0.2rem solid var(--color-indian-khaki);
-    }
-
-    .inputFail {
-        border: 0.2rem solid var(--color-indian-khaki);
     }
 }

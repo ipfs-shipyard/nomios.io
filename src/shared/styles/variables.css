@@ -1,44 +1,32 @@
 @import "../styles/custom-medias";
 
 /* ==========================================================================
-   Z-index
-   ========================================================================== */
-
-:root {
-    --z-index-base: 0;
-    --z-index-header: 1;
-}
-
-/* ==========================================================================
-   Transition / Animations timing
-   ========================================================================== */
-
-:root {
-    --duration-fast: 0.15s;
-    --duration-standard: 0.3s;
-    --duration-long: 0.4s;
-}
-
-/* ==========================================================================
    Layout vars
    ========================================================================== */
 
 :root {
-    /* App maximum width
-    ============================================= */
-    --layout-container-width: 176rem;
-
-    /* Spacing around main contents of the website
-       ============================================= */
-    --layout-edge-spacing-x: 5%;
-
-    /* header
-       ============================================= */
-    --layout-header-height: 12rem;
+    --layout-container-width: 176rem; /* App maximum width */
+    --layout-edge-spacing-x: 5%; /* Spacing around main contents of the website */
+    --layout-header-height: 12rem; /* Header height */
+    --layout-block-padding-y: 15rem; /* Vertical padding used for most blocks */
 }
 
 @media(--layout-lte-medium) {
     :root {
-        --layout-header-height: 80px;
+        --layout-edge-spacing-x: 4rem;
+        --layout-block-padding-y: 12rem;
+        --layout-header-height: 8rem;
+    }
+}
+
+@media (--layout-lte-small) {
+    :root {
+        --layout-block-padding-y: 8rem;
+    }
+}
+
+@media (--layout-lte-xsmall) {
+    :root {
+        --layout-edge-spacing-x: 3rem;
     }
 }

@@ -10,7 +10,7 @@ import Hero from '../../shared/components/blocks/hero';
 import Roadmap from '../../shared/components/blocks/roadmap';
 import Subscribe from '../../shared/components/blocks/subscribe';
 import Why from '../../shared/components/blocks/why';
-import SideBySide from '../../shared/components/side-by-side';
+import { LayoutSplit } from '../../shared/components/layout';
 import styles from './Home.module.css';
 
 class Home extends Component {
@@ -23,12 +23,12 @@ class Home extends Component {
 
         return (
             <div className={ styles.home }>
-                <Header small={ smallHeader } />
+                <Header small={ smallHeader } className={ styles.header } />
 
                 <main className={ styles.main }>
                     <Observer
                         rootMargin={ `-${HEADER_HEIGHT}px 0px 0px 0px` }
-                        onChange={ this.handleHeroIntersection } >
+                        onChange={ this.handleHeroIntersect } >
                         <Hero />
                     </Observer>
 
@@ -36,18 +36,18 @@ class Home extends Component {
                     <Concept />
                     <Catchphrase />
                     <Subscribe />
-                    <SideBySide
+                    <LayoutSplit
                         left={ <CheckWorkshop /> }
                         right={ <CheckGithub /> } />
                     <Roadmap />
                 </main>
 
-                <Footer />
+                <Footer className={ styles.footer } />
             </div>
         );
     }
 
-    handleHeroIntersection = ({ isIntersecting }) => {
+    handleHeroIntersect = ({ isIntersecting }) => {
         this.setState({ smallHeader: !isIntersecting });
     };
 }

@@ -25,6 +25,7 @@
     "@researchgate/react-intersection-observer": "^1.0.1",
     "cancel.it": "^0.1.1",
     "classnames": "^2.2.6",
+    "final-form-focus": "^1.1.2",
     "gatsby": "^2.7.1",
     "gatsby-plugin-postcss": "^2.0.7",
     "keyboard-only-outlines": "^1.0.3",

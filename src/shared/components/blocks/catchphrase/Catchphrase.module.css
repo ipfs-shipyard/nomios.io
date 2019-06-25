@@ -1,11 +1,11 @@
 @import "../../../styles/mixins/layout";
 @import "../../../styles/colors";
 @import "../../../styles/custom-medias";
-@import "../../../styles/mixins/position"
+@import "../../../styles/mixins/position";
 
-    @mixin layout-main .container, .blackScreen;
+@mixin layout-normal .catchphrase, .catchphraseWrapper;
 
-.container {
+.catchphrase {
     height: 90vh;
     overflow: hidden;
     background: var(--color-celtic);
@@ -32,8 +32,8 @@
     }
 }
 
-@media (--layout-lte-small) {
-    .layoutContent.layoutContent {
+@media (--layout-lte-medium) {
+    .catchphraseWrapper {
         padding: 0;
     }
 }

@@ -1,7 +1,7 @@
 @import "../../styles/colors";
 @import "../../styles/custom-medias";
 
-.sideBySide {
+.layoutSplit {
     display: flex;
 
     & .left,
@@ -10,8 +10,19 @@
     }
 }
 
+@media (--layout-lte-medium) {
+    .layoutSplit.medium {
+        flex-direction: column;
+
+        & .left,
+        & .right {
+            flex-basis: 100%;
+        }
+    }
+}
+
 @media (--layout-lte-small) {
-    .sideBySide {
+    .layoutSplit.small {
         flex-direction: column;
 
         & .left,

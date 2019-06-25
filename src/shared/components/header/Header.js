@@ -38,10 +38,10 @@ class Header extends Component {
                         <AnchorLink href="#roadmap" offset={ anchorOffset - 2 } >Roadmap</AnchorLink>
                     </div>
 
-                    <div className={ styles.logoContainer }>
+                    <a href="#" className={ styles.logoContainer } onClick={ this.handleLogoClick }>
                         <Logo className={ styles.symbol } variant="symbol" />
                         <Logo className={ styles.logotype } variant="logotype" />
-                    </div>
+                    </a>
 
                     <div className={ styles.buttonContainer } >
                         <AnchorLink href="#subscribe" offset={ anchorOffset } >
@@ -58,6 +58,16 @@ class Header extends Component {
             anchorOffset: window.innerWidth <= HEADER_FIXED_BREAKPOINT ? 0 : HEADER_HEIGHT_SMALL,
         });
     }, 250);
+
+    handleLogoClick = (e) => {
+        e.preventDefault();
+
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth',
+        });
+    };
 }
 
 Header.propTypes = {

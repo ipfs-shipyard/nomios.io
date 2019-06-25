@@ -4,29 +4,29 @@
 /* Use it like so: @media (--layout-small) { ... } */
 
 /* this need to be accordind to the sum of container-width and 2 * edge-spacing-x-left and right */
-@custom-media --layout-lte-container-width (width <= 120rem); /* 1920px * 0.625 */
+@custom-media --layout-lte-container-width (width <= 120em); /* 1920px * 0.625 */
 
 /* Use these if you developing desktop first and want to target lower resolutions */
 
-@custom-media --layout-lte-xsmall (width <= 30rem); /* 480px * 0.625 */
-@custom-media --layout-lte-small (width <= 48rem); /* 768px * 0.625 */
-@custom-media --layout-lte-medium (width <= 64rem); /* 1024px * 0.625 */
-@custom-media --layout-lte-large (width <= 90rem); /* 1440px * 0.625 */
-@custom-media --layout-lte-xlarge (width <= 120rem); /* 1920px * 0.625 */
+@custom-media --layout-lte-xsmall (width <= 30em); /* 480px * 0.625 */
+@custom-media --layout-lte-small (width <= 48em); /* 768px * 0.625 */
+@custom-media --layout-lte-medium (width <= 64em); /* 1024px * 0.625 */
+@custom-media --layout-lte-large (width <= 90em); /* 1440px * 0.625 */
+@custom-media --layout-lte-xlarge (width <= 120em); /* 1920px * 0.625 */
 
 /* Use these if you are developing mobile first and want to target higher resolutions */
 
-@custom-media --layout-gt-small (width > 30rem); /* 480px * 0.625 */
-@custom-media --layout-gt-medium (width > 48rem); /* 768px * 0.625 */
-@custom-media --layout-gt-large (width > 64rem); /* 1024px * 0.625 */
-@custom-media --layout-gt-xlarge (width > 90rem); /* 1440px * 0.625 */
-@custom-media --layout-gt-xxlarge (width > 120rem); /* 1920px * 0.625 */
+@custom-media --layout-gt-xsmall (width > 30em); /* 480px * 0.625 */
+@custom-media --layout-gt-small (width > 48em); /* 768px * 0.625 */
+@custom-media --layout-gt-medium (width > 64em); /* 1024px * 0.625 */
+@custom-media --layout-gt-large (width > 90em); /* 1440px * 0.625 */
+@custom-media --layout-gt-xlarge (width > 120em); /* 1920px * 0.625 */
 
 /* Use these to target a specific range */
 
-@custom-media --layout-xsmall (width <= 30rem);
-@custom-media --layout-small (width > 30rem) AND (width <= 48rem);
-@custom-media --layout-medium (width > 48rem) AND (width <= 64rem);
-@custom-media --layout-large (width > 64rem) AND (width <= 90rem);
-@custom-media --layout-xlarge (width > 90rem) AND (width <= 120rem);
-@custom-media --layout-xxlarge (width > 120rem);
+@custom-media --layout-xsmall (width <= 30em);
+@custom-media --layout-small (width > 30em) AND (width <= 48em);
+@custom-media --layout-medium (width > 48em) AND (width <= 64em);
+@custom-media --layout-large (width > 64em) AND (width <= 90em);
+@custom-media --layout-xlarge (width > 90em) AND (width <= 120em);
+@custom-media --layout-xxlarge (width > 120em);

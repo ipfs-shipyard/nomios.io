@@ -12,12 +12,12 @@ class ProgressBar extends Component {
     progressBarRef = createRef();
 
     componentDidMount() {
-        this.handleRunningChange(true);
+        this.handleStatusChange(true);
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.running !== prevProps.running) {
-            this.handleRunningChange(false);
+        if (this.props.status !== prevProps.status) {
+            this.handleStatusChange(false);
         }
     }
 
@@ -26,7 +26,7 @@ class ProgressBar extends Component {
     }
 
     render() {
-        const { running, style, className, onBegin, onEnd, onReset, ...rest } = this.props;
+        const { style, className, onBegin, onEnd, onReset, ...rest } = this.props;
 
         return (
             <div
@@ -54,9 +54,6 @@ class ProgressBar extends Component {
         this.progressBarRef.current.style.transform = 'scaleY(1)';
         this.cancelOnTransitionEnd = onTransitionEnd(this.progressBarRef.current, () => {
             this.props.onEnd && this.props.onEnd();
-
-            this.progressBarRef.current.style.opacity = '0';
-            this.cancelOnTransitionEnd = onTransitionEnd(this.progressBarRef.current, this.reset);
         });
     }
 
@@ -66,7 +63,6 @@ class ProgressBar extends Component {
 
         this.progressBarRef.current.style.transition = 'none';
         this.progressBarRef.current.style.transform = '';
-        this.progressBarRef.current.style.opacity = '';
         this.progressBarRef.current.offsetHeight; // eslint-disable-line no-unused-expressions
         this.progressBarRef.current.style.transition = '';
 
@@ -108,10 +104,12 @@ class ProgressBar extends Component {
         return increment;
     }
 
-    handleRunningChange(wasJustMounted) {
-        const { running } = this.props;
+    handleStatusChange(wasJustMounted) {
+        const { status } = this.props;
 
-        if (running) {
+        if (status === 'initial') {
+            this.reset();
+        } else if (status === 'running') {
             this.begin();
         } else if (!wasJustMounted) {
             this.end();
@@ -120,7 +118,7 @@ class ProgressBar extends Component {
 }
 
 ProgressBar.propTypes = {
-    running: PropTypes.bool.isRequired,
+    status: PropTypes.oneOf(['initial', 'running', 'complete']),
     onBegin: PropTypes.func,
     onEnd: PropTypes.func,
     onReset: PropTypes.func,

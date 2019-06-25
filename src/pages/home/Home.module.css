@@ -4,8 +4,17 @@
     display: flex;
     flex: 1 0 auto;
     flex-direction: column;
+}
 
-    & .main {
-        flex: 1 0 auto;
-    }
+.header {
+    z-index: 3;
+}
+
+.main {
+    z-index: 2;
+    flex: 1 0 auto;
+}
+
+.footer {
+    z-index: 1;
 }

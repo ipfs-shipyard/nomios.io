@@ -33,15 +33,9 @@
     }
 
     @media (--layout-lte-medium) {
-        font-size: 8$(unit);
+        font-size: 6$(unit);
         line-height: calc(9.5em / 8);
         letter-spacing: calc(-0.05em / 8);
-    }
-
-    @media (--layout-lte-small) {
-        font-size: 6$(unit);
-        line-height: calc(7em / 6);
-        letter-spacing: calc(-0.05em / 6);
     }
 
     @media (width < 23.4375em) {  /* 375px * 0.625 */

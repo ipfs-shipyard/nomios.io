@@ -1,30 +1,27 @@
-@import "../../../styles/mixins/layout";
 @import "../../../styles/colors";
+@import "../../../styles/variables";
+@import "../../../styles/mixins/layout";
 @import "../../../styles/mixins/typography";
-
-@mixin layout-main .roadmap, .roadmapWrapper;
 
 .roadmap {
     --right-width: 45%;
 
+    padding-top: var(--layout-block-padding-y);
+    padding-bottom: var(--layout-block-padding-y);
     background: var(--color-celtic);
 
     & .title {
         @mixin typography-h2 rem;
-
-        padding-top: 15rem;
         color: var(--color-indian-khaki);
     }
 
     & .tableWrapper {
-        padding-bottom: 20rem;
-
         & .tableRow {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             border-bottom: 0.1rem solid color(var(--color-white) a(10%));
-            color: color(var(--color-dawn-pink) a(70%));
+            color: color(var(--color-dawn-pink) a(85%));
 
             & .tableCell {
                 @mixin typography-body-1 rem;
@@ -75,12 +72,7 @@
         --right-width: 40%;
 
         & .title {
-            padding-top: 12rem;
-            padding-bottom: 2rem;
-        }
-
-        & .tableWrapper {
-            padding-bottom: 15rem;
+            margin-bottom: 2rem;
         }
     }
 }
@@ -90,13 +82,10 @@
         --right-width: 25%;
 
         & .title {
-            padding-top: 8rem;
-            padding-bottom: 3.5rem;
+            margin-bottom: 3.5rem;
         }
 
         & .tableWrapper {
-            padding-bottom: 10rem;
-
             & .tableRow {
                 & .tableCell {
                     flex: initial;
