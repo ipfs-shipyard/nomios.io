@@ -60,16 +60,22 @@
         }
 
         & .logoContainer {
+            will-change: opacity;
             padding: 0 2rem;
             display: flex;
             flex: 0 0 auto;
             justify-content: center;
             align-items: center;
             text-align: center;
+            transition: opacity 0.3s ease;
             fill: var(--color-indian-khaki);
 
             & .logotype {
                 margin-left: 1.5rem;
+            }
+
+            &:hover {
+                opacity: 0.8;
             }
         }
 
@@ -100,14 +106,12 @@
         position: fixed;
 
         & .headerContent .logoContainer {
-            & .symbol {
-                will-change: transform;
-                transition: transform 0.4s ease;
-            }
+            will-change: transform;
+            transition: transform 0.35s ease;
 
             & .logotype {
                 will-change: opacity;
-                transition: opacity 0.4s ease;
+                transition: opacity 0.35s ease;
             }
         }
 
@@ -115,9 +119,7 @@
             height: 8rem;
 
             & .headerContent .logoContainer {
-                & .symbol {
-                    transform: translateX(calc(1.5rem + 8rem / 2)) scale(0.85);
-                }
+                transform: translateX(calc(8.5rem / 2)) scale(0.85);
 
                 & .logotype {
                     opacity: 0;
@@ -129,6 +131,8 @@
 
 @media (--layout-lte-medium) {
     .header .headerContent {
+        justify-content: center;
+
         & .anchorsContainer {
             visibility: hidden;
         }

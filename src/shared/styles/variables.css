@@ -30,3 +30,9 @@
         --layout-edge-spacing-x: 3rem;
     }
 }
+
+@media (--layout-lte-xxsmall) {
+    :root {
+        --layout-edge-spacing-x: 2.5rem;
+    }
+}

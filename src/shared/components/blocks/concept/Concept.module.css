@@ -46,7 +46,7 @@
     }
 
     .leftSideContent {
-        max-height: 80rem;
+        max-height: 90rem;
         display: flex;
         flex: 1 1 100vh;
         justify-content: center;
@@ -59,11 +59,10 @@
 
     .rightSide {
         position: relative;
+        background-color: var(--color-celtic);
     }
 
     .rightSideContent {
-        background-color: var(--color-celtic);
-
         & .videoBox {
             position: absolute;
             top: 50%;
@@ -85,6 +84,7 @@
     .rightSideContent .videoBox {
         padding: 3.5rem;
         transform: translate(calc(-3.2rem - 4.3%), -50%);
+        border-radius: 2.8rem;
     }
 }
 
@@ -142,6 +142,7 @@
     .rightSideContent .videoBox {
         width: 90%;
         padding: 3.5rem;
+        border-radius: 2.8rem;
     }
 }
 
@@ -154,6 +155,7 @@
 @media(--layout-lte-xsmall) {
     .rightSideContent .videoBox {
         padding: 2rem;
+        border-radius: 1.4rem;
     }
 }
 

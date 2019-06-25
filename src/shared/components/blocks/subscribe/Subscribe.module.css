@@ -16,7 +16,7 @@
 
 .leftSideContent {
     position: relative;
-    max-height: 80rem;
+    max-height: 90rem;
     padding-top: var(--layout-block-padding-y);
     padding-bottom: var(--layout-block-padding-y);
     display: flex;
