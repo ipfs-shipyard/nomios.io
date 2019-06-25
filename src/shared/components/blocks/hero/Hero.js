@@ -10,7 +10,7 @@ const HEADER_OFFSET = 79;
 
 class Hero extends Component {
     state = {
-        offset: window.innerWidth <= 1024 ? 0 : HEADER_OFFSET,
+        offset: typeof window !== 'undefined' && window.innerWidth <= 1024 ? 0 : HEADER_OFFSET,
     };
 
     componentDidMount() {
