@@ -9,6 +9,7 @@
 }
 
 .why {
+    z-index: 2;
     background: var(--color-celtic);
 }
 
@@ -31,6 +32,7 @@
 
     & .blockTitle {
         min-height: 44rem;
+        z-index: 1;
         display: flex;
         flex: 0 0 50%;
         justify-content: center;
