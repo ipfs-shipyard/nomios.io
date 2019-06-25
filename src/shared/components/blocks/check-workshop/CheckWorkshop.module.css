@@ -12,7 +12,7 @@
     padding-bottom: var(--layout-block-padding-y);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
 
     & .wrapper {

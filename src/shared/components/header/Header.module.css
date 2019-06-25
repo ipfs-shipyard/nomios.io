@@ -66,8 +66,8 @@
             flex: 0 0 auto;
             justify-content: center;
             align-items: center;
+            opacity: 1;
             text-align: center;
-            transition: opacity 0.3s ease;
             fill: var(--color-indian-khaki);
 
             & .logotype {
@@ -107,7 +107,7 @@
 
         & .headerContent .logoContainer {
             will-change: transform;
-            transition: transform 0.35s ease;
+            transition: transform 0.35s ease, opacity 0.3s ease;
 
             & .logotype {
                 will-change: opacity;
