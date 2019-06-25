@@ -4,7 +4,7 @@
 @import "../../../styles/mixins/typography";
 
 .roadmap {
-    --right-width: 50%;
+    --right-width: 45%;
 
     padding-top: var(--layout-block-padding-y);
     padding-bottom: var(--layout-block-padding-y);
