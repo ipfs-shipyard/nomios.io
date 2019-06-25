@@ -18,7 +18,7 @@
     "serve": "gatsby serve",
     "test": "exit 0",
     "deploy": "gh-pages -d public",
-    "predeploy": "npm run build -- --prefix-paths",
+    "predeploy": "npm run build",
     "lint": "eslint --ignore-path .gitignore . && stylelint --ignore-path .gitignore \"**/*.css\"",
     "prerelease": "npm t && npm run lint && npm run build",
     "release": "standard-version"
