@@ -56,6 +56,12 @@
         line-height: calc(6.60001em / 6);
         letter-spacing: calc(-0.06em / 6);
     }
+
+    @media (width < 23.4375em) {  /* 375px * 0.625 */
+        font-size: 4.8$(unit);
+        line-height: calc(6.2em / 4.8);
+        letter-spacing: calc(-0.04em / 4.8);
+    }
 }
 
 @define-mixin typography-h3 $unit {
