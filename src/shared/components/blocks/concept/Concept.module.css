@@ -102,6 +102,10 @@
         & .wrapper {
             max-width: 45rem;
             margin: 0 auto;
+
+            & .cta {
+                margin-top: 4rem;
+            }
         }
     }
 
