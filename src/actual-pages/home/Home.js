@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Helmet } from 'react-helmet';
 import Observer from '@researchgate/react-intersection-observer';
 import Header, { HEADER_HEIGHT } from '../../shared/components/header';
 import Footer from '../../shared/components/footer';
@@ -23,6 +24,12 @@ class Home extends Component {
 
         return (
             <div className={ styles.home }>
+                <Helmet>
+                    <title>Nomios</title>
+                    <meta name="description" content="Nomios is a Identity Wallet based on the Identity Manager specification" />
+                    <meta name="keywords" content="nomios, identity, idm, identity, identity-manager, decentralized, ipfs, ipid, did, dids, credentials, verifiable, signatures, self-sovereign, moxy, protocol-labs" />
+                </Helmet>
+
                 <Header small={ smallHeader } className={ styles.header } />
 
                 <main className={ styles.main }>
