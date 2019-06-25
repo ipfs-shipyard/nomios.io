@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import Observer from '@researchgate/react-intersection-observer';
 import { title, blocks } from './data';
 import { LayoutContainer } from '../../layout';
 import { ExternalLinkIcon } from '../../icon';
@@ -48,15 +49,17 @@ class Why extends PureComponent {
     state = {
         stopTimer: false,
         initSliderAnimation: false,
+        isVisible: false,
     };
 
     componentDidMount() {
+        this.slider.current.slickPause();
         this.setState({ initSliderAnimation: true });
     }
 
     render() {
         const { className } = this.props;
-        const { stopTimer, initSliderAnimation } = this.state;
+        const { stopTimer, initSliderAnimation, isVisible } = this.state;
 
         return (
             <LayoutContainer
@@ -67,13 +70,15 @@ class Why extends PureComponent {
                     <div className={ styles.blockTitle }><h2>{ title }</h2></div>
                     { blocks.map((block, index) => <Block key={ index } order={ index } { ...block } />) }
                 </div>
-                <div className={ classNames(styles.list, styles.listMobile, stopTimer && styles.timerStopped, initSliderAnimation && styles.startDotsAnimation) }>
+                <div className={ classNames(styles.list, styles.listMobile, stopTimer && styles.timerStopped, initSliderAnimation && isVisible && styles.startDotsAnimation) }>
                     <div className={ styles.blockTitleMobile }>
                         <div className={ styles.blockTitle }><h2>{ title }</h2></div>
                     </div>
-                    <Slider { ...SLIDER_SETTINGS } onSwipe={ this.handleSwipe } ref={ this.slider }>
-                        { blocks.map((block, index) => <Block key={ index } order={ index } { ...block } />) }
-                    </Slider>
+                    <Observer onChange={ this.handleIntersection }>
+                        <Slider { ...SLIDER_SETTINGS } onSwipe={ this.handleSwipe } ref={ this.slider }>
+                            { blocks.map((block, index) => <Block key={ index } order={ index } { ...block } />) }
+                        </Slider>
+                    </Observer>
                 </div>
             </LayoutContainer>
         );
@@ -82,6 +87,21 @@ class Why extends PureComponent {
     handleSwipe = () => {
         this.slider.current.slickPause();
         this.setState({ stopTimer: true });
+    };
+
+    handleIntersection = ({ isIntersecting }) => {
+        const { isVisible, stopTimer } = this.state;
+
+        if (!stopTimer) {
+            if (isIntersecting && !isVisible && !stopTimer) {
+                this.slider.current.slickPlay();
+                this.setState({ isVisible: true });
+            }
+            if (!isIntersecting && isVisible) {
+                this.slider.current.slickPause();
+                this.setState({ isVisible: false });
+            }
+        }
     };
 }
 
