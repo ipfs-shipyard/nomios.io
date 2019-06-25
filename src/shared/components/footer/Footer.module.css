@@ -33,6 +33,7 @@
     & .githubLinkTablet {
         & i {
             margin-left: 2rem;
+            transform: translateY(-0.2rem);
         }
     }
 
