@@ -2,8 +2,17 @@
 @import "../../styles/mixins/position";
 
 .youtubeVideo {
+    position: relative;
+    height: 0;
+    padding-top: 64.25%; /* keep inside image aspect ratio (1216x780) */
+
     & .trigger {
-        position: relative;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 10;
         cursor: pointer;
 
         &::after {
@@ -19,6 +28,11 @@
         }
 
         & .image {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
             width: 100%;
             height: auto;
             display: block;
@@ -42,6 +56,25 @@
                 width: 6rem;
                 height: 6rem;
             }
+        }
+
+        &.inlineNotReady .playButton {
+            opacity: 0;
+        }
+
+        &.inlineReady .playButton {
+            opacity: 1;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        &.inlinePlaying {
+            display: none;
+        }
+
+        &.inlinePlaying .image,
+        &.inlinePlaying .playButton {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
         }
 
         &:hover .playButton {
