@@ -31,9 +31,12 @@
 
     & .githubLink,
     & .githubLinkTablet {
-        & i {
+        & a {
             margin-left: 2rem;
-            transform: translateY(-0.2rem);
+
+            & i {
+                transform: translateY(-0.2rem);
+            }
         }
     }
 
