@@ -31,11 +31,11 @@
     left: 0;
     z-index: 10000;
     opacity: 0;
-    background-color: var(--color-celtic);
+    background-color: color(var(--color-celtic) alpha(0.95));
     transition: opacity 0.3s ease;
 
     &.afterOpen {
-        opacity: 0.95;
+        opacity: 1;
     }
 
     &.beforeClose {
