@@ -47,10 +47,13 @@ class Header extends Component {
                         <Logo className={ styles.logotype } variant="logotype" />
                     </a>
 
-                    <div className={ styles.buttonContainer } >
+                    <div className={ classNames(styles.buttonContainer, styles.desktop) } >
                         <AnchorLink href="#subscribe" offset={ anchorOffset } >
                             <Button variant="secondary">Join us</Button>
                         </AnchorLink>
+                    </div>
+                    <div className={ classNames(styles.buttonContainer, styles.tablet) } >
+                        <AnchorLink href="#subscribe" offset={ anchorOffset } >Join us</AnchorLink>
                     </div>
                 </div>
             </header>

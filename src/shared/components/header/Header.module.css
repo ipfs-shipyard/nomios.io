@@ -31,14 +31,6 @@
                 text-transform: uppercase;
                 letter-spacing: 0.15rem;
                 transition: opacity 0.2s ease;
-
-                @media (--layout-lte-medium) {
-                    font-size: 1.2rem;
-                }
-
-                @media (--layout-lte-small) {
-                    font-size: 0.9rem;
-                }
             }
 
             & a:hover,
@@ -81,6 +73,10 @@
         & .buttonContainer {
             flex: 0 1 100%;
             text-align: right;
+
+            &.tablet {
+                display: none;
+            }
 
             & a {
                 color: unset;
@@ -142,13 +138,40 @@
                 font-size: 0.8667rem;
             }
         }
+
+        & .buttonContainer.desktop {
+            display: none;
+        }
+
+        & .buttonContainer.tablet {
+            display: block;
+
+            & a {
+                @mixin typography-body-1 rem;
+                opacity: 0.8;
+                color: var(--color-dawn-pink);
+                text-decoration: none;
+                text-transform: uppercase;
+                letter-spacing: 0.15rem;
+                transition: opacity 0.2s ease;
+            }
+
+            & a:hover,
+            & a:focus {
+                opacity: 1;
+            }
+        }
     }
 }
 
 @media (--layout-lte-small) {
     .header .headerContent {
-        & .anchorsContainer,
-        & .buttonContainer {
+        & .anchorsContainer {
+            display: none;
+        }
+
+        & .buttonContainer.tablet,
+        & .buttonContainer.desktop {
             display: none;
         }
 
