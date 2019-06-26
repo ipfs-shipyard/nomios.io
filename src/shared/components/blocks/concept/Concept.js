@@ -51,7 +51,7 @@ class Concept extends Component {
                 <div className={ styles.videoBox }>
                     <YoutubeVideo
                         thumbnail={ nomiosImage }
-                        videoId="rLIXkUEiBa8" />
+                        videoId="_QJgKcuKEq0" />
                 </div>
             </LayoutContainer>
         );
