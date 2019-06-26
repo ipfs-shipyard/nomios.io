@@ -1,38 +1,78 @@
-@import "../../../styles/mixins/layout";
 @import "../../../styles/colors";
+@import "../../../styles/variables";
 @import "../../../styles/custom-medias";
-@import "../../../styles/mixins/position";
-
-@mixin layout-normal .catchphrase, .catchphraseWrapper;
+@import "../../../styles/mixins/typography";
 
 .catchphrase {
-    height: 90vh;
-    overflow: hidden;
     background: var(--color-celtic);
+}
 
-    & .blackScreen {
-        position: relative;
-        height: 100%;
-        z-index: 2;
-        background-color: black;
-        background-image: url("../../../media/backgrounds/background-pattern.png");
-        background-position: center center;
-        background-size: cover;
+.catchphraseContent {
+    background: var(--color-black) url("../../../media/backgrounds/background-pattern.png") center center;
+    background-size: cover;
 
-        & .scrollable {
-            @mixin position absolute, 50%, null, null, 25%;
-            transform: translate3d(0, -50%, 0);
-            white-space: nowrap;
+    & .wrapper .linesWrapper {
+        @mixin typography-h2 rem;
+        color: var(--color-indian-khaki);
+    }
+}
 
-            & h2 {
-                color: var(--color-indian-khaki);
+@media (--layout-lte-small) {
+    .catchphraseContent {
+        padding-top: var(--layout-block-padding-y);
+        padding-bottom: var(--layout-block-padding-y);
+        text-align: center;
+
+        & .linesWrapper {
+            overflow-wrap: normal;
+
+            &.animated {
+                display: none;
             }
         }
     }
 }
 
-@media (--layout-lte-medium) {
-    .catchphraseWrapper {
-        padding: 0;
+@media (--layout-gt-small) {
+    .catchphrase {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .catchphraseContent {
+        position: relative;
+        max-height: 90rem;
+        flex: 1 1 100vh;
+
+        & .wrapper {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+
+            & .linesWrapper {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+
+                &.nonAnimated {
+                    display: none;
+                }
+
+                & .firstLine,
+                & .secondLine {
+                    display: inline-block;
+                    white-space: nowrap;
+                }
+
+                & .firstLine {
+                    margin-bottom: 2.5rem;
+                }
+            }
+        }
     }
 }

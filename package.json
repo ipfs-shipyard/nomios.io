@@ -49,7 +49,8 @@
     "react-spinners": "^0.5.4",
     "react-youtube": "^7.9.0",
     "scrollbar-compensate": "^0.2.2",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "tiny-dom-helpers": "^1.2.4"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^8.0.0",
