@@ -12,6 +12,7 @@ import Button from '../../button';
 import * as animationData from '../../../media/illustrations/illustration-stamp-animation.json';
 import styles from './Subscribe.module.css';
 
+const RESET_FORM_DELAY = 2500;
 const LOTTIE_OPTIONS = {
     loop: false,
     autoplay: false,
@@ -144,12 +145,14 @@ class Subscribe extends PureComponent {
 
         try {
             res = await addToMailchimp(values.email);
+        } catch (err) {
+            return err.message;
         } finally {
-            this.resetSubmitTimeout = setTimeout(reset, 2500);
+            this.resetSubmitTimeout = setTimeout(reset, RESET_FORM_DELAY);
         }
 
-        if (res.result === 'error') {
-            throw new Error(res.msg);
+        if (res.result === 'error' && !/already subscribed/.test(res.msg)) {
+            return res.msg;
         }
     };
 }
