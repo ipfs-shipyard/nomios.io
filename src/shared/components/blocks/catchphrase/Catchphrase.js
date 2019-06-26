@@ -1,6 +1,7 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { throttle } from 'lodash';
 import { offset } from 'tiny-dom-helpers';
 import Observer from '@researchgate/react-intersection-observer';
 import { LayoutContainer } from '../../layout';
@@ -116,7 +117,7 @@ class Catchphrase extends Component {
         }
     };
 
-    handleResize = () => this.updateDimensions();
+    handleResize = throttle(() => this.updateDimensions(), 250);
 
     handleIntersect = ({ isIntersecting }) => {
         this.intersecting = isIntersecting;
