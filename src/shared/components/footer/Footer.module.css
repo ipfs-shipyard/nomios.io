@@ -2,17 +2,18 @@
 @import "../../styles/custom-medias";
 @import "../../styles/mixins/layout";
 
-@mixin layout-main null, .footerWrapper;
+@mixin layout-normal null, .footer;
 
-.footerWrapper {
-    min-height: 140px;
+.footer {
+    position: relative;
+    min-height: 14rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: var(--color-white);
     color: color(var(--color-celtic) a(60%));
-    font-size: 12px;
-    letter-spacing: -0.09px;
+    font-size: 1.2rem;
+    letter-spacing: -0.009rem;
 
     & a,
     & a:hover,
@@ -30,8 +31,12 @@
 
     & .githubLink,
     & .githubLinkTablet {
-        & i {
-            margin-left: 20px;
+        & a {
+            margin-left: 2rem;
+
+            & i {
+                transform: translateY(-0.2rem);
+            }
         }
     }
 
@@ -43,6 +48,7 @@
 
     & .logo {
         display: none;
+        font-size: 0.8667rem;
 
         & i {
             fill: var(--color-indian-khaki);
@@ -51,6 +57,8 @@
 
     & .plBrand {
         width: 4em;
+        margin-left: 0.5rem;
+        font-size: 2.5rem;
     }
 }
 
@@ -59,7 +67,7 @@
    ========================================================================== */
 
 @media(--layout-lte-medium) {
-    .footerWrapper {
+    .footer {
         & a,
         & a:hover,
         & a:active,
@@ -73,21 +81,29 @@
             display: none;
         }
 
-        & .copyrightTablet,
-        & .githubLinkTablet {
+        & .copyrightTablet {
             display: block;
+            flex: 1 0 calc(100% / 3);
+            white-space: nowrap;
+        }
+
+        & .githubLinkTablet {
+            display: flex;
+            flex: 0 0 calc(100% / 3);
+            justify-content: flex-end;
         }
 
         & .logo {
             display: inline-flex;
+            flex: 0 1 calc(100% / 3);
         }
     }
 }
 
 @media(--layout-lte-small) {
-    .footerWrapper {
-        padding-top: 40px;
-        padding-bottom: 30px;
+    .footer {
+        padding-top: 4rem;
+        padding-bottom: 3rem;
         flex-direction: column;
 
         & .githubLinkTablet,
@@ -96,7 +112,7 @@
         }
 
         & .copyrightMobile {
-            margin-top: 40px;
+            margin-top: 4rem;
             margin-bottom: 0;
             display: block;
         }

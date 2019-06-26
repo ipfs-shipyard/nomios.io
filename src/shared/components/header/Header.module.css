@@ -1,15 +1,16 @@
 @import "../../styles/colors";
-@import "../../styles/base/typography.css";
+@import "../../styles/mixins/typography";
 @import "../../styles/mixins/layout";
 
-@mixin layout-main .header, .headerContent;
+@mixin layout-normal .header, .headerContent;
 
 .header {
+    position: relative;
     width: 100%;
     height: var(--layout-header-height);
-    z-index: 3;
     flex: 0;
     background: var(--color-celtic);
+    transition: height 0.4s ease-in-out;
 
     & .headerContent {
         height: inherit;
@@ -18,11 +19,8 @@
         align-items: center;
         color: var(--color-white);
 
-        & > div {
-            flex: 1;
-        }
-
         & .anchorsContainer {
+            flex: 0 1 100%;
             text-align: left;
 
             & a {
@@ -31,16 +29,8 @@
                 color: var(--color-dawn-pink);
                 text-decoration: none;
                 text-transform: uppercase;
-                letter-spacing: 2px;
+                letter-spacing: 0.15rem;
                 transition: opacity 0.2s ease;
-
-                @media (--layout-lte-medium) {
-                    font-size: 1.2rem;
-                }
-
-                @media (--layout-lte-small) {
-                    font-size: 0.9rem;
-                }
             }
 
             & a:hover,
@@ -49,34 +39,50 @@
             }
 
             & a:not(:last-child) {
-                margin-right: 40px;
+                margin-right: 4rem;
 
-                @media (--layout-lte-large) {
-                    margin-right: 12px;
+                @media (width <= 75em) {  /* 1200px * 0.625 */
+                    margin-right: 3rem;
                 }
 
-                @media (--layout-lte-medium) {
-                    margin-right: 4px;
+                @media (width <= 68.75em) {  /* 1100 * 0.625 */
+                    margin-right: 2.5rem;
                 }
             }
         }
 
-        & .headerLogo {
+        & .logoContainer {
+            padding: 0 2rem;
+            display: flex;
+            flex: 0 0 auto;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
             text-align: center;
+            fill: var(--color-indian-khaki);
 
-            & i {
-                fill: var(--color-indian-khaki);
+            & .logotype {
+                margin-left: 1.5rem;
+            }
+
+            &:hover {
+                opacity: 0.8;
             }
         }
 
         & .buttonContainer {
+            flex: 0 1 100%;
             text-align: right;
+
+            &.tablet {
+                display: none;
+            }
 
             & a {
                 color: unset;
                 text-decoration: none;
                 text-transform: uppercase;
-                letter-spacing: 2px;
+                letter-spacing: 0.15rem;
 
                 @media (--layout-lte-medium) {
                     font-size: 1.1rem;
@@ -90,15 +96,87 @@
     }
 }
 
-@media (--layout-gte-large) {
+@media (--layout-gt-medium) {
     .header {
         position: fixed;
+
+        & .headerContent .logoContainer {
+            transition: transform 0.35s ease, opacity 0.3s ease;
+
+            & .logotype {
+                transition: opacity 0.35s ease;
+            }
+        }
+
+        &.small {
+            height: 8rem;
+
+            & .headerContent .logoContainer {
+                transform: translateX(calc(8.5rem / 2)) scale(0.85);
+
+                & .logotype {
+                    opacity: 0;
+                }
+            }
+        }
     }
 }
 
-@media (--layout-lt-small) {
-    .anchorsContainer,
-    .buttonContainer {
-        display: none;
+@media (--layout-lte-medium) {
+    .header .headerContent {
+        justify-content: center;
+
+        & .anchorsContainer {
+            visibility: hidden;
+        }
+
+        & .logoContainer {
+            pointer-events: none;
+
+            & .logotype,
+            & .symbol {
+                font-size: 0.8667rem;
+            }
+        }
+
+        & .buttonContainer.desktop {
+            display: none;
+        }
+
+        & .buttonContainer.tablet {
+            display: block;
+
+            & a {
+                @mixin typography-body-1 rem;
+                opacity: 0.8;
+                color: var(--color-dawn-pink);
+                text-decoration: none;
+                text-transform: uppercase;
+                letter-spacing: 0.15rem;
+                transition: opacity 0.2s ease;
+            }
+
+            & a:hover,
+            & a:focus {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+@media (--layout-lte-small) {
+    .header .headerContent {
+        & .anchorsContainer {
+            display: none;
+        }
+
+        & .buttonContainer.tablet,
+        & .buttonContainer.desktop {
+            display: none;
+        }
+
+        & .logoContainer {
+            padding: 0;
+        }
     }
 }

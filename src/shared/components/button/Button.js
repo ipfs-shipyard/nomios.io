@@ -5,11 +5,17 @@ import ProgressBar from './ProgressBar';
 import { CheckmarkIcon, CrossmarkIcon } from '../icon';
 import styles from './Button.module.css';
 
+const PROGRESS_STATUS_MAP = {
+    none: 'initial',
+    loading: 'running',
+    success: 'complete',
+    error: 'complete',
+};
+
 class Button extends Component {
     state = {
         feedback: 'none',
         progressbarAnimationEnded: false,
-        feedbackIconAnimationEnded: false,
     };
 
     componentDidMount() {
@@ -23,16 +29,16 @@ class Button extends Component {
     }
 
     render() {
-        const { variant, feedback: _, fullWidth, disabled, className, children, successClassName, errorClassName, ...rest } = this.props;
-        const { feedback, progressbarAnimationEnded, feedbackIconAnimationEnded } = this.state;
+        const { variant, feedback: _, fullWidth, disabled, className, children, ...rest } = this.props;
+        const { feedback, progressbarAnimationEnded } = this.state;
         const hasFeedback = feedback !== 'none';
 
         const finalDisabled = disabled || hasFeedback;
         const finalClassName = classNames(
             styles.button,
             styles[variant],
-            hasFeedback && !progressbarAnimationEnded ? styles.loading : styles[feedback],
-            hasFeedback && !feedbackIconAnimationEnded && styles.progressVisible,
+            hasFeedback && progressbarAnimationEnded && styles[feedback],
+            hasFeedback && styles.hasFeedback,
             fullWidth && styles.fullWidth,
             className
         );
@@ -43,15 +49,15 @@ class Button extends Component {
                     <span className={ styles.text }>{ children }</span>
 
                     <ProgressBar
-                        running={ feedback === 'loading' }
+                        status={ PROGRESS_STATUS_MAP[feedback] }
                         className={ styles.progressBar }
                         onEnd={ this.handleProgressBarEnd } />
                 </div>
 
-                <span className={ classNames(styles.successBlock, successClassName) }>
+                <span className={ styles.successBlock }>
                     <CheckmarkIcon className={ styles.checkmark } onTransitionEnd={ this.handleSuccessIconTransitionEnd } />
                 </span>
-                <span className={ classNames(styles.errorBlock, errorClassName) }>
+                <span className={ styles.errorBlock }>
                     <CrossmarkIcon className={ styles.crossmark } onTransitionEnd={ this.handleErrorIconTransitionEnd } />
                 </span>
             </button>
@@ -65,13 +71,11 @@ class Button extends Component {
             this.setState({
                 feedback,
                 progressbarAnimationEnded: true,
-                feedbackIconAnimationEnded: false,
             });
         } else {
             this.setState({
                 feedback,
                 progressbarAnimationEnded: false,
-                feedbackIconAnimationEnded: false,
             });
         }
     }
@@ -79,29 +83,15 @@ class Button extends Component {
     handleProgressBarEnd = () => {
         this.setState({ progressbarAnimationEnded: true });
     };
-
-    handleSuccessIconTransitionEnd = () => {
-        if (this.state.feedback === 'success') {
-            this.setState({ feedbackIconAnimationEnded: true });
-        }
-    };
-
-    handleErrorIconTransitionEnd = (event) => {
-        if (this.state.feedback === 'error' && event.target.matches('path:nth-of-type(1)')) {
-            this.setState({ feedbackIconAnimationEnded: true });
-        }
-    };
 }
 
 Button.propTypes = {
-    variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'whiteBorder', 'tanBorder']),
+    variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'negative']),
     disabled: PropTypes.bool,
     fullWidth: PropTypes.bool,
     feedback: PropTypes.oneOf(['none', 'loading', 'success', 'error']),
     children: PropTypes.node,
     className: PropTypes.string,
-    successClassName: PropTypes.string,
-    errorClassName: PropTypes.string,
 };
 
 Button.defaultProps = {

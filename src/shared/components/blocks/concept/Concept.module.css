@@ -1,26 +1,15 @@
 @import "../../../styles/colors";
-@import "../../../styles/base/typography.css";
-@import "../../../styles/mixins/layout.css";
+@import "../../../styles/variables";
+@import "../../../styles/mixins/typography";
+@import "../../../styles/mixins/layout";
 
-.concept {
-    display: flex;
-    background: white;
-}
-
-.halfWidth {
-    width: 50%;
-}
-
-.fullWidth {
-    width: 100%;
-}
-
-.leftSide {
-    flex: 1;
+.leftSideContent {
+    padding-top: var(--layout-block-padding-y);
+    padding-bottom: var(--layout-block-padding-y);
     background-color: var(--color-white);
 
-    & .content {
-        margin: 30% 18%;
+    & .wrapper {
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -32,65 +21,149 @@
         }
 
         & .description {
-            height: 50px;
-            margin-top: 20px;
+            margin-top: 2rem;
         }
 
-        & .buttonBox {
-            margin-top: 65px;
+        & .cta {
+            margin-top: 6.5rem;
         }
     }
 }
 
-.rightSide {
-    flex: 1;
-    background-color: var(--color-mineral-green);
+.rightSideContent .videoBox {
+    padding: 4.5rem;
+    border: solid 0.1rem var(--color-indian-khaki);
+    border-radius: 2.8rem;
+}
 
-    & .videoBox {
-        width: 58%;
-        padding: 45px;
-        transform: translateX(calc(-45px - 3.7%));
-        border: solid 1px var(--color-tan);
-        border-radius: 28px;
+/* ==========================================================================
+   Styles for >= large
+   ======================================================================== */
+@media (--layout-gt-medium) {
+    .leftSide {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .leftSideContent {
+        max-height: 90rem;
+        display: flex;
+        flex: 1 1 100vh;
+        justify-content: center;
+        align-items: center;
+
+        & .wrapper {
+            max-width: 40rem;
+        }
+    }
+
+    .rightSide {
+        position: relative;
+        background-color: var(--color-celtic);
+    }
+
+    .rightSideContent {
+        & .videoBox {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 85%;
+            max-width: 70rem;
+            transform: translate(calc(-4.1rem - 4.3%), -50%);
+        }
+    }
+}
+
+@media (--layout-gt-large) {
+    .leftSideContent .wrapper {
+        max-width: 45rem;
+    }
+}
+
+@media (width <= 75em) and (--layout-gt-medium) {  /* 1200px * 0.625 */
+    .rightSideContent .videoBox {
+        padding: 3.5rem;
+        transform: translate(calc(-3.2rem - 4.3%), -50%);
+        border-radius: 2.8rem;
+    }
+}
+
+@media (width <= 68.75em) and (--layout-gt-medium) { /* 1100px * 0.625 */
+    .leftSideContent .wrapper {
+        max-width: 35rem;
+    }
+}
+
+/* ==========================================================================
+   Styles for <= medium
+   ======================================================================== */
+@media (--layout-lte-medium) {
+    .leftSideContent {
+        & .wrapper {
+            max-width: 45rem;
+            margin: 0 auto;
+
+            & .cta {
+                margin-top: 4rem;
+            }
+        }
+    }
+
+    .rightSideContent {
+        position: relative;
+        padding-bottom: var(--layout-block-padding-y);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--color-white);
+
+        & .videoBox {
+            position: relative;
+            width: 80%;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: calc(50% - var(--layout-block-padding-y) / 2);
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: var(--color-celtic);
+        }
+    }
+}
+
+@media(--layout-lte-small) {
+    .leftSideContent .wrapper .cta {
+        width: 100%;
+
+        & button {
+            width: 100%;
+        }
+    }
+
+    .rightSideContent .videoBox {
+        width: 90%;
+        padding: 3.5rem;
+        border-radius: 2.8rem;
+    }
+}
+
+@media (width <= 37.5em) { /* 600px * 0.625 */
+    .rightSideContent .videoBox {
+        width: 100%;
+    }
+}
+
+@media(--layout-lte-xsmall) {
+    .rightSideContent .videoBox {
+        padding: 2rem;
+        border-radius: 1.4rem;
     }
 }
 
 .videoTriggerContainer {
     display: flex;
     align-items: center;
-}
-
-@media(--layout-lte-medium) {
-    .concept {
-        flex-direction: column;
-    }
-
-    .leftSide {
-        height: 725px;
-        flex: unset;
-
-        & .content {
-            margin: 120px 23%;
-        }
-
-        & .buttonBox {
-            margin-top: 40px;
-        }
-    }
-
-    .rightSide {
-        height: 375px;
-        flex: unset;
-
-        & .videoBox {
-            width: 88%;
-            margin-left: 0;
-            transform: translateY(calc(-50% + 4px));
-        }
-    }
-
-    .videoTriggerContainer {
-        justify-content: center;
-        align-items: flex-start;
-    }
 }

@@ -1,0 +1,84 @@
+@import "../../styles/colors";
+@import "../../styles/mixins/position";
+
+.youtubeVideo {
+    position: relative;
+    height: 0;
+    padding-top: 64.25%; /* keep inside image aspect ratio (1216x780) */
+
+    & .trigger {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 10;
+        cursor: pointer;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+            opacity: 0.5;
+            background: var(--color-black);
+        }
+
+        & .image {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        & .playButton {
+            @mixin position absolute, 0, 0, 0, 0;
+
+            width: 6rem;
+            height: 6rem;
+            z-index: 2;
+            margin: auto;
+            background-color: transparent;
+            border-radius: 50%;
+            box-shadow: inset 0 0 0 0 var(--color-indian-khaki);
+            transition: box-shadow 0.3s ease-in-out;
+
+            & > i {
+                @mixin position absolute, 0, 0, 0, 0;
+
+                width: 6rem;
+                height: 6rem;
+            }
+        }
+
+        &.inlineNotReady .playButton {
+            opacity: 0;
+        }
+
+        &.inlineReady .playButton {
+            opacity: 1;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        &.inlinePlaying {
+            display: none;
+        }
+
+        &.inlinePlaying .image,
+        &.inlinePlaying .playButton {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        &:hover .playButton {
+            box-shadow: inset 0 0 0 3rem var(--color-indian-khaki);
+        }
+    }
+}

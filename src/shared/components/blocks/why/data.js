@@ -1,6 +1,6 @@
 import dids from '../../../media/illustrations/illustration-dids.svg';
 import yourIdentity from '../../../media/illustrations/illustration-your-identity.svg';
-import decentralisedSso from '../../../media/illustrations/illustration-decentralised-sso.svg';
+import decentralizedSso from '../../../media/illustrations/illustration-decentralized-sso.svg';
 import verifiableCredentials from '../../../media/illustrations/illustration-verifiable-credentials.svg';
 import signedOperations from '../../../media/illustrations/illustration-signed-operations.svg';
 import privacy from '../../../media/illustrations/illustration-privacy.svg';
@@ -19,8 +19,8 @@ export const blocks = [
         description: 'Control how much you disclose to others, or even go fully anonymous.',
     },
     {
-        icon: decentralisedSso,
-        title: 'Decentralised Sign-On',
+        icon: decentralizedSso,
+        title: 'Decentralized Sign-On',
         description: 'Typical single sign on solutions rely on centralised services like Facebook or Twitter. What happens when they go away?',
     },
     {
@@ -38,6 +38,6 @@ export const blocks = [
     {
         icon: signedOperations,
         title: 'Signed operations/data',
-        description: 'What you do online is currently owned by centralised services. Who’s to say that data wasn’t tampered with?',
+        description: 'What you do online is currently owned by centralised services. Who\'s to say that data wasn\'t tampered with?',
     },
 ];

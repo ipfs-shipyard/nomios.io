@@ -1,92 +1,164 @@
-import React, { Component } from 'react';
-import Lottie from 'react-lottie';
-import { Form, Field } from 'react-final-form';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import styles from './Subscribe.module.css';
-import Button from '../../button';
-import LayoutContainer from '../../../components/layout-container/LayoutContainer';
-import * as animationData from '../../../media/illustrations/illustration-stamp-animation.json';
+import addToMailchimp from 'gatsby-plugin-mailchimp';
+import Lottie from 'react-lottie';
+import { Form, Field } from 'react-final-form';
+import createFocusDecorator from 'final-form-focus';
+import Observer from '@researchgate/react-intersection-observer';
+import { LayoutSplit, LayoutContainer } from '../../layout';
 import { CrossmarkIcon } from '../../icon';
+import Button from '../../button';
+import * as animationData from '../../../media/illustrations/illustration-stamp-animation.json';
+import styles from './Subscribe.module.css';
 
-const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const RESET_FORM_DELAY = 2500;
+const LOTTIE_OPTIONS = {
+    loop: false,
+    autoplay: false,
+    animationData: animationData.default,
+    rendererSettings: {
+        preserveAspectRatio: 'xMidYMid meet',
+    },
+};
 
-const onSubmit = () => wait(200);
+const formDecorators = [createFocusDecorator()];
+const emailValidator = (value) => /[^@]+@[^.]+\..+/.test(value) ? undefined : 'Invalid email';
 
-class Subscribe extends Component {
+class Subscribe extends PureComponent {
+    resetSubmitTimeout = undefined;
+
+    state = {
+        intersected: false,
+    };
+
+    componentWillUnmount() {
+        clearTimeout(this.resetSubmitTimeout);
+    }
+
     render() {
         const { className } = this.props;
 
-        const defaultOptions = {
-            loop: true,
-            autoplay: true,
-            animationData: animationData.default,
-            rendererSettings: {
-                preserveAspectRatio: 'xMidYMid slice',
-            },
-        };
-
         return (
-            <LayoutContainer className={ classNames(styles.subscribe, className) }>
-                <div className={ styles.subscribeWrapper }>
-                    <div className={ styles.joinUs }>
-                        <div className={ styles.firstText }>
-                            Join The Effort.
-                        </div>
-                        <p className={ styles.secondText }>
-                            Want to get involved? Join our mailing list to never miss an update.
-                        </p>
+            <Observer onChange={ this.handleIntersect } threshold={ 0.5 }>
+                <LayoutSplit
+                    id="subscribe"
+                    left={ this.renderLeft() }
+                    right={ this.renderRight() }
+                    className={ classNames(styles.subscribe, className) } />
+            </Observer>
 
-                        <Form
-                            onSubmit={ onSubmit }
-                            render={ this.renderForm } />
-                    </div>
-                    <div className={ styles.image }>
-                        <Lottie options={ defaultOptions }
-                            height={ '100%' }
-                            width={ 260 } />
-                    </div>
+        );
+    }
+
+    renderLeft() {
+        return (
+            <LayoutContainer
+                variant="split-left"
+                className={ styles.leftSide }
+                contentClassName={ styles.leftSideContent }>
+                <div className={ styles.wrapper }>
+                    <div className={ styles.firstText }>Join the effort</div>
+                    <p className={ styles.secondText }>
+                        Want to get involved? Join our mailing list to never miss an update.
+                    </p>
+
+                    <Form
+                        decorators={ formDecorators }
+                        onSubmit={ this.handleSubmit }
+                        render={ this.renderForm } />
                 </div>
             </LayoutContainer>
         );
     }
 
-    renderForm = ({ handleSubmit, submitSucceeded, submitFailed, dirtySinceLastSubmit }) => {
-        const hasSubmitted = submitSucceeded || submitFailed;
+    renderRight() {
+        const { intersected } = this.state;
 
         return (
-            <form className={ styles.form } onSubmit={ handleSubmit }>
-                <div className={ styles.inputCrossWrapper }>
-                    <Field
-                        component="input"
-                        className={ classNames(styles.input, { [styles.inputSuccess]: hasSubmitted && submitSucceeded, [styles.inputFail]: hasSubmitted && submitFailed }) }
-                        type="email"
-                        name="email"
-                        placeholder="Enter Your Email" />
-                    { hasSubmitted && submitFailed && !dirtySinceLastSubmit && <CrossmarkIcon className={ styles.cross } /> }
-                </div>
-                { !hasSubmitted && <Button className={ styles.submit } type="submit" variant="secondary">
-                    JOIN NOW
-                </Button> }
-                { hasSubmitted &&
-                    <Button
-                        className={ styles.submit }
-                        feedback={ submitSucceeded ? 'success' : undefined }
-                        type="submit"
-                        variant="secondary"
-                        errorClassName={ submitFailed ? styles.error : undefined }
-                        successClassName={ submitSucceeded ? styles.success : undefined }>
-                        JOIN NOW
-                    </Button>
-                }
+            <LayoutContainer
+                variant="split-right"
+                className={ styles.rightSide }
+                contentClassName={ styles.rightSideContent }>
+                <Lottie
+                    width={ 260 }
+                    isPaused={ !intersected }
+                    options={ LOTTIE_OPTIONS }
+                    isClickToPauseDisabled />
+            </LayoutContainer>
+        );
+    }
+
+    renderForm = ({ handleSubmit, submitting, submitSucceeded, submitFailed, hasSubmitErrors }) => {
+        let feedback;
+
+        if (submitting) {
+            feedback = 'loading';
+        } else if (submitSucceeded) {
+            feedback = 'success';
+        } else if (submitFailed && hasSubmitErrors) {
+            feedback = 'error';
+        }
+
+        return (
+            <form
+                className={ classNames(styles.form, feedback && styles.hasFeedback) }
+                onSubmit={ handleSubmit }>
+                <Field
+                    name="email"
+                    validate={ emailValidator }>
+                    { ({ input, meta }) => {
+                        const showError = meta.touched && meta.error && styles.invalid;
+
+                        return (
+                            <>
+                                <div className={ classNames(styles.inputWrapper, showError && styles.invalid) }>
+                                    <input
+                                        { ...input }
+                                        disabled={ !!feedback }
+                                        placeholder="Enter Your Email"
+                                        className={ styles.input } />
+                                    <CrossmarkIcon className={ styles.crossmark } />
+                                </div>
+                            </>
+                        );
+                    } }
+                </Field>
+
+                <Button
+                    className={ styles.submit }
+                    feedback={ feedback }
+                    type="submit"
+                    variant="secondary">
+                    Join now
+                </Button>
             </form>
         );
+    };
+
+    handleIntersect = ({ isIntersecting }) => {
+        isIntersecting && this.setState({ intersected: true });
+    };
+
+    handleSubmit = async (values, { reset }) => {
+        let res;
+
+        try {
+            res = await addToMailchimp(values.email);
+        } catch (err) {
+            return err.message;
+        } finally {
+            this.resetSubmitTimeout = setTimeout(reset, RESET_FORM_DELAY);
+        }
+
+        if (res.result === 'error' && !/already subscribed/.test(res.msg)) {
+            return res.msg;
+        }
     };
 }
 
 Subscribe.propTypes = {
     className: PropTypes.string,
-    handleSubmit: PropTypes.func.isRequired,
 };
 
 export default Subscribe;

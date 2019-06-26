@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Cancelable from 'cancel.it';
 import styles from './Svg.module.css';
 
 class Icon extends Component {
@@ -11,7 +10,7 @@ class Icon extends Component {
         };
     }
 
-    promise = null;
+    promise = undefined;
     state = { contents: '' };
 
     componentDidMount() {
@@ -25,7 +24,7 @@ class Icon extends Component {
     }
 
     componentWillUnmount() {
-        this.cancelWaitForSvg();
+        this.resetWaitForSvg();
     }
 
     render() {
@@ -39,23 +38,24 @@ class Icon extends Component {
         return <i { ...finalProps } dangerouslySetInnerHTML={ { __html: contents } } />;
     }
 
-    cancelWaitForSvg() {
-        if (this.promise) {
-            this.promise.cancel();
-            this.promise = null;
-        }
+    resetWaitForSvg() {
+        this.promise = undefined;
     }
 
     async maybeWaitForSvg() {
         const { svg } = this.props;
 
-        this.cancelWaitForSvg();
+        this.resetWaitForSvg();
 
-        if (typeof svg === 'object') {
-            this.promise = Cancelable.from(svg);
+        if (typeof svg !== 'object') {
+            return;
+        }
 
-            const result = await this.promise.catch(() => ({ default: '' }));
+        const promise = this.promise = svg;
 
+        const result = await this.promise.catch(() => ({ default: '' }));
+
+        if (promise === this.promise) {
             this.setState({ contents: result.default });
         }
     }

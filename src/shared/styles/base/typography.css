@@ -1,5 +1,6 @@
 @import "../colors";
 @import "../mixins/typography";
+@import "../mixins/text";
 
 /* ==========================================================================
    Typography Defaults
@@ -11,7 +12,7 @@ html {
 
 body {
     @mixin typography-body-1 rem;
-
+    @mixin text-smooth;
     color: var(--color-armadillo);
     overflow-wrap: break-word;  /* Break long words by default */
 }

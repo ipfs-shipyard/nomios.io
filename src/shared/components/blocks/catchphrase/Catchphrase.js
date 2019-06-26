@@ -1,90 +1,127 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { throttle } from 'lodash';
+import { offset } from 'tiny-dom-helpers';
+import Observer from '@researchgate/react-intersection-observer';
+import { LayoutContainer } from '../../layout';
+import { HEADER_HEIGHT_SMALL } from '../../header';
 import styles from './Catchphrase.module.css';
-import LayoutContainer from '../../../components/layout-container/LayoutContainer';
 
 class Catchphrase extends Component {
-    constructor(props) {
-        super(props);
+    wrapperRef = createRef();
 
-        this.isGoingDown = undefined;
-        this.maxLeftTransform = -100;
-        this.maxRightTransform = 0;
-        this.translateSteps = 1.2;
+    windowSize = undefined;
+    wrapperSize = undefined;
+    wrapperOffsetTop = undefined;
+    intersecting = false;
 
-        this.state = {
-            translateValue: 0,
-        };
-    }
+    state = {
+        percentage: 0,
+    };
 
     componentDidMount() {
-        window.addEventListener('scroll', this.handleScroll.bind(this));
+        if (typeof window !== 'undefined') {
+            window.addEventListener('resize', this.handleResize, { passive: true });
+            window.addEventListener('scroll', this.handleScroll, { passive: true });
+
+            this.updateDimensions();
+        }
     }
 
     componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll.bind(this));
+        window.removeEventListener('resize', this.handleResize, { passive: true });
+        window.removeEventListener('scroll', this.handleScroll, { passive: true });
     }
 
     render() {
         const { className } = this.props;
-        const { translateValue } = this.state;
-
-        const applyClassNames = classNames(
-            styles.scrollable,
-        );
-
-        const applyStyles = {
-            transform: `translate3d(${translateValue}%, -50%, 0)`,
-        };
 
         return (
             <LayoutContainer
-                contentClassName={ styles.layoutContent }
-                className={ classNames(styles.container, className) } >
-                <div id="catchphraseContainer" className={ styles.blackScreen }>
-                    <div className={ applyClassNames } style={ applyStyles } >
-                        <h2> An interoperable world. Open, but under your control.</h2>
+                id="catchphraseContainer"
+                className={ classNames(styles.catchphrase, className) }
+                contentClassName={ styles.catchphraseContent }>
+                <Observer onChange={ this.handleIntersect }>
+                    <div className={ styles.wrapper } ref={ this.wrapperRef }>
+                        <div className={ classNames(styles.linesWrapper, styles.animated) }>
+                            <span
+                                style={ { transform: this.calculateLeftTransform() } }
+                                className={ styles.firstLine }>
+                                An interoperable world.
+                            </span>
+                            <span
+                                style={ { transform: this.calculateRightTransform() } }
+                                className={ styles.secondLine }>
+                                Open, but under your control.
+                            </span>
+                        </div>
+
+                        <div className={ classNames(styles.linesWrapper, styles.nonAnimated) }>
+                            An interoperable world. Open, but under your control.
+                        </div>
                     </div>
-                </div>
+                </Observer>
             </LayoutContainer>
         );
     }
 
-    handleScroll() {
-        const { translateValue } = this.state;
+    updateDimensions = () => {
+        this.windowSize = { width: window.innerWidth, height: window.innerHeight };
+        this.wrapperSize = { width: this.wrapperRef.current.offsetWidth, height: this.wrapperRef.current.offsetHeight };
+        this.wrapperOffsetTop = offset(this.wrapperRef.current).top;
 
-        const windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-        const container = document.getElementById('catchphraseContainer');
-        const top = container.getBoundingClientRect().top;
-        const offset = windowHeight - top;
+        this.updatePercentage();
+    };
 
-        if (this.lastScroll < window.scrollY) {
-            this.isGoingDown = true;
-        } else {
-            this.isGoingDown = false;
-        }
-        this.lastScroll = window.scrollY;
-
-        const shouldAnimate = (offset >= 0 && offset <= container.clientHeight + container.clientHeight);
-
-        if (!shouldAnimate) {
-            offset > container.clientHeight && this.setState({
-                translateValue: this.maxLeftTransform,
-            });
-            offset < container.clientHeight && this.setState({
-                translateValue: this.maxRightTransform,
-            });
+    updatePercentage = () => {
+        if (this.windowSize.width <= 768) {
+            return;
         }
 
-        if (shouldAnimate) {
-            this.setState({
-                translateValue: this.isGoingDown ?
-                    Math.max(this.maxLeftTransform, translateValue - this.translateSteps) :
-                    Math.min(this.maxRightTransform, translateValue + this.translateSteps),
-            });
+        const scrollTop = document.scrollingElement.scrollTop;
+
+        const distance = this.windowSize.height + this.wrapperSize.height - HEADER_HEIGHT_SMALL;
+        const elementVisibility = scrollTop + this.windowSize.height - this.wrapperOffsetTop;
+        const unboundPercentage = (elementVisibility) / distance;
+        const percentage = Math.min(Math.max(0, unboundPercentage), 1);
+
+        this.setState({
+            percentage,
+        });
+    };
+
+    calculateLeftTransform = () => {
+        if (!this.wrapperRef.current) {
+            return;
         }
-    }
+
+        const elementWidth = this.wrapperRef.current.offsetWidth;
+
+        return `translateX(calc(${elementWidth * this.state.percentage}px - 50%))`;
+    };
+
+    calculateRightTransform = () => {
+        if (!this.wrapperRef.current) {
+            return;
+        }
+
+        const elementWidth = this.wrapperRef.current.offsetWidth;
+
+        return `translateX(calc(${elementWidth - (elementWidth * this.state.percentage)}px - 50%))`;
+    };
+
+    handleScroll = () => {
+        if (this.intersecting) {
+            this.updatePercentage();
+        }
+    };
+
+    handleResize = throttle(() => this.updateDimensions(), 250);
+
+    handleIntersect = ({ isIntersecting }) => {
+        this.intersecting = isIntersecting;
+    };
 }
 
 Catchphrase.propTypes = {

@@ -1,74 +1,76 @@
-@import "../../../styles/mixins/layout";
 @import "../../../styles/colors";
+@import "../../../styles/variables";
+@import "../../../styles/mixins/layout";
 @import "../../../styles/mixins/typography";
-
-@mixin layout-main .roadmap, .roadmapWrapper;
 
 .roadmap {
     --right-width: 50%;
 
+    padding-top: var(--layout-block-padding-y);
+    padding-bottom: var(--layout-block-padding-y);
     background: var(--color-celtic);
 
     & .title {
         @mixin typography-h2 rem;
-
-        padding-top: 150px;
         color: var(--color-indian-khaki);
     }
 
-    & .tableWrapper {
-        margin-bottom: 200px;
-
+    & .table {
         & .tableRow {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-            border-bottom: 1px solid color(var(--color-white) a(10%));
-            color: color(var(--color-dawn-pink) a(70%));
+            border-bottom: 0.1rem solid color(var(--color-white) a(10%));
+            color: color(var(--color-dawn-pink) a(85%));
 
-            & .tableLabel {
+            & .tableCell {
                 @mixin typography-body-1 rem;
-
-                margin: 20px 20px 20px 0;
+                padding: 2rem 0;
                 display: flex;
-                flex: 1;
+                align-items: center;
 
                 &:last-child {
                     margin-right: 0;
                 }
+            }
 
-                &.labelMobile {
-                    display: none;
+            & .itemStatus {
+                display: flex;
+                flex: 0 0 var(--right-width);
+                justify-content: space-between;
+
+                & .tableCell {
+                    flex: 1 1 calc(100% / 3);
                 }
             }
 
-            & .bodyStatus {
-                width: var(--right-width);
-                display: flex;
-                justify-content: space-between;
-
-                & .bodyLabel {
-                    margin-left: calc(12px + 14px);
-                }
-
-                & .dot {
-                    font-size: 1.3em;
-                }
+            & .itemName {
+                padding-right: 2rem;
+                flex: 1 1 calc(100% - var(--right-width));
             }
         }
 
         & .tableHeader {
-            position: relative;
-            width: var(--right-width);
-            margin-left: auto;
-            display: flex;
-            justify-content: space-between;
-            color: var(--color-white);
-
-            & .tableHeaderIcon {
-                width: 12px;
-                margin-right: 14px;
+            & .itemName {
+                visibility: hidden;
+                opacity: 0.5;
             }
+
+            & .itemStatus {
+                opacity: 0.7;
+
+                & .statusName {
+                    margin-right: 1.4rem;
+                }
+
+                & .statusIcon {
+                    width: 1.2rem;
+                }
+            }
+        }
+
+        & .tableBody .itemStatus .tableCell {
+            font-size: 1.3em;
         }
     }
 }
@@ -76,58 +78,39 @@
 @media (--layout-lte-medium) {
     .roadmap {
         & .title {
-            padding-top: 120px;
-            padding-bottom: 20px;
-        }
-
-        & .tableWrapper {
-            margin-bottom: 150px;
+            margin-bottom: 2rem;
         }
     }
 }
 
 @media (--layout-lte-small) {
     .roadmap {
-        --right-width: 25%;
+        --right-width: 27%;
 
         & .title {
-            padding-top: 80px;
-            padding-bottom: 35px;
+            margin-bottom: 3.5rem;
         }
 
-        & .tableWrapper {
-            margin-bottom: 100px;
-
+        & .table {
             & .tableRow {
-                & .tableLabel {
-                    flex: initial;
-
-                    &.rightSide {
-                        max-width: calc(100% - var(--right-width));
-                    }
-
-                    &.labelMobile {
-                        display: block;
-                        color: var(--color-dawn-pink);
-                    }
+                & .itemStatus .tableCell {
+                    justify-content: flex-end;
                 }
 
-                & .bodyStatus {
-                    & .bodyLabel {
-                        margin-left: 0;
-                    }
+                & .itemName {
+                    padding-right: 0;
                 }
             }
 
             & .tableHeader {
-                & .tableHeaderIcon {
-                    margin-right: 0;
+                & .itemName {
+                    visibility: visible;
+                }
+
+                & .itemStatus .statusName {
+                    display: none;
                 }
             }
         }
-    }
-
-    .headerName {
-        display: none;
     }
 }

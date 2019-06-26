@@ -1,0 +1,33 @@
+@import "../../styles/colors";
+@import "../../styles/custom-medias";
+
+.layoutSplit {
+    display: flex;
+
+    & .left,
+    & .right {
+        flex: 0 0 50%;
+    }
+}
+
+@media (--layout-lte-medium) {
+    .layoutSplit.medium {
+        flex-direction: column;
+
+        & .left,
+        & .right {
+            flex-basis: 100%;
+        }
+    }
+}
+
+@media (--layout-lte-small) {
+    .layoutSplit.small {
+        flex-direction: column;
+
+        & .left,
+        & .right {
+            flex-basis: 100%;
+        }
+    }
+}

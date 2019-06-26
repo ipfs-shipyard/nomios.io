@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import LayoutContainer from '../../../components/layout-container/LayoutContainer';
+import Observer from '@researchgate/react-intersection-observer';
 import { title, blocks } from './data';
-import { ArrowRightIcon } from '../../icon';
-import styles from './Why.module.css';
+import { LayoutContainer } from '../../layout';
+import { ExternalLinkIcon } from '../../icon';
 import Slider from 'react-slick';
+import styles from './Why.module.css';
 
-const settings = {
+const SLIDER_SETTINGS = {
     dots: true,
     infinite: true,
     speed: 500,
@@ -16,26 +17,9 @@ const settings = {
     slidesToShow: 1,
     slidesToScroll: 1,
     pauseOnFocus: true,
-    pauseOnHover: true,
+    pauseOnHover: false,
     arrows: false,
 };
-
-const Why = ({ className }) => (
-    <LayoutContainer id="why" className={ classNames(styles.why, className) } contentClassName={ styles.whyContent }>
-        <div className={ classNames(styles.list, styles.listDesktop) }>
-            <div className={ styles.blockTitle }><h2>{ title }</h2></div>
-            { blocks.map((block, index) => <Block key={ index } order={ index } { ...block } />) }
-        </div>
-        <div className={ classNames(styles.list, styles.listMobile) }>
-            <LayoutContainer className={ styles.blockTitleMobile }>
-                <div className={ styles.blockTitle }><h2>{ title }</h2></div>
-            </LayoutContainer>
-            <Slider { ...settings }>
-                { blocks.map((block, index) => <Block key={ index } order={ index } { ...block } />) }
-            </Slider>
-        </div>
-    </LayoutContainer>
-);
 
 const Block = ({ icon, title, description, link, order }) => (
     <div className={ classNames(styles.block, styles[`block${order + 1}`]) }>
@@ -45,7 +29,7 @@ const Block = ({ icon, title, description, link, order }) => (
         {
             link &&
             <a href={ link } rel="noopener noreferrer" target="_blank" className={ styles.link }>
-                <ArrowRightIcon />
+                <ExternalLinkIcon />
             </a>
         }
     </div>
@@ -58,6 +42,68 @@ Block.propTypes = {
     link: PropTypes.string,
     order: PropTypes.number,
 };
+
+class Why extends PureComponent {
+    sliderRef = React.createRef();
+
+    state = {
+        stopTimer: false,
+        initSliderAnimation: false,
+        isVisible: false,
+    };
+
+    componentDidMount() {
+        this.sliderRef.current.slickPause();
+        this.setState({ initSliderAnimation: true });
+    }
+
+    render() {
+        const { className } = this.props;
+        const { stopTimer, initSliderAnimation, isVisible } = this.state;
+
+        return (
+            <LayoutContainer
+                id="why"
+                className={ classNames(styles.why, className) }
+                contentClassName={ styles.whyContent }>
+                <div className={ classNames(styles.list, styles.listDesktop) }>
+                    <div className={ styles.blockTitle }><h2>{ title }</h2></div>
+                    { blocks.map((block, index) => <Block key={ index } order={ index } { ...block } />) }
+                </div>
+                <div className={ classNames(styles.list, styles.listMobile, stopTimer && styles.timerStopped, initSliderAnimation && isVisible && styles.startDotsAnimation) }>
+                    <div className={ styles.blockTitleMobile }>
+                        <div className={ styles.blockTitle }><h2>{ title }</h2></div>
+                    </div>
+                    <Observer onChange={ this.handleIntersection }>
+                        <Slider { ...SLIDER_SETTINGS } onSwipe={ this.handleSwipe } ref={ this.sliderRef }>
+                            { blocks.map((block, index) => <Block key={ index } order={ index } { ...block } />) }
+                        </Slider>
+                    </Observer>
+                </div>
+            </LayoutContainer>
+        );
+    }
+
+    handleSwipe = () => {
+        this.sliderRef.current.slickPause();
+        this.setState({ stopTimer: true });
+    };
+
+    handleIntersection = ({ isIntersecting }) => {
+        const { isVisible, stopTimer } = this.state;
+
+        if (!stopTimer) {
+            if (isIntersecting && !isVisible && !stopTimer) {
+                this.sliderRef.current.slickPlay();
+                this.setState({ isVisible: true });
+            }
+            if (!isIntersecting && isVisible) {
+                this.sliderRef.current.slickPause();
+                this.setState({ isVisible: false });
+            }
+        }
+    };
+}
 
 Why.propTypes = {
     className: PropTypes.string,

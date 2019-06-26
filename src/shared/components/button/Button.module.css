@@ -13,9 +13,6 @@
     padding: 0;
     border: none;
     background: transparent;
-    transition-property: opacity, box-shadow;
-    transition-duration: var(--feedback-transition-duration);
-    transition-timing-function: ease-out;
 
     &:enabled {
         cursor: pointer;
@@ -29,11 +26,13 @@
         position: relative;
         @mixin typography-body-1 rem;
         height: 100%;
-        padding: 0 5rem;
+        padding: 0 4rem;
         display: flex;
         justify-content: center;
         align-items: center;
-        transition-property: border-color, color, background-color, opacity;
+        text-transform: uppercase;
+        letter-spacing: 0.15rem;
+        transition-property: color, background-color, opacity, transform;
         transition-duration: var(--feedback-transition-duration);
         transition-timing-function: ease-out;
 
@@ -55,13 +54,13 @@
     &.primary {
         & .textBlock {
             background-color: var(--color-white);
-            color: var(--color-mineral-green);
+            color: var(--color-celtic);
         }
 
         &:enabled {
             &:active .textBlock,
             &:focus:not(:hover) .textBlock {
-                background-color: var(--color-dune);
+                opacity: 0.8;
             }
 
             &:hover:not(:active) .textBlock {
@@ -70,7 +69,7 @@
         }
 
         &:disabled .textBlock {
-            background-color: color(var(--color-armadillo) alpha(0.2));
+            color: color(var(--color-celtic) alpha(0.6));
         }
     }
 
@@ -78,19 +77,12 @@
         & .textBlock {
             background-color: var(--color-indian-khaki);
             color: var(--color-white);
-
-            & .progressBar {
-                top: -1px;
-                right: -1px;
-                bottom: -1px;
-                left: -1px;
-            }
         }
 
         &:enabled {
             &:active .textBlock,
             &:focus:not(:hover) .textBlock {
-                background-color: var(--color-dune);
+                opacity: 0.8;
             }
 
             &:hover:not(:active) .textBlock {
@@ -98,92 +90,9 @@
             }
         }
 
-        &:disabled {
-            opacity: 0.3;
-        }
-    }
-
-    &.tertiary {
-        & .textBlock {
-            background-color: var(--color-mineral-green);
-            color: var(--color-white);
-
-            & .progressBar {
-                top: -1px;
-                right: -1px;
-                bottom: -1px;
-                left: -1px;
-            }
-        }
-
-        &:enabled {
-            &:active .textBlock,
-            &:focus:not(:hover) .textBlock {
-                background-color: var(--color-dune);
-            }
-
-            &:hover:not(:active) .textBlock {
-                background-color: color(var(--color-indian-khaki));
-                color: var(--color-white);
-            }
-        }
-
         &:disabled .textBlock {
-            border-color: color(var(--color-white) alpha(0.3));
+            background-color: color(var(--color-indian-khaki) alpha(0.5));
             color: color(var(--color-white) alpha(0.5));
-        }
-    }
-
-    &.whiteBorder {
-        & .textBlock {
-            border: solid 2px var(--color-indian-khaki);
-            background-color: var(--color-white);
-            color: var(--color-mineral-green);
-            fill: var(--color-mineral-green);
-        }
-
-        &:enabled {
-            &:active .textBlock,
-            &:focus:not(:hover) .textBlock {
-                background-color: var(--color-dune);
-            }
-
-            &:hover:not(:active) .textBlock {
-                background-color: var(--color-indian-khaki);
-                color: var(--color-white);
-                fill: var(--color-white);
-            }
-        }
-
-        &:disabled .textBlock {
-            background-color: color(var(--color-white) alpha(0.2));
-            color: color(var(--color-armadillo) alpha(0.5));
-        }
-    }
-
-    &.indian-khakiBorder {
-        & .textBlock {
-            border: solid 2px var(--color-mineral-green);
-            background-color: var(--color-indian-khaki);
-            color: var(--color-white);
-        }
-
-        &:enabled {
-            &:active .textBlock,
-            &:focus:not(:hover) .textBlock {
-                background-color: var(--color-dune);
-            }
-
-            &:hover:not(:active) .textBlock {
-                border: none;
-                background-color: var(--color-white);
-                color: var(--color-mineral-green);
-            }
-        }
-
-        &:disabled .textBlock {
-            background-color: color(var(--color-white) alpha(0.2));
-            color: color(var(--color-armadillo) alpha(0.5));
         }
     }
 
@@ -210,6 +119,11 @@
         transition: transform var(--feedback-transition-duration) ease-out;
     }
 
+    &.success .textBlock,
+    &.error .textBlock {
+        transform: translateY(-100%);
+    }
+
     &.success .successBlock,
     &.error .errorBlock {
         transform: translateY(0);
@@ -217,74 +131,37 @@
 
     /* Primary & Secondary */
 
-    &.primary.progressVisible .textBlock,
-    &.secondary.progressVisible .textBlock {
-        background-color: color(var(--color-armadillo) alpha(0.2));
+    &.primary.hasFeedback .textBlock,
+    &.secondary.hasFeedback .textBlock {
+        background-color: var(--color-celtic);
         color: var(--color-white);
-    }
-
-    &.secondary {
-        &.loading,
-        &.success,
-        &.error {
-            opacity: 1;
-        }
-
-        &.progressVisible .textBlock {
-            border-color: transparent;
-        }
     }
 
     &.primary,
     &.secondary {
-        & .textBlock .progressBar {
-            background-color: color(var(--color-armadillo) alpha(0.2));
-        }
-
-        & .successBlock {
-            background-color: var(--color-ocean-green);
-
-            & .checkmark svg path {
-                stroke: var(--color-white);
-            }
-        }
-
-        & .errorBlock {
-            background-color: var(--color-monza);
-
-            & .crossmark svg path {
-                stroke: var(--color-white);
-            }
-        }
-    }
-
-    /* Tertiary & Negative */
-
-    &.tertiary,
-    &.negative {
-        &.progressVisible .textBlock {
-            border-color: transparent;
-            background-color: color(var(--color-white) alpha(0.2));
+        &.hasFeedback .textBlock,
+        &.hasFeedback .textBlock {
+            background-color: var(--color-celtic);
             color: var(--color-white);
         }
 
         & .textBlock .progressBar {
-            background-color: color(var(--color-white) alpha(0.2));
+            background: color(var(--color-white) alpha(0.12));
         }
 
-        & .successBlock {
-            background-color: var(--color-white);
-
-            & .checkmark svg path {
-                stroke: var(--color-ocean-green);
-            }
-        }
-
+        & .successBlock,
         & .errorBlock {
-            background-color: var(--color-white);
+            background-color: var(--color-celtic);
+            color: var(--color-white);
 
-            & .crossmark svg path {
-                stroke: var(--color-monza);
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: color(var(--color-white) alpha(0.12));
             }
         }
     }
@@ -296,6 +173,7 @@
     & .checkmark,
     & .crossmark {
         font-size: 1.5rem;
+        stroke: var(--color-white);
         stroke-dasharray: 20;
         stroke-dashoffset: 20;
     }

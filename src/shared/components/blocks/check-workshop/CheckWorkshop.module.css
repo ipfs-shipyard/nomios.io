@@ -1,110 +1,95 @@
 @import "../../../styles/colors";
+@import "../../../styles/variables";
 @import "../../../styles/custom-medias";
 @import "../../../styles/mixins/typography";
 
 .checkWorkshop {
-    min-height: 50vw;
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
     background: var(--color-indian-khaki);
 }
 
-.content {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    margin: 0 32px;
+.checkWorkshopContent {
+    padding-top: var(--layout-block-padding-y);
+    padding-bottom: var(--layout-block-padding-y);
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
     align-items: center;
 
-    & .title {
-        @mixin typography-h2 rem;
-        margin-top: 35%;
-        color: var(--color-mineral-green);
-        text-align: center;
-    }
-
-    & .description {
-        @mixin typography-body-1 rem;
-
-        height: 50px;
-        margin-top: 50px;
-        color: var(--color-mineral-green);
-        text-align: center;
-    }
-
-    & .buttonBox {
-        margin: 50px 0;
-    }
-
-    & .logo {
-        position: relative;
-    }
-}
-
-@media(--layout-gte-large) {
-    .content {
-        &:hover {
-            & .description,
-            & .title,
-            & .buttonBox {
-                transition-duration: 0.4s;
-            }
-
-            & .description {
-                opacity: 1;
-            }
-
-            & .title {
-                transform: translateY(-20%);
-            }
-
-            & .buttonBox {
-                transform: translateY(40px);
-            }
-        }
+    & .wrapper {
+        width: 100%;
+        max-width: 45rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
         & .title {
             @mixin typography-h2 rem;
-            margin-top: 35%;
-            transition: transform 0.5s ease-in-out;
+
+            color: var(--color-celtic);
+            text-align: center;
         }
 
         & .description {
             @mixin typography-body-1 rem;
 
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
+            height: 5rem;
+            margin-top: 5rem;
+            color: var(--color-celtic);
+            text-align: center;
         }
 
         & .buttonBox {
-            margin: 20px 0;
+            margin-top: 5rem;
+
+            & .cta {
+                & .buttonText {
+                    display: flex;
+
+                    & .logo {
+                        margin-left: 2.5rem;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+@media(--layout-gt-medium) {
+    .checkWorkshopContent .wrapper {
+        & .title {
+            transform: translateY(20%);
             transition: transform 0.5s ease-in-out;
+        }
+
+        & .description {
+            transform: translateY(50%);
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        & .buttonBox {
+            margin-top: 2rem;
+        }
+    }
+
+    .checkWorkshopContent:hover .wrapper {
+        & .description {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        & .title {
+            transform: translateY(0);
         }
     }
 }
 
 @media (--layout-lte-medium) {
-    .content {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        margin: 0 32px;
-
-        & .title {
-            margin-top: 30%;
-        }
-
-        & .description {
-            margin-top: 30px;
-        }
-
+    .checkWorkshopContent .wrapper {
         & .buttonBox {
-            width: 90%;
-            margin: 50px 0;
+            min-width: 100%;
 
             & .cta {
                 width: 100%;
@@ -114,26 +99,13 @@
 }
 
 @media (--layout-lte-small) {
-    .checkWorkshop {
-        height: auto;
-        flex: initial;
-    }
-
-    .content {
-        & .title {
-            margin-top: 80px;
-        }
-
+    .checkWorkshopContent .wrapper {
         & .description {
-            margin-top: 30px;
+            margin-top: 3rem;
         }
 
-        & .buttonBox {
-            width: 100%;
-
-            & .cta {
-                width: 100%;
-            }
+        & .buttonBox .cta > div {
+            padding: 0 3rem;
         }
     }
 }

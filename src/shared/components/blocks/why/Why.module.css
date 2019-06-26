@@ -1,6 +1,7 @@
 @import "../../../styles/colors";
 @import "../../../styles/mixins/position";
 @import "../../../styles/mixins/typography";
+@import "../../../styles/mixins/layout";
 @import "../../../styles/custom-medias";
 
 :root {
@@ -8,12 +9,12 @@
 }
 
 .why {
+    position: relative;
+    z-index: 3;
     background: var(--color-celtic);
 }
 
 .list {
-    margin: 0;
-    padding: 0;
     display: flex;
     flex-wrap: wrap;
     list-style: none;
@@ -25,13 +26,13 @@
 
     & .block {
         position: relative;
-        min-height: 440px;
-        padding: 60px 3%;
+        min-height: 44rem;
+        padding: 6rem 3%;
         flex: 0 0 25%;
     }
 
     & .blockTitle {
-        min-height: 440px;
+        min-height: 44rem;
         display: flex;
         flex: 0 0 50%;
         justify-content: center;
@@ -48,16 +49,16 @@
     }
 
     & .illustration {
-        width: 140px;
-        height: 140px;
-        margin-bottom: 40px;
+        width: 14rem;
+        height: 14rem;
+        margin-bottom: 4rem;
         display: block;
     }
 
     & .title {
-        margin-bottom: 10px;
-        font-size: 20px;
-        line-height: 32px;
+        margin-bottom: 1rem;
+        font-size: 2rem;
+        line-height: 3.2rem;
     }
 
     & .description {
@@ -65,26 +66,22 @@
     }
 
     & .link {
-        @mixin position absolute, 20px, 20px, null, null;
+        @mixin position absolute, 2rem, 2rem, null, null;
 
-        width: 50px;
-        height: 50px;
+        width: 2.5rem;
+        height: 2.5rem;
         overflow: hidden;
-        opacity: 1;
         color: var(--color-dawn-pink);
-        transition: opacity 0.3s ease-in-out;
+        transition: color 0.3s ease-in-out;
 
         & > i {
             @mixin position absolute, 0, 0, 0, 0;
 
-            width: 50px;
-            height: 50px;
-            transform: translate3d(-30%, 0, 0);
-            transition: transform 0.2s ease-in-out;
+            font-size: 2.5rem;
+        }
 
-            &:hover {
-                transform: translate3d(0, 0, 0);
-            }
+        &:hover {
+            color: var(--color-indian-khaki);
         }
     }
 }
@@ -93,15 +90,15 @@
    Responsive
    ========================================================================== */
 
-@media (width <= 1300px) {
+@media (width <= 81.25em) {  /* 1300px * 0.625 */
     .list {
         & .block {
-            min-height: 370px;
+            min-height: 37rem;
             flex-basis: calc(100% / 3);
         }
 
         & .blockTitle {
-            min-height: 310px;
+            min-height: 31rem;
             flex-basis: 100%;
         }
 
@@ -123,6 +120,10 @@
     }
 
     .list {
+        & .blockTitle {
+            padding: 0 var(--layout-edge-spacing-x);
+        }
+
         & .link {
             opacity: 1;
 
@@ -133,10 +134,10 @@
     }
 }
 
-@media (--layout-lt-small) {
+@media (--layout-lte-small) {
     .list {
         & .block {
-            min-height: 370px;
+            min-height: 37rem;
             flex-basis: 50%;
         }
 
@@ -150,11 +151,11 @@
     }
 }
 
-@media (width <= 600px) {
+@media (width <= 37.5em) {  /* 600px * 0.625 */
     .list {
         & .block {
-            min-height: 450px;
-            padding: 30px 20px 40px;
+            min-height: 45rem;
+            padding: var(--layout-edge-spacing-x) var(--layout-edge-spacing-x) calc(var(--layout-edge-spacing-x) + 1rem);
             flex-basis: 100%;
         }
 
@@ -181,7 +182,7 @@
 }
 
 /* ==========================================================================
-   carousel styles
+   Carousel styles
    ========================================================================== */
 
 :global(.slick-slider) {
@@ -241,7 +242,7 @@
 
 :global(.slick-slide) {
     height: 100%;
-    min-height: 1px;
+    min-height: 0.1rem;
     display: none;
     float: left;
 }
@@ -273,7 +274,7 @@
 :global(.slick-vertical .slick-slide) {
     height: auto;
     display: block;
-    border: 1px solid transparent;
+    border: 0.1rem solid transparent;
 }
 
 :global(.slick-arrow.slick-hidden) {
@@ -281,7 +282,12 @@
 }
 
 :global(.slick-dots) {
-    @mixin position absolute, null, 5%, 20px, 5%;
+    position: absolute;
+    right: var(--layout-edge-spacing-x);
+    bottom: 2rem;
+    left: var(--layout-edge-spacing-x);
+
+    @mixin position absolute, null, 5%, 2rem, 5%;
     margin: 0;
     padding: 0;
     display: flex !important;
@@ -294,10 +300,10 @@
         flex: 1 1 auto;
 
         &::after {
-            @mixin position absolute, null, 2px, 0, 0;
+            @mixin position absolute, null, 0.2rem, 0, 0;
 
             content: "";
-            height: 1px;
+            height: 0.1rem;
             background: color(var(--color-white) a(80%));
         }
     }
@@ -305,7 +311,7 @@
     & button {
         width: 100%;
         height: 100%;
-        height: 5px;
+        height: 0.5rem;
         z-index: 1;
         padding: 0;
         transform: translate3d(-101%, 0, 0);
@@ -313,15 +319,19 @@
         opacity: 0;
         background: var(--color-indian-khaki);
         font-size: 0;
-        transition: opacity 0.3s ease-in-out, transform 0s ease-in-out 0.3s;
+        transition: opacity 0.3s ease-in-out, transform 0s linear 0.3s;
         appearance: none;
     }
+}
 
-    & :global(.slick-active) {
-        & button {
-            transform: translate3d(-2px, 0, 0);
-            opacity: 1;
-            transition: transform var(--slider-transition-duration) ease-in-out;
-        }
-    }
+.startDotsAnimation :global(.slick-active) button {
+    transform: translate3d(-0.2rem, 0, 0);
+    opacity: 1;
+    transition: transform var(--slider-transition-duration) linear;
+}
+
+/* After stopping the timer, only animate opacity when changing slide */
+.timerStopped :global(.slick-dots) :global(.slick-active) button {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out, transform 0s linear;
 }

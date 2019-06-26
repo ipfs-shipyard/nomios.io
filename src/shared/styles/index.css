@@ -1,4 +1,4 @@
 @import "normalize.css";
-@import "./base/layout.css";
-@import "./base/font-faces.css";
-@import "./base/typography.css";
+@import "./base/layout";
+@import "./base/font-faces";
+@import "./base/typography";

@@ -5,6 +5,7 @@
 .hero {
     position: relative;
     height: 100vh;
+    z-index: 2;
     background: var(--color-celtic);
 
     & .textWrapper {
@@ -15,25 +16,52 @@
         text-align: center;
     }
 
-    & .vision {
+    & .visionBox {
         position: absolute;
-        bottom: 70px;
+        bottom: 0;
         left: 50%;
+        width: 6.5rem;
+        height: 9.4rem;
         transform: translate(-50%, 0);
-        color: var(--color-dawn-pink);
-        font-size: 12px;
-        text-transform: uppercase;
-        letter-spacing: 3px;
+        cursor: pointer;
 
-        & span {
+        & .vision {
             position: absolute;
-            top: 100%;
+            bottom: 7rem;
             left: 50%;
-            width: 1px;
-            height: 50px;
-            margin-top: 20px;
             transform: translate(-50%, 0);
-            background: white;
+            color: var(--color-dawn-pink);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3rem;
+
+            & a {
+                color: var(--color-dawn-pink);
+                text-decoration: none;
+                text-transform: uppercase;
+                transition: opacity 0.2s ease;
+
+                @media (--layout-lte-medium) {
+                    font-size: 1.2rem;
+                }
+
+                @media (--layout-lte-small) {
+                    font-size: 0.9rem;
+                }
+            }
+
+            & .scrollHint {
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                width: 0.2rem;
+                height: 5rem;
+                margin-top: 2rem;
+                transform: translate(-50%, 0);
+                animation: animateVisionEnter 2s cubic-bezier(1, 0, 0, 1) 0s infinite, animateVisionExit 2s cubic-bezier(1, 0, 0, 1) 0s infinite;
+                stroke: white;
+                stroke-dasharray: 50 50;
+            }
         }
     }
 
@@ -41,7 +69,7 @@
         position: absolute;
         bottom: 0;
         left: 50%;
-        transform: translate(-50%, 0);
+        transform: translate(-50%, 20%);
 
         & svg {
             width: 35vh;
@@ -52,8 +80,74 @@
     }
 }
 
+@keyframes animateVisionEnter {
+    0% {
+        stroke-dashoffset: 0;
+    }
+
+    50% {
+        stroke-dashoffset: 50;
+    }
+}
+
+@keyframes animateVisionExit {
+    50% {
+        stroke-dashoffset: 50;
+    }
+
+    100% {
+        stroke-dashoffset: 100;
+    }
+}
+
+@media (--layout-gt-medium) {
+    .hero {
+        min-height: 65rem;
+
+        & .textWrapper {
+            top: 50%;
+            left: 50%;
+            padding-top: 0;
+            transform: translate(-50%, -55%);
+
+            & h1 {
+                margin: 0;
+            }
+        }
+    }
+
+    @media (height < 40.6em) {
+        .visionBox {
+            display: none;
+        }
+    }
+}
+
 @media (--layout-lte-medium) {
     .hero {
         height: calc(100vh - var(--layout-header-height));
+
+        & .textWrapper {
+            padding-top: 5rem;
+        }
+    }
+
+    @media (height < 37.5em) {
+        .hero {
+            & .textWrapper {
+                padding-top: 2.5rem;
+            }
+
+        }
+    }
+
+    @media (height < 31.25em) {
+        .hero {
+            min-height: 42rem;
+
+            & .visionBox {
+                display: none;
+            }
+        }
     }
 }
