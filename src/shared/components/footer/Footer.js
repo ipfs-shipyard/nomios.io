@@ -7,8 +7,8 @@ import styles from './Footer.module.css';
 
 const Footer = ({ className }) => (
     <footer className={ classNames(styles.footer, className) }>
-        <p className={ styles.copyright }>Nomios © 2019 - Sponsored by  <a rel="noopener noreferrer" target="_blank" href="https://protocol.ai/" > <ProtocolLabsBrandIcon className={ styles.plBrand } /></a></p>
-        <p className={ styles.copyrightTablet }>© 2019 - Sponsored by  <a rel="noopener noreferrer" target="_blank" href="https://protocol.ai/" > <ProtocolLabsBrandIcon className={ styles.plBrand } /></a></p>
+        <p className={ styles.copyright }>Nomios © 2019 – Sponsored by  <a rel="noopener noreferrer" target="_blank" href="https://protocol.ai/" > <ProtocolLabsBrandIcon className={ styles.plBrand } /></a></p>
+        <p className={ styles.copyrightTablet }>© 2019 – Sponsored by  <a rel="noopener noreferrer" target="_blank" href="https://protocol.ai/" > <ProtocolLabsBrandIcon className={ styles.plBrand } /></a></p>
         <Logo className={ styles.logo } />
         <p className={ styles.githubLink } >
                 Build a better world, join our GitHub project.
@@ -22,7 +22,7 @@ const Footer = ({ className }) => (
                 <GithubIcon className={ styles.githubLogo } />
             </a>
         </p>
-        <p className={ styles.copyrightMobile }>© 2019 - Sponsored by <a rel="noopener noreferrer" target="_blank" href="https://protocol.ai/" ><ProtocolLabsBrandIcon className={ styles.plBrand } /></a>
+        <p className={ styles.copyrightMobile }>© 2019 – Sponsored by <a rel="noopener noreferrer" target="_blank" href="https://protocol.ai/" ><ProtocolLabsBrandIcon className={ styles.plBrand } /></a>
         </p>
     </footer>
 );
