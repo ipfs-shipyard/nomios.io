@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Button from '../../button';
 import YoutubeVideo from '../../youtube-video';
 import { LayoutContainer, LayoutSplit } from '../../layout';
-import andreNomiosImage from '../../../media/images/video-thumbnail.png';
+import andreNomiosImage from '../../../media/images/video-thumbnail.jpg';
 import styles from './Concept.module.css';
 
 class Concept extends Component {
