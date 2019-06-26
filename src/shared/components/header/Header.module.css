@@ -60,7 +60,6 @@
         }
 
         & .logoContainer {
-            will-change: opacity;
             padding: 0 2rem;
             display: flex;
             flex: 0 0 auto;
@@ -106,11 +105,9 @@
         position: fixed;
 
         & .headerContent .logoContainer {
-            will-change: transform;
             transition: transform 0.35s ease, opacity 0.3s ease;
 
             & .logotype {
-                will-change: opacity;
                 transition: opacity 0.35s ease;
             }
         }

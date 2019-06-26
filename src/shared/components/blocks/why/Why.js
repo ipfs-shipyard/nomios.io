@@ -44,7 +44,7 @@ Block.propTypes = {
 };
 
 class Why extends PureComponent {
-    slider = React.createRef();
+    sliderRef = React.createRef();
 
     state = {
         stopTimer: false,
@@ -53,7 +53,7 @@ class Why extends PureComponent {
     };
 
     componentDidMount() {
-        this.slider.current.slickPause();
+        this.sliderRef.current.slickPause();
         this.setState({ initSliderAnimation: true });
     }
 
@@ -75,7 +75,7 @@ class Why extends PureComponent {
                         <div className={ styles.blockTitle }><h2>{ title }</h2></div>
                     </div>
                     <Observer onChange={ this.handleIntersection }>
-                        <Slider { ...SLIDER_SETTINGS } onSwipe={ this.handleSwipe } ref={ this.slider }>
+                        <Slider { ...SLIDER_SETTINGS } onSwipe={ this.handleSwipe } ref={ this.sliderRef }>
                             { blocks.map((block, index) => <Block key={ index } order={ index } { ...block } />) }
                         </Slider>
                     </Observer>
@@ -85,7 +85,7 @@ class Why extends PureComponent {
     }
 
     handleSwipe = () => {
-        this.slider.current.slickPause();
+        this.sliderRef.current.slickPause();
         this.setState({ stopTimer: true });
     };
 
@@ -94,11 +94,11 @@ class Why extends PureComponent {
 
         if (!stopTimer) {
             if (isIntersecting && !isVisible && !stopTimer) {
-                this.slider.current.slickPlay();
+                this.sliderRef.current.slickPlay();
                 this.setState({ isVisible: true });
             }
             if (!isIntersecting && isVisible) {
-                this.slider.current.slickPause();
+                this.sliderRef.current.slickPause();
                 this.setState({ isVisible: false });
             }
         }

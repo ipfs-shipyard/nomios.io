@@ -60,7 +60,6 @@
 
                 & .input {
                     @mixin typography-body-1 rem;
-                    will-change: border-color, color;
                     width: 100%;
                     height: 5.8rem;
                     padding: 0 2rem;
@@ -156,7 +155,6 @@
 @media (--layout-gt-small) {
     .leftSideContent .wrapper .form {
         & .submit {
-            will-change: border-color;
             border: 0.2rem solid var(--color-indian-khaki);
             transition: border-color 0.3s ease;
         }

@@ -43,7 +43,11 @@
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-lottie": "^1.2.3",
+    "react-modal": "^3.8.1",
     "react-slick": "^0.24.0",
+    "react-spinners": "^0.5.4",
+    "react-youtube": "^7.9.0",
+    "scrollbar-compensate": "^0.2.2",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {

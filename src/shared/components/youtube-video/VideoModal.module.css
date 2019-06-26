@@ -1,0 +1,86 @@
+@import "../../styles/colors";
+@import "../../styles/variables";
+
+/* Simulating "object-fit: contain" for iframes */
+/* See: https://codepen.io/calebmisclevitz/pen/xMXZXd */
+:root {
+    --tb-space: 5rem;
+    --lr-calc-space: calc(var(--tb-space) * (16 / 9));
+    --lr-space: 5rem;
+    --tb-calc-space: calc(var(--lr-space) / (16 / 9));
+}
+
+@media (--layout-lte-small) {
+    :root {
+        --tb-space: 2.5rem;
+        --lr-space: 2.5rem;
+    }
+}
+
+.modalBodyOpen {
+    /* Alongside this, `padding-right` equal to the sidebar width will be added */
+    /* See: https://github.com/srph/scrollbar-compensate */
+    overflow: hidden;
+}
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10000;
+    opacity: 0;
+    background-color: var(--color-celtic);
+    transition: opacity 0.3s ease;
+
+    &.afterOpen {
+        opacity: 0.95;
+    }
+
+    &.beforeClose {
+        opacity: 0;
+    }
+}
+
+.modal {
+    & .video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+
+        & .iframeWrapper iframe {
+            width: 177.78vh;
+            height: 100vh;
+            padding: var(--tb-space) var(--lr-calc-space);
+
+            @media (max-aspect-ratio: 16 / 9) {
+                width: 100vw;
+                height: 56.25vw;
+                padding: var(--tb-calc-space) var(--lr-space);
+            }
+        }
+    }
+
+    & .loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: visibility 0s linear 0.3s, opacity 0.3s ease;
+    }
+
+    &.ready {
+        & .video {
+            opacity: 1;
+        }
+
+        & .loader {
+            visibility: hidden;
+            opacity: 0;
+        }
+    }
+}

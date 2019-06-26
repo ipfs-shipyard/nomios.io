@@ -32,7 +32,9 @@ class Header extends Component {
         const { anchorOffset } = this.state;
 
         return (
-            <header className={ classNames(styles.header, small && styles.small, className) } >
+            <header
+                data-scrollbar-compensate={ small ? '1' : '0' }
+                className={ classNames(styles.header, small && styles.small, className) } >
                 <div className={ (styles.headerContent) }>
                     <div className={ styles.anchorsContainer }>
                         <AnchorLink href="#why" offset={ anchorOffset }>Benefits</AnchorLink>

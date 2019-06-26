@@ -67,7 +67,7 @@ This command uses [`standard-version`](https://github.com/conventional-changelog
 $ npm run deploy
 ```
 
-Deploy the website to the `gh-pages` branch, updating `https://nomios.io`. Note that it might take a few minutes to update the website due to caching.
+Deploy the website to the `gh-pages` branch, updating `https://nomios.io`. Note that it might take a few minutes to update the website due to caching. Alternatively, you may purge the cache manually in CloudFlare.
 
 
 ## Contributing

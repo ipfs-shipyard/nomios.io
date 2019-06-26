@@ -2,27 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Button from '../../button';
-import VideoTrigger from '../../video-trigger';
-import VideoModal from '../../video-modal';
+import YoutubeVideo from '../../youtube-video';
 import { LayoutContainer, LayoutSplit } from '../../layout';
-import andreNomiosImage from '../../../media/images/andrenomios.png';
+import andreNomiosImage from '../../../media/images/video-thumbnail.png';
 import styles from './Concept.module.css';
 
 class Concept extends Component {
-    state = {
-        modalShowing: false,
-    };
-
-    componentDidUpdate() {
-        const { modalShowing } = this.state;
-
-        if (modalShowing) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
-    }
-
     render() {
         const { className } = this.props;
 
@@ -58,28 +43,19 @@ class Concept extends Component {
     }
 
     renderRight() {
-        const { modalShowing } = this.state;
-
         return (
             <LayoutContainer
                 variant="split-right"
                 className={ styles.rightSide }
                 contentClassName={ styles.rightSideContent }>
                 <div className={ styles.videoBox }>
-                    <VideoTrigger src={ andreNomiosImage } onClick={ this.handleVideoTriggerClick } />
+                    <YoutubeVideo
+                        thumbnail={ andreNomiosImage }
+                        videoId="VHoT4N43jK8" />
                 </div>
-                <VideoModal src="https://www.youtube.com/embed/glEiPXAYE-U" showing={ modalShowing } onClick={ this.handleVideoModalClick } />
             </LayoutContainer>
         );
     }
-
-    handleVideoTriggerClick = () => {
-        this.setState({ modalShowing: true });
-    };
-
-    handleVideoModalClick = () => {
-        this.setState({ modalShowing: false });
-    };
 }
 
 Concept.propTypes = {
