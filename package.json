@@ -17,12 +17,12 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "exit 0",
-    "deploy": "gh-pages -d public",
-    "predeploy": "npm run build",
     "lint": "eslint --ignore-path .gitignore . && stylelint --ignore-path .gitignore \"**/*.css\"",
-    "prerelease": "npm t && npm run lint && npm run build",
+    "prerelease": "npm t && npm run lint",
     "release": "standard-version",
-    "postrelease": "npm run deploy"
+    "postrelease": "npm run deploy",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d public"
   },
   "dependencies": {
     "@researchgate/react-intersection-observer": "^1.0.1",
