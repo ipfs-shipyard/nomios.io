@@ -34,7 +34,7 @@ export const rows = [
         status: [1, 0, 0],
     },
     {
-        name: 'Add for verifiable credentials, starting with social proofs',
+        name: 'Support verifiable credentials, starting with social proofs',
         status: [0, 1, 0],
     },
     {
