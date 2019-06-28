@@ -116,7 +116,7 @@ class Subscribe extends PureComponent {
                                     <input
                                         { ...input }
                                         disabled={ !!feedback }
-                                        placeholder="Enter Your Email"
+                                        placeholder="Enter your email"
                                         className={ styles.input } />
                                     <CrossmarkIcon className={ styles.crossmark } />
                                 </div>

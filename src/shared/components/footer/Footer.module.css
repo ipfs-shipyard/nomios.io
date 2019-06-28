@@ -1,16 +1,16 @@
 @import "../../styles/colors";
 @import "../../styles/custom-medias";
-@import "../../styles/mixins/layout";
-
-@mixin layout-normal null, .footer;
 
 .footer {
+    background: var(--color-white);
+}
+
+.footerContent {
     position: relative;
     min-height: 14rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--color-white);
     color: color(var(--color-celtic) a(60%));
     font-size: 1.2rem;
     letter-spacing: -0.009rem;
@@ -67,7 +67,7 @@
    ========================================================================== */
 
 @media(--layout-lte-medium) {
-    .footer {
+    .footerContent {
         & a,
         & a:hover,
         & a:active,
@@ -101,7 +101,7 @@
 }
 
 @media(--layout-lte-small) {
-    .footer {
+    .footerContent {
         padding-top: 4rem;
         padding-bottom: 3rem;
         flex-direction: column;

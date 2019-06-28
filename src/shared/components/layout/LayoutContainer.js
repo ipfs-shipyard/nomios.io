@@ -17,19 +17,20 @@ const CONTENT_VARIANTS_MAP = {
 
 class LayoutContainer extends Component {
     render() {
-        const { children, variant, className, contentClassName, ...props } = this.props;
+        const { children, variant, className, component: Component, contentClassName, ...props } = this.props;
 
         return (
-            <section className={ classNames(VARIANTS_MAP[variant], className) } { ...props }>
+            <Component className={ classNames(VARIANTS_MAP[variant], className) } { ...props }>
                 <div className={ classNames(CONTENT_VARIANTS_MAP[variant], contentClassName) }>
                     { children }
                 </div>
-            </section>
+            </Component>
         );
     }
 }
 
 LayoutContainer.propTypes = {
+    component: PropTypes.elementType,
     className: PropTypes.string,
     variant: PropTypes.oneOf(['normal', 'split-left', 'split-right']),
     contentClassName: PropTypes.string,
@@ -37,6 +38,7 @@ LayoutContainer.propTypes = {
 };
 
 LayoutContainer.defaultProps = {
+    component: 'section',
     variant: 'normal',
 };
 

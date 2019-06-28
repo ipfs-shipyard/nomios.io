@@ -1,8 +1,6 @@
 @import "../../styles/colors";
+@import "../../styles/variables";
 @import "../../styles/mixins/typography";
-@import "../../styles/mixins/layout";
-
-@mixin layout-normal .header, .headerContent;
 
 .header {
     position: relative;

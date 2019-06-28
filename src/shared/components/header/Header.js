@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import { throttle } from 'lodash';
-import styles from './Header.module.css';
 import Logo from '../logo';
 import Button from '../button';
+import { LayoutContainer } from '../layout';
+import styles from './Header.module.css';
 
 export const HEADER_HEIGHT = 120;
 export const HEADER_HEIGHT_SMALL = 80;
@@ -32,31 +33,31 @@ class Header extends Component {
         const { anchorOffset } = this.state;
 
         return (
-            <header
+            <LayoutContainer
                 data-scrollbar-compensate={ small ? '1' : '0' }
-                className={ classNames(styles.header, small && styles.small, className) } >
-                <div className={ (styles.headerContent) }>
-                    <div className={ styles.anchorsContainer }>
-                        <AnchorLink href="#why" offset={ anchorOffset }>Benefits</AnchorLink>
-                        <AnchorLink href="#concept" offset={ anchorOffset }>Concept</AnchorLink>
-                        <AnchorLink href="#roadmap" offset={ anchorOffset - 2 } >Roadmap</AnchorLink>
-                    </div>
-
-                    <a href="#" className={ styles.logoContainer } onClick={ this.handleLogoClick }>
-                        <Logo className={ styles.symbol } variant="symbol" />
-                        <Logo className={ styles.logotype } variant="logotype" />
-                    </a>
-
-                    <div className={ classNames(styles.buttonContainer, styles.desktop) } >
-                        <AnchorLink href="#subscribe" offset={ anchorOffset } >
-                            <Button variant="secondary">Join us</Button>
-                        </AnchorLink>
-                    </div>
-                    <div className={ classNames(styles.buttonContainer, styles.tablet) } >
-                        <AnchorLink href="#subscribe" offset={ anchorOffset } >Join us</AnchorLink>
-                    </div>
+                component="header"
+                className={ classNames(styles.header, small && styles.small, className) }
+                contentClassName={ styles.headerContent }>
+                <div className={ styles.anchorsContainer }>
+                    <AnchorLink href="#why" offset={ anchorOffset }>Benefits</AnchorLink>
+                    <AnchorLink href="#concept" offset={ anchorOffset }>Concept</AnchorLink>
+                    <AnchorLink href="#roadmap" offset={ anchorOffset - 2 } >Roadmap</AnchorLink>
                 </div>
-            </header>
+
+                <a href="#" className={ styles.logoContainer } onClick={ this.handleLogoClick }>
+                    <Logo className={ styles.symbol } variant="symbol" />
+                    <Logo className={ styles.logotype } variant="logotype" />
+                </a>
+
+                <div className={ classNames(styles.buttonContainer, styles.desktop) } >
+                    <AnchorLink href="#subscribe" offset={ anchorOffset } >
+                        <Button variant="secondary">Join us</Button>
+                    </AnchorLink>
+                </div>
+                <div className={ classNames(styles.buttonContainer, styles.tablet) } >
+                    <AnchorLink href="#subscribe" offset={ anchorOffset } >Join us</AnchorLink>
+                </div>
+            </LayoutContainer>
         );
     }
 
