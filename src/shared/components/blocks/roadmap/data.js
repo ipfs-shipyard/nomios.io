@@ -53,6 +53,14 @@ export const rows = [
         name: 'Support JSON-LD signatures',
         status: [0, 0, 1],
     },
+    {
+        name: 'Support DID-Auth',
+        status: [0, 0, 1],
+    },
+    {
+        name: 'Support Credential Handler API',
+        status: [0, 0, 1],
+    },
 ];
 
 export const status = [
