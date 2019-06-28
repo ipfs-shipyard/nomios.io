@@ -176,10 +176,6 @@
         &.hasFeedback .inputWrapper .input,
         &.hasFeedback .submit {
             border-color: color(var(--color-white) alpha(0.1));
-
-            &:-webkit-autofill {
-                border-color: color(var(--color-white) alpha(0.1));
-            }
         }
     }
 }
