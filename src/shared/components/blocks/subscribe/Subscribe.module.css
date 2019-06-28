@@ -68,6 +68,12 @@
                     color: var(--color-white);
                     transition: border-color 0.3s ease, color 0.3s ease;
 
+                    &:-webkit-autofill {
+                        box-shadow: 0 0 0 1000px inset var(--color-celtic);
+                        caret-color: var(--color-white);
+                        -webkit-text-fill-color: var(--color-white);
+                    }
+
                     &::placeholder {
                         opacity: 0.3;
                         color: var(--color-white);

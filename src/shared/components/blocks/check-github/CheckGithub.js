@@ -17,7 +17,7 @@ class CheckGithub extends Component {
                 contentClassName={ styles.checkGithubContent }>
                 <div className={ styles.wrapper }>
                     <div className={ styles.title }>We&#39;re open source</div>
-                    <div className={ styles.description }>Check IDM&#39;s management repository.</div>
+                    <div className={ styles.description }>Get involved or see how it works.</div>
                     <a className={ styles.buttonBox } href="https://github.com/ipfs-shipyard/pm-idm" target="_blank" rel="noopener noreferrer">
                         <Button className={ styles.cta } variant="secondary" >
                             <div className={ styles.buttonText }>View GitHub <GithubIcon className={ styles.logo } /></div>
