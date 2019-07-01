@@ -14,11 +14,11 @@ export const rows = [
         status: [1, 0, 0],
     },
     {
-        name: 'Authenticate to applications',
+        name: 'Works directly within the browser, no extensions required',
         status: [1, 0, 0],
     },
     {
-        name: 'Works directly within the browser, no extensions required',
+        name: 'Authenticate to applications',
         status: [1, 0, 0],
     },
     {
@@ -27,10 +27,6 @@ export const rows = [
     },
     {
         name: 'Signing with device key (requires authorization)',
-        status: [1, 0, 0],
-    },
-    {
-        name: 'Support more DID methods',
         status: [1, 0, 0],
     },
     {
@@ -44,6 +40,10 @@ export const rows = [
     {
         name: 'Desktop based wallet',
         status: [0, 1, 0],
+    },
+    {
+        name: 'Support more DID methods',
+        status: [0, 0, 1],
     },
     {
         name: 'Encryption of data between devices',
