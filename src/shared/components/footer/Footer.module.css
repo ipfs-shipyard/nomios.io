@@ -11,7 +11,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: color(var(--color-celtic) a(60%));
+    color: color(var(--color-celtic) a(50%));
     font-size: 1.2rem;
     letter-spacing: -0.009rem;
 
@@ -20,19 +20,20 @@
     & a:active,
     & a:visited,
     & a:focus {
-        color: color(var(--color-celtic) a(50%));
+        color: color(var(--color-celtic) a(40%));
         text-decoration: none;
         transition: color 0.3s ease-in-out;
     }
 
-    & a:hover {
+    & a:hover,
+    & .moxyBrand:hover {
         color: color(var(--color-celtic) a(80%));
     }
 
     & .githubLink,
     & .githubLinkTablet {
         & a {
-            margin-left: 2rem;
+            margin-left: 1.5rem;
 
             & i {
                 transform: translateY(-0.2rem);
@@ -41,24 +42,33 @@
     }
 
     & .githubLinkTablet,
-    & .copyrightTablet,
+    & .companiesTablet,
     & .copyrightMobile {
         display: none;
     }
 
-    & .logo {
-        display: none;
-        font-size: 0.8667rem;
+    & .companies {
+        display: flex;
 
-        & i {
-            fill: var(--color-indian-khaki);
+        & .moxy {
+            margin-right: 5rem;
+        }
+
+        & a {
+            margin-left: 1.5rem;
         }
     }
 
-    & .plBrand {
-        width: 4em;
-        margin-left: 0.5rem;
-        font-size: 2.5rem;
+    & .plBrand,
+    & .moxyBrand {
+        transform: translateY(-2px);
+        font-size: 3rem;
+    }
+
+    & .moxyBrand {
+        width: 3.48em;
+        color: color(var(--color-celtic) a(50%));
+        transition: color 0.3s ease-in-out;
     }
 }
 
@@ -73,29 +83,21 @@
         & a:active,
         & a:visited,
         & a:focus {
-            color: color(var(--color-celtic) a(80%));
+            color: color(var(--color-celtic) a(40%));
         }
 
-        & .copyright,
+        & .moxyBrand,
+        & .moxyBrand:hover {
+            color: color(var(--color-celtic) a(50%));
+        }
+
         & .githubLink {
             display: none;
         }
 
-        & .copyrightTablet {
-            display: block;
-            flex: 1 0 calc(100% / 3);
-            white-space: nowrap;
-        }
-
         & .githubLinkTablet {
             display: flex;
-            flex: 0 0 calc(100% / 3);
-            justify-content: flex-end;
-        }
-
-        & .logo {
-            display: inline-flex;
-            flex: 0 1 calc(100% / 3);
+            flex: 0 0 calc(100% / 2);
         }
     }
 }
@@ -112,13 +114,56 @@
         }
 
         & .copyrightMobile {
-            margin-top: 4rem;
+            margin-top: 6.8rem;
             margin-bottom: 0;
             display: block;
+            align-self: flex-start;
         }
 
-        & .githubLinkMobile {
-            display: block;
+        & .companies {
+            width: 100%;
+            display: flex;
+
+            & .moxy,
+            & .protocolLabs {
+                margin-right: 0;
+                display: flex;
+
+                /* flex: 1 0 calc(50% / 2); */
+                flex-direction: column;
+
+                & a {
+                    margin-top: 2rem;
+                }
+            }
+
+            & .moxy {
+                margin-right: 8.4rem;
+            }
+
+            & a {
+                margin-left: 0;
+            }
+        }
+
+        & .githubLinkMobile,
+        & .githubLinkMobile:hover {
+            color: color(var(--color-celtic) a(50%));
+        }
+    }
+}
+
+@media(--layout-lte-xsmall) {
+    .footerContent .companies .moxy {
+        margin-right: 20%;
+    }
+}
+
+@media(--layout-lte-xxsmall) {
+    .footerContent {
+        & .plBrand,
+        & .moxyBrand {
+            font-size: 2.5rem;
         }
     }
 }
