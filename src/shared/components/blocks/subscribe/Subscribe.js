@@ -2,13 +2,16 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import addToMailchimp from 'gatsby-plugin-mailchimp';
-import Lottie from 'react-lottie';
 import { Form, Field } from 'react-final-form';
 import createFocusDecorator from 'final-form-focus';
+import { throttle } from 'lodash';
+import { offset } from 'tiny-dom-helpers';
 import Observer from '@researchgate/react-intersection-observer';
 import { LayoutSplit, LayoutContainer } from '../../layout';
 import { CrossmarkIcon } from '../../icon';
 import Button from '../../button';
+import { HEADER_HEIGHT_SMALL } from '../../header';
+import LottieControllerd from '../../lottie-controlled';
 import * as animationData from '../../../media/illustrations/illustration-stamp-animation.json';
 import styles from './Subscribe.module.css';
 
@@ -27,12 +30,25 @@ const emailValidator = (value) => /[^@]+@[^.]+\..+/.test(value) ? undefined : 'I
 
 class Subscribe extends PureComponent {
     resetSubmitTimeout = undefined;
+    intersecting = false;
+    wrapperRef = React.createRef();
 
     state = {
-        intersected: false,
+        percentage: 0,
     };
 
+    componentDidMount() {
+        if (typeof window !== 'undefined') {
+            window.addEventListener('resize', this.handleResize, { passive: true });
+            window.addEventListener('scroll', this.handleScroll, { passive: true });
+
+            this.updateDimensions();
+        }
+    }
+
     componentWillUnmount() {
+        window.removeEventListener('resize', this.handleResize, { passive: true });
+        window.removeEventListener('scroll', this.handleScroll, { passive: true });
         clearTimeout(this.resetSubmitTimeout);
     }
 
@@ -40,12 +56,13 @@ class Subscribe extends PureComponent {
         const { className } = this.props;
 
         return (
-            <Observer onChange={ this.handleIntersect } threshold={ 0.5 }>
+            <Observer onChange={ this.handleIntersect }>
                 <LayoutSplit
                     id="subscribe"
                     left={ this.renderLeft() }
                     right={ this.renderRight() }
-                    className={ classNames(styles.subscribe, className) } />
+                    className={ classNames(styles.subscribe, className) }
+                    activeRef={ this.wrapperRef } />
             </Observer>
 
         );
@@ -73,18 +90,20 @@ class Subscribe extends PureComponent {
     }
 
     renderRight() {
-        const { intersected } = this.state;
+        const { percentage } = this.state;
+
+        console.log('percentage', percentage);
 
         return (
             <LayoutContainer
                 variant="split-right"
                 className={ styles.rightSide }
                 contentClassName={ styles.rightSideContent }>
-                <Lottie
+                <LottieControllerd
                     width={ 260 }
-                    isPaused={ !intersected }
                     options={ LOTTIE_OPTIONS }
-                    isClickToPauseDisabled />
+                    isClickToPauseDisabled
+                    percentage={ percentage } />
             </LayoutContainer>
         );
     }
@@ -136,8 +155,41 @@ class Subscribe extends PureComponent {
         );
     };
 
+    updateDimensions = () => {
+        this.windowSize = { width: window.innerWidth, height: window.innerHeight };
+        this.wrapperSize = { width: this.wrapperRef.current.offsetWidth, height: this.wrapperRef.current.offsetHeight };
+        this.wrapperOffsetTop = offset(this.wrapperRef.current).top;
+
+        this.updatePercentage();
+    };
+
+    updatePercentage = () => {
+        if (this.windowSize.width <= 768) {
+            return;
+        }
+
+        const scrollTop = document.scrollingElement.scrollTop;
+
+        const distance = this.windowSize.height + this.wrapperSize.height - HEADER_HEIGHT_SMALL;
+        const elementVisibility = scrollTop + this.windowSize.height - this.wrapperOffsetTop;
+        const unboundPercentage = (elementVisibility) / distance;
+        const percentage = Math.min(Math.max(0, unboundPercentage), 0.99);
+
+        this.setState({
+            percentage,
+        });
+    };
+
+    handleScroll = () => {
+        if (this.intersecting) {
+            this.updatePercentage();
+        }
+    };
+
+    handleResize = throttle(() => this.updateDimensions(), 250);
+
     handleIntersect = ({ isIntersecting }) => {
-        isIntersecting && this.setState({ intersected: true });
+        this.intersecting = isIntersecting;
     };
 
     handleSubmit = async (values, { reset }) => {
