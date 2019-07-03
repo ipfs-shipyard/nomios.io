@@ -32,7 +32,7 @@
     & .githubLink,
     & .githubLinkTablet {
         & a {
-            margin-left: 2rem;
+            margin-left: 1.5rem;
 
             & i {
                 transform: translateY(-0.2rem);
@@ -41,9 +41,21 @@
     }
 
     & .githubLinkTablet,
-    & .copyrightTablet,
+    & .companiesTablet,
     & .copyrightMobile {
         display: none;
+    }
+
+    & .companies {
+        display: flex;
+
+        & .moxy {
+            margin-right: 5rem;
+        }
+
+        & a {
+            margin-left: 1.5rem;
+        }
     }
 
     & .logo {
@@ -55,10 +67,14 @@
         }
     }
 
-    & .plBrand {
-        width: 4em;
-        margin-left: 0.5rem;
+    & .plBrand,
+    & .moxyBrand {
         font-size: 2.5rem;
+    }
+
+    & .moxyBrand {
+        width: 3.48em;
+        transform: translateY(-2px);
     }
 }
 
@@ -115,10 +131,28 @@
             margin-top: 4rem;
             margin-bottom: 0;
             display: block;
+            align-self: flex-start;
         }
 
         & .githubLinkMobile {
             display: block;
+        }
+
+        & .companies {
+            width: 100%;
+            display: flex;
+
+            & .moxy,
+            & .protocolLabs {
+                margin-right: 0;
+                display: flex;
+                flex: 1 0 calc(50% / 2);
+                flex-direction: column;
+            }
+
+            & a {
+                margin-left: 0;
+            }
         }
     }
 }
