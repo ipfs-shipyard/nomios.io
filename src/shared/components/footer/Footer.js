@@ -10,21 +10,21 @@ const Footer = ({ className }) => (
         component="footer"
         className={ classNames(styles.footer, className) }>
         <div className={ classNames(styles.footerContent) }>
-            <p className={ styles.githubLink }>
+            <div className={ styles.githubLink }>
                 Nomios © 2019 – Build with us, join our GitHub.
                 <a rel="noopener noreferrer" target="_blank" href="https://github.com/ipfs-shipyard/pm-idm#contributing" >
                     <GithubIcon className={ styles.githubLogo } />
                 </a>
-            </p>
+            </div>
 
-            <p className={ styles.githubLinkTablet }>
+            <div className={ styles.githubLinkTablet }>
                 Nomios © 2019 – Build with us.
                 <a rel="noopener noreferrer" target="_blank" href="https://github.com/ipfs-shipyard/pm-idm#contributing" >
                     <GithubIcon className={ styles.githubLogo } />
                 </a>
-            </p>
+            </div>
 
-            <p className={ styles.companies } >
+            <div className={ styles.companies } >
                 <div className={ styles.moxy }>
                     Built by
                     <a rel="noopener noreferrer" target="_blank" href="https://moxy.studio" >
@@ -38,16 +38,16 @@ const Footer = ({ className }) => (
                     </a>
                 </div>
 
-            </p>
+            </div>
 
-            <p className={ styles.companiesTablet }>
+            <div className={ styles.companiesTablet }>
                     Build with us.
                 <a rel="noopener noreferrer" target="_blank" href="https://github.com/ipfs-shipyard/pm-idm#contributing" >
                     <GithubIcon className={ styles.githubLogo } />
                 </a>
-            </p>
+            </div>
 
-            <p className={ styles.copyrightMobile }>
+            <div className={ styles.copyrightMobile }>
                 Nomios © 2019 –&nbsp;
                 <a
                     className={ styles.githubLinkMobile }
@@ -56,7 +56,7 @@ const Footer = ({ className }) => (
                     href="https://github.com/ipfs-shipyard/pm-idm#contributing">
                     Build with us on GitHub.
                 </a>
-            </p>
+            </div>
         </div>
     </LayoutContainer>
 );

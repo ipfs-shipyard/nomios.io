@@ -59,19 +59,10 @@
         }
     }
 
-    & .logo {
-        display: none;
-        font-size: 0.8667rem;
-
-        & i {
-            fill: var(--color-indian-khaki);
-        }
-    }
-
     & .plBrand,
     & .moxyBrand {
         transform: translateY(-2px);
-        font-size: 2.5rem;
+        font-size: 3rem;
     }
 
     & .moxyBrand {
@@ -100,7 +91,6 @@
             color: color(var(--color-celtic) a(50%));
         }
 
-        & .copyright,
         & .githubLink {
             display: none;
         }
@@ -117,10 +107,6 @@
         padding-top: 4rem;
         padding-bottom: 3rem;
         flex-direction: column;
-
-        p {
-            margin: 0;
-        }
 
         & .githubLinkTablet,
         & .copyrightTablet {
@@ -158,6 +144,15 @@
         & .githubLinkMobile,
         & .githubLinkMobile:hover {
             color: color(var(--color-celtic) a(50%));
+        }
+    }
+}
+
+@media(--layout-lte-xsmall) {
+    .footerContent {
+        & .plBrand,
+        & .moxyBrand {
+            font-size: 2.5rem;
         }
     }
 }
