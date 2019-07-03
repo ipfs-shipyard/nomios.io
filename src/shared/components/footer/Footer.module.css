@@ -11,7 +11,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: color(var(--color-celtic) a(60%));
+    color: color(var(--color-celtic) a(50%));
     font-size: 1.2rem;
     letter-spacing: -0.009rem;
 
@@ -20,12 +20,13 @@
     & a:active,
     & a:visited,
     & a:focus {
-        color: color(var(--color-celtic) a(50%));
+        color: color(var(--color-celtic) a(40%));
         text-decoration: none;
         transition: color 0.3s ease-in-out;
     }
 
-    & a:hover {
+    & a:hover,
+    & .moxyBrand:hover {
         color: color(var(--color-celtic) a(80%));
     }
 
@@ -69,12 +70,14 @@
 
     & .plBrand,
     & .moxyBrand {
+        transform: translateY(-2px);
         font-size: 2.5rem;
     }
 
     & .moxyBrand {
         width: 3.48em;
-        transform: translateY(-2px);
+        color: color(var(--color-celtic) a(50%));
+        transition: color 0.3s ease-in-out;
     }
 }
 
@@ -89,7 +92,12 @@
         & a:active,
         & a:visited,
         & a:focus {
-            color: color(var(--color-celtic) a(80%));
+            color: color(var(--color-celtic) a(40%));
+        }
+
+        & .moxyBrand,
+        & .moxyBrand:hover {
+            color: color(var(--color-celtic) a(50%));
         }
 
         & .copyright,
@@ -122,20 +130,20 @@
         padding-bottom: 3rem;
         flex-direction: column;
 
+        p {
+            margin: 0;
+        }
+
         & .githubLinkTablet,
         & .copyrightTablet {
             display: none;
         }
 
         & .copyrightMobile {
-            margin-top: 4rem;
+            margin-top: 6.8rem;
             margin-bottom: 0;
             display: block;
             align-self: flex-start;
-        }
-
-        & .githubLinkMobile {
-            display: block;
         }
 
         & .companies {
@@ -148,11 +156,20 @@
                 display: flex;
                 flex: 1 0 calc(50% / 2);
                 flex-direction: column;
+
+                & a {
+                    margin-top: 2rem;
+                }
             }
 
             & a {
                 margin-left: 0;
             }
+        }
+
+        & .githubLinkMobile,
+        & .githubLinkMobile:hover {
+            color: color(var(--color-celtic) a(50%));
         }
     }
 }

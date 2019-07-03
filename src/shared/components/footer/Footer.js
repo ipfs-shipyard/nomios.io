@@ -48,8 +48,14 @@ const Footer = ({ className }) => (
             </p>
 
             <p className={ styles.copyrightMobile }>
-                Nomios © 2019 –
-                <a rel="noopener noreferrer" target="_blank" href="https://github.com/ipfs-shipyard/pm-idm#contributing"> Build with us on GitHub.</a>
+                Nomios © 2019 –&nbsp;
+                <a
+                    className={ styles.githubLinkMobile }
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    href="https://github.com/ipfs-shipyard/pm-idm#contributing">
+                    Build with us on GitHub.
+                </a>
             </p>
         </div>
     </LayoutContainer>
