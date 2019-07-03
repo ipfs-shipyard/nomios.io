@@ -105,21 +105,9 @@
             display: none;
         }
 
-        & .copyrightTablet {
-            display: block;
-            flex: 1 0 calc(100% / 3);
-            white-space: nowrap;
-        }
-
         & .githubLinkTablet {
             display: flex;
-            flex: 0 0 calc(100% / 3);
-            justify-content: flex-end;
-        }
-
-        & .logo {
-            display: inline-flex;
-            flex: 0 1 calc(100% / 3);
+            flex: 0 0 calc(100% / 2);
         }
     }
 }
