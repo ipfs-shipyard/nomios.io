@@ -171,7 +171,7 @@ class Subscribe extends PureComponent {
         const distance = this.windowSize.height + this.wrapperSize.height - HEADER_HEIGHT_SMALL;
         const elementVisibility = scrollTop + this.windowSize.height - this.wrapperOffsetTop;
         const unboundPercentage = (elementVisibility) / distance;
-        const percentage = Math.min(Math.max(0, unboundPercentage), 0.99);
+        const percentage = Math.min(Math.max(0, unboundPercentage), 1);
 
         this.setState({
             percentage,
