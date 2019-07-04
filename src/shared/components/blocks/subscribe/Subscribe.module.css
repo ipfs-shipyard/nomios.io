@@ -5,7 +5,7 @@
 
 .subscribe {
     position: relative;
-    z-index: 5; /* Allow animation to be above the previous block */
+    z-index: 1;
     background-color: var(--color-celtic);
 }
 

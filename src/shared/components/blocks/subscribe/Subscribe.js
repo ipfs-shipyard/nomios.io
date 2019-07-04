@@ -92,8 +92,6 @@ class Subscribe extends PureComponent {
     renderRight() {
         const { percentage } = this.state;
 
-        console.log('percentage', percentage);
-
         return (
             <LayoutContainer
                 variant="split-right"
