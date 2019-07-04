@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
+import AnchorLinkHashed from '../AnchorLinkHashed';
 import { throttle } from 'lodash';
 import Logo from '../logo';
 import Button from '../button';
@@ -39,9 +39,9 @@ class Header extends Component {
                 className={ classNames(styles.header, small && styles.small, className) }
                 contentClassName={ styles.headerContent }>
                 <div className={ styles.anchorsContainer }>
-                    <AnchorLink href="#why" offset={ anchorOffset }>Benefits</AnchorLink>
-                    <AnchorLink href="#concept" offset={ anchorOffset }>Concept</AnchorLink>
-                    <AnchorLink href="#roadmap" offset={ anchorOffset - 2 } >Roadmap</AnchorLink>
+                    <AnchorLinkHashed href="#why" offset={ anchorOffset }>Benefits</AnchorLinkHashed>
+                    <AnchorLinkHashed href="#concept" offset={ anchorOffset }>Concept</AnchorLinkHashed>
+                    <AnchorLinkHashed href="#roadmap" offset={ anchorOffset - 2 } >Roadmap</AnchorLinkHashed>
                 </div>
 
                 <a href="#" className={ styles.logoContainer } onClick={ this.handleLogoClick }>
@@ -50,12 +50,12 @@ class Header extends Component {
                 </a>
 
                 <div className={ classNames(styles.buttonContainer, styles.desktop) } >
-                    <AnchorLink href="#subscribe" offset={ anchorOffset } >
+                    <AnchorLinkHashed href="#subscribe" offset={ anchorOffset } >
                         <Button variant="secondary">Join us</Button>
-                    </AnchorLink>
+                    </AnchorLinkHashed>
                 </div>
                 <div className={ classNames(styles.buttonContainer, styles.tablet) } >
-                    <AnchorLink href="#subscribe" offset={ anchorOffset } >Join us</AnchorLink>
+                    <AnchorLinkHashed href="#subscribe" offset={ anchorOffset } >Join us</AnchorLinkHashed>
                 </div>
             </LayoutContainer>
         );
