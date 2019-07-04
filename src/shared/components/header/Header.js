@@ -70,6 +70,7 @@ class Header extends Component {
     handleLogoClick = (e) => {
         e.preventDefault();
 
+        history.pushState(null, null, '#');
         window.scrollTo({
             top: 0,
             left: 0,
