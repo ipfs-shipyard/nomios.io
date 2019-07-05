@@ -30,6 +30,8 @@
     "classnames": "^2.2.6",
     "final-form-focus": "^1.1.2",
     "gatsby": "^2.7.1",
+    "gatsby-plugin-google-analytics": "^2.1.1",
+    "gatsby-plugin-google-gtag": "^1.1.1",
     "gatsby-plugin-mailchimp": "^5.1.0",
     "gatsby-plugin-postcss": "^2.0.7",
     "gatsby-plugin-react-helmet": "^3.1.0",
