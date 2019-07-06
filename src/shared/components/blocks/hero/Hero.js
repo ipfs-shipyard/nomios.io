@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Svg from '../../svg';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
+import AnchorLink from '../../anchor-link';
 import lowpolySvg from '../../../media/illustrations/illustration-lowpoly-face.svg';
 import styles from './Hero.module.css';
 
