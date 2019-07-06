@@ -44,7 +44,7 @@ class Header extends Component {
                     <AnchorLink href="#roadmap" offset={ anchorOffset - 2 } >Roadmap</AnchorLink>
                 </div>
 
-                <a href="#" className={ styles.logoContainer } onClick={ this.handleLogoClick }>
+                <a href="#" className={ styles.logoContainer } onClick={ this.handleLogoClick } aria-label="Nomios">
                     <Logo className={ styles.symbol } variant="symbol" />
                     <Logo className={ styles.logotype } variant="logotype" />
                 </a>

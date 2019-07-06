@@ -33,7 +33,7 @@ class YoutubeVideo extends Component {
                 <div className={ triggerClassnames }
                     onClick={ this.handleTriggerClick }>
                     <div className={ styles.playButton } ><PlayIcon /></div>
-                    <img className={ styles.image } src={ thumbnail } />
+                    <img className={ styles.image } src={ thumbnail } alt="" />
                 </div>
                 {
                     this.isMobile ?

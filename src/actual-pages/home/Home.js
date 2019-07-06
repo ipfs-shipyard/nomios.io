@@ -25,6 +25,7 @@ class Home extends Component {
         return (
             <div className={ styles.home }>
                 <Helmet>
+                    <html lang="en" />
                     <title>Nomios</title>
                     <meta name="description" content="Nomios is a Identity Wallet based on the Identity Manager specification" />
                     <meta name="keywords" content="nomios, identity, idm, identity, identity-manager, decentralized, ipfs, ipid, did, dids, credentials, verifiable, signatures, self-sovereign, moxy, protocol-labs" />

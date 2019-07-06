@@ -12,14 +12,22 @@ const Footer = ({ className }) => (
         <div className={ classNames(styles.footerContent) }>
             <div className={ styles.githubLink }>
                 Nomios © 2019 – Build with us, join our GitHub.
-                <a rel="noopener noreferrer" target="_blank" href="https://github.com/ipfs-shipyard/pm-idm#contributing" >
+                <a
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    href="https://github.com/ipfs-shipyard/pm-idm#contributing"
+                    aria-label="Build with us on GitHub">
                     <GithubIcon className={ styles.githubLogo } />
                 </a>
             </div>
 
             <div className={ styles.githubLinkTablet }>
                 Nomios © 2019 – Build with us.
-                <a rel="noopener noreferrer" target="_blank" href="https://github.com/ipfs-shipyard/pm-idm#contributing" >
+                <a
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    href="https://github.com/ipfs-shipyard/pm-idm#contributing"
+                    aria-label="Build with us on GitHub">
                     <GithubIcon className={ styles.githubLogo } />
                 </a>
             </div>
@@ -27,13 +35,21 @@ const Footer = ({ className }) => (
             <div className={ styles.companies } >
                 <div className={ styles.moxy }>
                     Built by
-                    <a rel="noopener noreferrer" target="_blank" href="https://moxy.studio" >
+                    <a
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        href="https://moxy.studio"
+                        aria-label="MOXY">
                         <MoxyLogoIcon className={ styles.moxyBrand } />
                     </a>
                 </div>
                 <div className={ styles.protocolLabs }>
                     Sponsored by
-                    <a rel="noopener noreferrer" target="_blank" href="https://protocol.ai/" >
+                    <a
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        href="https://protocol.ai/"
+                        aria-label="Protocol Labs">
                         <ProtocolLabsSymbolIcon className={ styles.plBrand } />
                     </a>
                 </div>
@@ -41,8 +57,12 @@ const Footer = ({ className }) => (
             </div>
 
             <div className={ styles.companiesTablet }>
-                    Build with us.
-                <a rel="noopener noreferrer" target="_blank" href="https://github.com/ipfs-shipyard/pm-idm#contributing" >
+                Build with us.
+                <a
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    href="https://github.com/ipfs-shipyard/pm-idm#contributing"
+                    aria-label="Build with us on GitHub">
                     <GithubIcon className={ styles.githubLogo } />
                 </a>
             </div>
