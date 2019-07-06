@@ -127,10 +127,10 @@ class Subscribe extends PureComponent {
                 </Field>
 
                 <Button
-                    className={ styles.submit }
-                    feedback={ feedback }
+                    variant="secondary"
                     type="submit"
-                    variant="secondary">
+                    feedback={ feedback }
+                    className={ styles.submit }>
                     Join now
                 </Button>
             </form>

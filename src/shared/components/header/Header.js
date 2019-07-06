@@ -50,9 +50,11 @@ class Header extends Component {
                 </a>
 
                 <div className={ classNames(styles.buttonContainer, styles.desktop) } >
-                    <AnchorLink href="#subscribe" offset={ anchorOffset } >
-                        <Button variant="secondary">Join us</Button>
-                    </AnchorLink>
+                    <Button
+                        variant="secondary"
+                        element={ <AnchorLink href="#subscribe" offset={ anchorOffset } /> }>
+                        Join us
+                    </Button>
                 </div>
                 <div className={ classNames(styles.buttonContainer, styles.tablet) } >
                     <AnchorLink href="#subscribe" offset={ anchorOffset } changeHash>Join us</AnchorLink>

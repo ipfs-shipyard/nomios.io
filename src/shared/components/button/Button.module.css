@@ -1,4 +1,5 @@
 @import "../../styles/colors";
+@import "../../styles/custom-medias";
 @import "../../styles/mixins/typography";
 
 :root {
@@ -11,11 +12,16 @@
     height: 5rem;
     overflow: hidden;
     padding: 0;
+    display: inline-block;
     border: none;
     background: transparent;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
 
-    &:enabled {
-        cursor: pointer;
+    &.disabled {
+        pointer-events: none;
+        cursor: auto;
     }
 
     &.fullWidth {
@@ -31,6 +37,7 @@
         justify-content: center;
         align-items: center;
         text-transform: uppercase;
+        text-align: center;
         letter-spacing: 0.15rem;
         transition-property: color, background-color, opacity, transform;
         transition-duration: var(--feedback-transition-duration);
@@ -39,6 +46,10 @@
         & .text {
             position: relative;
             z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
         }
 
         & .progressBar {
@@ -57,7 +68,7 @@
             color: var(--color-celtic);
         }
 
-        &:enabled {
+        &:not(.disabled) {
             &:active .textBlock,
             &:focus:not(:hover) .textBlock {
                 opacity: 0.8;
@@ -68,7 +79,7 @@
             }
         }
 
-        &:disabled .textBlock {
+        &.disabled .textBlock {
             color: color(var(--color-celtic) alpha(0.6));
         }
     }
@@ -79,7 +90,7 @@
             color: var(--color-white);
         }
 
-        &:enabled {
+        &:not(.disabled) {
             &:active .textBlock,
             &:focus:not(:hover) .textBlock {
                 opacity: 0.8;
@@ -90,7 +101,7 @@
             }
         }
 
-        &:disabled .textBlock {
+        &.disabled .textBlock {
             background-color: color(var(--color-indian-khaki) alpha(0.5));
             color: color(var(--color-white) alpha(0.5));
         }
@@ -198,5 +209,11 @@
 
     &.error .crossmark {
         stroke-dashoffset: 0;
+    }
+}
+
+@media (--layout-lte-small) {
+    .button .textBlock {
+        padding: 0 3rem;
     }
 }

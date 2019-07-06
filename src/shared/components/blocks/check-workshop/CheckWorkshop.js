@@ -13,9 +13,11 @@ const CheckWorkshop = ({ className }) => (
         <div className={ styles.wrapper }>
             <div className={ styles.title }>Try it yourself</div>
             <div className={ styles.description }>Learn how to integrate IDM into your DApp.</div>
-            <a className={ styles.buttonBox } href="https://github.com/ipfs-shipyard/workshop-idm-chat-dapp" target="_blank" rel="noopener noreferrer">
-                <Button className={ styles.cta } variant="primary" >View workshop</Button>
-            </a>
+            <Button
+                element={ <a href="https://github.com/ipfs-shipyard/workshop-idm-chat-dapp" target="_blank" rel="noopener noreferrer" /> }
+                className={ styles.button }>
+                View workshop
+            </Button>
         </div>
     </LayoutContainer>
 );

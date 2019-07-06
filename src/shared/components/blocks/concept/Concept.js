@@ -32,11 +32,13 @@ class Concept extends Component {
                     <div className={ styles.description }>
                         Nomios is an identity wallet built on the IDM (Identity Manager) concept and specification.
                     </div>
-                    <a className={ styles.cta } href="https://github.com/ipfs-shipyard/pm-idm/blob/master/docs/idm-concept.md" target="_blank" rel="noopener noreferrer">
-                        <Button variant="secondary">
-                            Learn more
-                        </Button>
-                    </a>
+
+                    <Button
+                        variant="secondary"
+                        element={ <a href="https://github.com/ipfs-shipyard/pm-idm/blob/master/docs/idm-concept.md" target="_blank" rel="noopener noreferrer" /> }
+                        className={ styles.cta }>
+                        Learn more
+                    </Button>
                 </div>
             </LayoutContainer>
         );

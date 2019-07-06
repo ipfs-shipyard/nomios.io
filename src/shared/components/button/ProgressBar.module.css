@@ -3,6 +3,7 @@
     min-height: 1px;
     transform: scaleY(0);
     transform-origin: 50% 100%;
+    display: block;
     pointer-events: none;
     transition: transform 0.2s linear;
 }

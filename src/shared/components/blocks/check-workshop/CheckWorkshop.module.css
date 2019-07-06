@@ -39,18 +39,8 @@
             text-align: center;
         }
 
-        & .buttonBox {
+        & .button {
             margin-top: 5rem;
-
-            & .cta {
-                & .buttonText {
-                    display: flex;
-
-                    & .logo {
-                        margin-left: 2.5rem;
-                    }
-                }
-            }
         }
     }
 
@@ -69,7 +59,7 @@
             transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
         }
 
-        & .buttonBox {
+        & .button {
             margin-top: 2rem;
         }
     }
@@ -87,25 +77,13 @@
 }
 
 @media (--layout-lte-medium) {
-    .checkWorkshopContent .wrapper {
-        & .buttonBox {
-            min-width: 100%;
-
-            & .cta {
-                width: 100%;
-            }
-        }
+    .checkWorkshopContent .wrapper .button {
+        width: 100%;
     }
 }
 
 @media (--layout-lte-small) {
-    .checkWorkshopContent .wrapper {
-        & .description {
-            margin-top: 3rem;
-        }
-
-        & .buttonBox .cta > div {
-            padding: 0 3rem;
-        }
+    .checkWorkshopContent .wrapper .description {
+        margin-top: 3rem;
     }
 }

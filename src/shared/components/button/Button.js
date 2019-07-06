@@ -29,7 +29,7 @@ class Button extends Component {
     }
 
     render() {
-        const { variant, feedback: _, fullWidth, disabled, className, children, ...rest } = this.props;
+        const { element, variant, feedback: _, fullWidth, disabled, className, children, ...rest } = this.props;
         const { feedback, progressbarAnimationEnded } = this.state;
         const hasFeedback = feedback !== 'none';
 
@@ -37,47 +37,59 @@ class Button extends Component {
         const finalClassName = classNames(
             styles.button,
             styles[variant],
+            finalDisabled && styles.disabled,
             hasFeedback && progressbarAnimationEnded && styles[feedback],
             hasFeedback && styles.hasFeedback,
             fullWidth && styles.fullWidth,
-            className
+            element.props.className,
+            className,
         );
 
         return (
-            <button { ...rest } disabled={ finalDisabled } className={ finalClassName }>
-                <div className={ styles.textBlock }>
+            <element.type
+                { ...element.props }
+                { ...rest }
+                { ...this.getDisabledProps(finalDisabled) }
+                className={ finalClassName }>
+                <span className={ styles.textBlock }>
                     <span className={ styles.text }>{ children }</span>
 
                     <ProgressBar
                         status={ PROGRESS_STATUS_MAP[feedback] }
                         className={ styles.progressBar }
                         onEnd={ this.handleProgressBarEnd } />
-                </div>
+                </span>
 
                 <span className={ styles.successBlock }>
-                    <CheckmarkIcon className={ styles.checkmark } onTransitionEnd={ this.handleSuccessIconTransitionEnd } />
+                    <CheckmarkIcon className={ styles.checkmark } />
                 </span>
                 <span className={ styles.errorBlock }>
-                    <CrossmarkIcon className={ styles.crossmark } onTransitionEnd={ this.handleErrorIconTransitionEnd } />
+                    <CrossmarkIcon className={ styles.crossmark } />
                 </span>
-            </button>
+            </element.type>
         );
+    }
+
+    getDisabledProps(disabled) {
+        if (!disabled) {
+            return {};
+        }
+
+        const elementType = this.props.element.type;
+
+        return elementType === 'button' ?
+            { disabled: true } :
+            { 'aria-disabled': 'true', tabIndex: '-1' };
     }
 
     handleFeedbackChange(prevFeedback) {
         const { feedback } = this.props;
+        const progressbarAnimationEnded = (feedback === 'success' || feedback === 'error') && prevFeedback !== 'loading';
 
-        if ((feedback === 'success' || feedback === 'error') && prevFeedback !== 'loading') {
-            this.setState({
-                feedback,
-                progressbarAnimationEnded: true,
-            });
-        } else {
-            this.setState({
-                feedback,
-                progressbarAnimationEnded: false,
-            });
-        }
+        this.setState({
+            feedback,
+            progressbarAnimationEnded,
+        });
     }
 
     handleProgressBarEnd = () => {
@@ -86,10 +98,11 @@ class Button extends Component {
 }
 
 Button.propTypes = {
-    variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'negative']),
+    variant: PropTypes.oneOf(['primary', 'secondary']),
     disabled: PropTypes.bool,
     fullWidth: PropTypes.bool,
     feedback: PropTypes.oneOf(['none', 'loading', 'success', 'error']),
+    element: PropTypes.element,
     children: PropTypes.node,
     className: PropTypes.string,
 };
@@ -97,6 +110,7 @@ Button.propTypes = {
 Button.defaultProps = {
     variant: 'primary',
     feedback: 'none',
+    element: <button />,
 };
 
 export default Button;

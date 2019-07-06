@@ -137,10 +137,6 @@
 @media(--layout-lte-small) {
     .leftSideContent .wrapper .cta {
         width: 100%;
-
-        & button {
-            width: 100%;
-        }
     }
 
     .rightSideContent .videoBox {

@@ -29,7 +29,7 @@ class ProgressBar extends Component {
         const { style, className, onBegin, onEnd, onReset, ...rest } = this.props;
 
         return (
-            <div
+            <span
                 { ...rest }
                 ref={ this.progressBarRef }
                 className={ classNames(styles.progressBar, className) } />
