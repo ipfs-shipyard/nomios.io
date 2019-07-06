@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import addToMailchimp from 'gatsby-plugin-mailchimp';
@@ -15,6 +16,7 @@ import LottieControllerd from '../../lottie-controlled';
 import * as animationData from '../../../media/illustrations/illustration-stamp-animation.json';
 import styles from './Subscribe.module.css';
 
+const BREAKPOINT = 768;
 const RESET_FORM_DELAY = 2500;
 const LOTTIE_OPTIONS = {
     loop: false,
@@ -62,7 +64,7 @@ class Subscribe extends PureComponent {
                     left={ this.renderLeft() }
                     right={ this.renderRight() }
                     className={ classNames(styles.subscribe, className) }
-                    activeRef={ this.wrapperRef } />
+                    ref={ this.wrapperRef } />
             </Observer>
 
         );
@@ -154,15 +156,18 @@ class Subscribe extends PureComponent {
     };
 
     updateDimensions = () => {
+        const wrapperNode = findDOMNode(this.wrapperRef.current);
+
+        console.log(this.wrapperRef);
         this.windowSize = { width: window.innerWidth, height: window.innerHeight };
-        this.wrapperSize = { width: this.wrapperRef.current.offsetWidth, height: this.wrapperRef.current.offsetHeight };
-        this.wrapperOffsetTop = offset(this.wrapperRef.current).top;
+        this.wrapperSize = { width: wrapperNode.offsetWidth, height: wrapperNode.offsetHeight };
+        this.wrapperOffsetTop = offset(wrapperNode).top;
 
         this.updatePercentage();
     };
 
     updatePercentage = () => {
-        if (this.windowSize.width <= 768) {
+        if (this.windowSize.width <= BREAKPOINT) {
             return;
         }
 

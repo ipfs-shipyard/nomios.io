@@ -4,8 +4,6 @@
 @import "../../../styles/custom-medias";
 
 .subscribe {
-    position: relative;
-    z-index: 1;
     background-color: var(--color-celtic);
 }
 

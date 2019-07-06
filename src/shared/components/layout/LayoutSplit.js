@@ -5,10 +5,10 @@ import styles from './LayoutSplit.module.css';
 
 class LayoutSplit extends Component {
     render() {
-        const { splitAt, left, right, className, activeRef, ...props } = this.props;
+        const { splitAt, left, right, className, ...props } = this.props;
 
         return (
-            <div className={ classNames(styles.layoutSplit, styles[splitAt], className) } ref={ activeRef } { ...props }>
+            <div className={ classNames(styles.layoutSplit, styles[splitAt], className) } { ...props }>
                 { cloneElement(left, {
                     ...left.props,
                     className: classNames(styles.left, left.props.className),
@@ -26,7 +26,6 @@ LayoutSplit.propTypes = {
     splitAt: PropTypes.oneOf(['medium', 'small']),
     left: PropTypes.element.isRequired,
     right: PropTypes.element.isRequired,
-    activeRef: PropTypes.object,
     className: PropTypes.string,
 };
 
