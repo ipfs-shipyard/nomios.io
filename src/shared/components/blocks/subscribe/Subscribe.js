@@ -112,14 +112,16 @@ class Subscribe extends PureComponent {
 
                         return (
                             <>
-                                <label className={ classNames(styles.inputWrapper, showError && styles.invalid) }>
+                                <div
+                                    aria-label="Email"
+                                    className={ classNames(styles.inputWrapper, showError && styles.invalid) }>
                                     <input
                                         { ...input }
                                         disabled={ !!feedback }
                                         placeholder="Enter your email"
                                         className={ styles.input } />
                                     <CrossmarkIcon className={ styles.crossmark } />
-                                </label>
+                                </div>
                             </>
                         );
                     } }
