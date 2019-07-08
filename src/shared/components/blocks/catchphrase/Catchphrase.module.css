@@ -4,6 +4,8 @@
 @import "../../../styles/mixins/typography";
 
 .catchphrase {
+    position: relative;
+    z-index: 3;
     overflow-x: hidden;
     background: var(--color-celtic);
 }

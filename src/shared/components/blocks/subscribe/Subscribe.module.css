@@ -4,8 +4,6 @@
 @import "../../../styles/custom-medias";
 
 .subscribe {
-    position: relative;
-    z-index: 5; /* Allow animation to be above the previous block */
     background-color: var(--color-celtic);
 }
 

@@ -8,6 +8,8 @@ import { LayoutContainer } from '../../layout';
 import { HEADER_HEIGHT_SMALL } from '../../header';
 import styles from './Catchphrase.module.css';
 
+const BREAKPOINT = 768;
+
 class Catchphrase extends Component {
     wrapperRef = createRef();
 
@@ -75,7 +77,7 @@ class Catchphrase extends Component {
     };
 
     updatePercentage = () => {
-        if (this.windowSize.width <= 768) {
+        if (this.windowSize.width <= BREAKPOINT) {
             return;
         }
 
