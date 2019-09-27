@@ -30,7 +30,7 @@ class Hero extends Component {
         return (
             <div className={ classNames(styles.hero, className) }>
                 <div className={ styles.textWrapper } >
-                    <h1>Open.<br />Decentralized.<br />Standard.</h1>
+                    <h1>Open.<br />A new centralized.<br />Standard.</h1>
                 </div>
                 <Svg className={ styles.svgWrapper } svg={ lowpolySvg } />
 
